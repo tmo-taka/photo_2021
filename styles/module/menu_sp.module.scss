@@ -1,0 +1,126 @@
+@charset "UTF-8";
+@import '../_common.scss';
+
+@include mq-range(sp){
+    .menu {
+        display: block;
+        position: fixed;
+        bottom: 3vw;
+        right: 6vw;
+        z-index:4;
+        &__icon {
+            display: flex;
+            align-items: center;
+            width: 10vw;
+            height: 10vw;
+            background-color: #000;
+            border-radius: 50%;
+            &.on {
+                background-color: #999;
+                transition: all .3s;
+                .menu {
+                    &__icon {
+                        &__border {
+                            display: flex;
+                            align-items: center;
+                            flex-wrap: wrap;
+                            height: 6vw;
+                            &__top {
+                                transform-origin: top left;
+                                transform: translate(.4em,0) rotate(45deg);
+                                width: 2.2em;
+                            }
+                            &__cen {
+                                opacity: 0;
+                            }
+                            &__bot {
+                                transform-origin: bottom left;
+                                transform: translate(.4em,.1em) rotate(-45deg);
+                                width: 2.2em;
+                            }
+                        }
+                    }
+                }
+
+                .menuList {
+                    &_li {
+                        &:nth-child(1) {
+                            transform: scale(1);
+                        }
+                        &:nth-child(2) {
+                            transform: scale(1);
+                        }
+                        &:nth-child(3) {
+                            transform: scale(1);
+                        }
+                    }
+                }
+
+            }
+            &__border {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                height: 6vw;
+                &__top {
+                    margin: 0 auto .22em;
+                    display: block;
+                    width: 1.8em;
+                    height: .2em;
+                    background-color: #FFF;
+                    transition: .2s ease-in;
+                }
+                &__cen {
+                    margin: 0 auto .22em;
+                    display: block;
+                    width: 1.8em;
+                    height: .2em;
+                    background-color: #FFF;
+                    transition: .2s ease-in;
+                }
+                &__bot {
+                    margin: 0 auto .22em;
+                    display: block;
+                    width: 1.8em;
+                    height: .2em;
+                    background-color: #FFF;
+                    transition: .2s ease-in;
+                }
+            }
+        }
+        &__nav {
+            display: none;
+            position: absolute;
+            bottom: 12vw;
+            right: 2vw;
+            &.on {
+                display: block;
+            }
+        }
+    }
+
+    /*丸の拡大*/
+    .circle{
+        position: fixed;
+        z-index:3;
+        /*丸の形*/
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #999;
+        /*丸のスタート位置と形状*/
+        transform: scale(0);/*scaleをはじめは0に*/
+        right:-50px;
+        bottom:-50px;
+        transition: all .6s;/*0.6秒かけてアニメーション*/
+        &.on {
+            transform: scale(50);
+        }
+    }
+}
+
+@include mq-range(pc){
+    .menu {
+        display: none;
+    }
+}

@@ -1,0 +1,121 @@
+@charset "UTF-8";
+@import '../_common.scss';
+
+@include mq-range(sp){
+    .mainV {
+        width: 100%;
+        padding: 6vw;
+        &__title {
+            text-align: center;
+        }
+    }
+    .skillBlock {
+        padding: 8% 4.8%;
+        &__title {
+            margin-bottom: 4.8%;
+            text-align: center;
+            font-size: 3.2rem;
+        }
+        &__box {
+            padding: 10% 0;
+            &__title {
+                margin-bottom: 2.4%;
+                font-size: 2.8rem;
+            }
+            ul {
+                li {
+                    line-height: 1.2em;
+                }
+            }
+        }
+    }
+    .worksBlock {
+        &__title {
+            margin-bottom: 4.8%;
+            text-align: center;
+            font-size: 3.2rem;
+        }
+        &__box {
+            padding: 10% 0;
+            &__title {
+                margin-bottom: 2.4%;
+                font-size: 2.8rem;
+            }
+        }
+        &__btn {
+            padding: 4.8%;
+            display: flex;
+            justify-content: flex-end;
+            a {
+                border: solid 1px #000;
+                padding: 3.2% 8%;
+                display: block;
+                width: 36%;
+                text-align: center;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .slide {
+        &__link {
+            display: block;
+            position: relative;
+            &__hover {
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.6);
+                color: #FFF;
+                text-decoration: none;
+            }
+            &:hover {
+                .slide__link__hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .profileBlock {
+        &__title {
+            margin-bottom: 8%;
+            text-align: center;
+            font-size: 3.2rem;
+        }
+        &__box {
+            margin: 0 auto;
+            padding: 6% 4%;
+            width: 90.4%;
+            box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+            dt {
+                margin-bottom: 2%;
+                font-size: 1.3rem;
+            }
+            dd {
+                border-bottom: solid #000 1px;
+                font-size: 1.8rem;
+                line-height: 1.4em;
+                &:not(:last-child){
+                    margin-bottom: 6%;
+                }
+            }
+        }
+    }
+}
+
+@include mq-range(pc){
+    .mainV {
+        width: 100%;
+        padding: 64px;
+        &__title {
+            text-align: center;
+            font-size: 2.4rem;
+        }
+    }
+}

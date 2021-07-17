@@ -1,0 +1,18 @@
+{
+
+    "syntax": "scss",
+
+    "plugins": [
+        "stylelint-scss"
+    ],
+
+    "rules": {
+        "color-hex-case": "upper",
+        "declaration-block-trailing-semicolon": "always"
+    },
+
+    "$comment": [
+        "color-hex-case カラーコードは強制大文字",
+        "declaration-block-trailing-semicolon セミコロンは強制でつけます"
+    ]
+}
