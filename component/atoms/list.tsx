@@ -4,9 +4,9 @@ import styles from '@style/module/menu_common.module.scss'
 
 const HeaderList: FC = () => {
   let lists = [
-    {name: "リスト", path: '/dir/topic1', url:'topic1'},
-    {name: "リスト", path: 'path', url: 'url'},
-    {name: "リスト", path: 'path', url: 'url'},
+    {name: "Skill", path: '/dir/topic1', url:'topic1'},
+    {name: "Works", path: 'path', url: 'url'},
+    {name: "Profile", path: 'path', url: 'url'},
   ]
   return (
     <ul className={styles.menuList}>

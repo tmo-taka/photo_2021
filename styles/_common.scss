@@ -5,6 +5,10 @@ $breakpoint-range: (
     'pc': 'screen and (min-width: 751px)',
 );
 
+//PC用のコンテンツサイズ
+$pc-min-size: 1280px;
+$pc-max-size: 1960px;
+
 @mixin mq-range($breakpoint: md) {
     @media #{map-get($breakpoint-range, $breakpoint)} {
         @content;

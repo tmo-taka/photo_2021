@@ -46,7 +46,7 @@ const Home: FC = () => {
   ]
 
   return (
-    <div id="wrapper">
+    <div id="wrapper" className={styles.wrapper}>
       <Head>
         <title>これがポートフォリオです</title>
         <meta property="og:title" content="My page title" key="title" />
@@ -60,31 +60,33 @@ const Home: FC = () => {
         <h1 className={styles.mainV__title}>俺のポートフォリオ</h1>
       </div>
       <section className={styles.skillBlock}>
-        <h2 className={styles.skillBlock__title}>SKILL</h2>
+        <h2 className={styles.skillBlock__title}>Skill</h2>
         <div className={styles.skillBlock__box}>
-          <h3 className={styles.skillBlock__box__title}>programming</h3>
-          <ul className={styles.skillBlock__box__lists}>
-            {
-              skills.programming.map((list) => {
-                return (
-                    <li>{list.skill}</li>
-                );
-              })
-            }
-          </ul>
-        </div>
+          <div className={styles.skillBlock__boxIn}>
+            <h3 className={styles.skillBlock__boxIn__title}>programming</h3>
+            <ul className={styles.skillBlock__boxIn__lists}>
+              {
+                skills.programming.map((list) => {
+                  return (
+                      <li>{list.skill}</li>
+                  );
+                })
+              }
+            </ul>
+          </div>
 
-        <div className={styles.skillBlock__box}>
-          <h3 className={styles.skillBlock__box__title}>tool</h3>
-          <ul className={styles.skillBlock__box__lists}>
-            {
-              skills.tool.map((list) => {
-                return (
-                    <li>{list.skill}</li>
-                );
-              })
-            }
-          </ul>
+          <div className={styles.skillBlock__boxIn}>
+            <h3 className={styles.skillBlock__boxIn__title}>tool</h3>
+            <ul className={styles.skillBlock__boxIn__lists}>
+              {
+                skills.tool.map((list) => {
+                  return (
+                      <li>{list.skill}</li>
+                  );
+                })
+              }
+            </ul>
+          </div>
         </div>
       </section>
       <section className={styles.worksBlock}>
