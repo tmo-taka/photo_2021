@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link' 
+import Link from 'next/link'
 import Slider from "react-slick";
 import Header from '@component/module/header'
 import Menu from '@component/module/menu_sp'
@@ -17,7 +17,9 @@ const Home: FC = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000
   };
 
   const skills = {
@@ -59,7 +61,7 @@ const Home: FC = () => {
       <div className={styles.mainV}>
         <h1 className={styles.mainV__title}>俺のポートフォリオ</h1>
       </div>
-      <section className={styles.skillBlock}>
+      <section id="skill" className={styles.skillBlock}>
         <h2 className={styles.skillBlock__title}>Skill</h2>
         <div className={styles.skillBlock__box}>
           <div className={styles.skillBlock__boxIn}>
@@ -89,7 +91,7 @@ const Home: FC = () => {
           </div>
         </div>
       </section>
-      <section className={styles.worksBlock}>
+      <section id="works" className={styles.worksBlock}>
           <h2 className={styles.worksBlock__title}>Works</h2>
           <div className={styles.worksBlock__box}>
             <Slider {...slideSettings}>
@@ -108,7 +110,7 @@ const Home: FC = () => {
           </Link>
           </div>
       </section>
-      <section className={styles.profileBlock}>
+      <section id="profile" className={styles.profileBlock}>
           <h2 className={styles.profileBlock__title}>Profile</h2>
           <dl className={styles.profileBlock__box}>
             <dt>Name:</dt>

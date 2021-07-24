@@ -1,12 +1,13 @@
 import React, {FC} from 'react'
 import Link from 'next/link';
 import styles from '@style/module/menu_common.module.scss'
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 const HeaderList: FC = () => {
   let lists = [
-    {name: "Skill", path: '/dir/topic1', url:'topic1'},
-    {name: "Works", path: 'path', url: 'url'},
-    {name: "Profile", path: 'path', url: 'url'},
+    {name: "Skill", to: "#skill"},
+    {name: "Works", to: "#works"},
+    {name: "Profile", to: "#profile"},
   ]
   return (
     <ul className={styles.menuList}>
@@ -14,9 +15,9 @@ const HeaderList: FC = () => {
             lists.map((list) => {
                 return (
                     <li className={styles.menuList__li}>
-                      <Link href={list.path} as={list.url}>
+                      <AnchorLink　href={list.to}>
                       {list.name}
-                      </Link>
+                      </AnchorLink>
                     </li>
                 );
             })

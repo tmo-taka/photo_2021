@@ -1,16 +1,55 @@
 import React, {FC} from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import Image from 'next/image'
-import Header from '@component/module/header'
-import styles from '@style/module/top.module.scss'
+import styles from '@style/module/work/top.module.scss'
+import { motion } from "framer-motion";
 
-const Home: FC = () => {
+const Work: FC = () => {
+  const workList = [
+    {name: "ズバット引越し手続き", path: '/work/1', imgPath: "/img/work/work_1.png"},
+    {name: "ズバット引越し比較", path: '/work/2', imgPath: "/img/work/work_2.png"},
+    {name: "デジタラボ", path: '/work/3', imgPath: "/img/work/work_3.png"}
+  ]
+
   return (
     <div id="wrapper">
-      <Header />
-      <h1 className={styles.title}>これです</h1>
+      <Head>
+        <title>これがポートフォリオです</title>
+        <meta property="og:title" content="My page title" key="title" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;500&family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
+      </Head>
+
+      <div className={styles.listBox}>
+        <h1 className={styles.listBox__title}>Works</h1>
+        <ul className={styles.listBox__content}>
+        {
+          workList.map((list,index) => {
+            return (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.08 * (index + 1)}}
+                >
+              <li className={styles.list}>
+                <Link href="/work/[id]" as={list.path}>
+                    <div>
+                      <Image src={list.imgPath} layout={'responsive'} width={320} height={180}/>
+                      <div className={styles.list__txt}>{list.name}</div>
+                    </div>
+                </Link>
+              </li>
+              </motion.div>
+            );
+          })
+        }
+        </ul>
+      </div>
     </div>
   )
 }
 
-export default Home;
+export default Work;

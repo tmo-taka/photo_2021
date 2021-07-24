@@ -1,0 +1,40 @@
+@charset "UTF-8";
+@import '../../_common.scss';
+
+@include mq-range(sp){
+    .listBox {
+
+    }
+}
+
+@include mq-range(pc){
+    .listBox {
+        &__title {
+            margin-bottom: 68px;
+            padding: 24px 0;
+            text-align: center;
+            font-size: 3.2rem;
+        }
+        &__content {
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: $pc-max-size;
+            min-width: $pc-min-size;
+        }
+    }
+
+    .list {
+        width: 360px;
+        box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+        cursor: pointer;
+        &__txt {
+            border-top: solid 1px #DDD;
+            padding: 24px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+}
