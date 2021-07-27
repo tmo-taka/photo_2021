@@ -4,8 +4,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from '@style/module/work/top.module.scss'
 import { motion } from "framer-motion";
+import { client } from "../api/client";
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
-const Work: FC = () => {
+const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
+
   const workList = [
     {name: "ズバット引越し手続き", path: '/work/1', imgPath: "/img/work/work_1.png"},
     {name: "ズバット引越し比較", path: '/work/2', imgPath: "/img/work/work_2.png"},
@@ -53,3 +56,24 @@ const Work: FC = () => {
 }
 
 export default Work;
+
+type Work = {
+  site_name: string,
+  link_path: string,
+  lead_img: string,
+  service_img: string,
+  service_txt: string,
+  create_time: string,
+  create_skill: string,
+  create_span: string
+}
+
+export const getStaticProps:GetStaticProps = async () => {
+  const work:Work[] = await client.get({ endpoint: "cont" });
+  console.log(work);
+  return {
+    props: {
+      work,
+    }
+  }
+}
