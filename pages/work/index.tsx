@@ -9,12 +9,6 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
-  const workList = [
-    {name: "ズバット引越し手続き", path: '/work/1', imgPath: "/img/work/work_1.png"},
-    {name: "ズバット引越し比較", path: '/work/2', imgPath: "/img/work/work_2.png"},
-    {name: "デジタラボ", path: '/work/3', imgPath: "/img/work/work_3.png"}
-  ]
-
   return (
     <div id="wrapper">
       <Head>
@@ -30,18 +24,18 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <h1 className={styles.listBox__title}>Works</h1>
         <ul className={styles.listBox__content}>
         {
-          workList.map((list,index) => {
+          work.contents.map((list,index) => {
             return (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.08 * (index + 1)}}
                 >
-              <li className={styles.list}>
-                <Link href="/work/[id]" as={list.path}>
+              <li className={styles.list} key={list.id}>
+                <Link href={list.link_path}  as={list.link_path}>
                     <div>
-                      <Image src={list.imgPath} layout={'responsive'} width={320} height={180}/>
-                      <div className={styles.list__txt}>{list.name}</div>
+                      <Image src={list.lead_img.url} layout={'responsive'} width={320} height={180}/>
+                      <div className={styles.list__txt}>{list.site_name}</div>
                     </div>
                 </Link>
               </li>
@@ -57,10 +51,11 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default Work;
 
-type Work = {
+type WorkType = {
+  id: string,
   site_name: string,
   link_path: string,
-  lead_img: string,
+  lead_img: object,
   service_img: string,
   service_txt: string,
   create_time: string,
@@ -69,8 +64,7 @@ type Work = {
 }
 
 export const getStaticProps:GetStaticProps = async () => {
-  const work:Work[] = await client.get({ endpoint: "cont" });
-  console.log(work);
+  const work:WorkType[] = await client.get({ endpoint: "cont" });
   return {
     props: {
       work,
