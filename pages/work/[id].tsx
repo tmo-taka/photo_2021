@@ -4,17 +4,12 @@ import Image from 'next/image'
 import { useRouter } from 'next/router';
 import styles from '@style/module/top.module.scss'
 import { motion } from "framer-motion";
+import { client } from "../api/client";
+import { GetServerSideProps , InferGetServerSidePropsType } from 'next';
 
-const Work_Topic: FC = () => {
-    const router = useRouter();
+const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
-    const workList = [
-        {name: "ズバット引越し手続き", path: '/work/1', imgPath: "/img/work/work_1.png"},
-        {name: "ズバット引越し比較", path: '/work/2', imgPath: "/img/work/work_2.png"},
-        {name: "デジタラボ", path: '/work/3', imgPath: "/img/work/work_3.png"}
-    ]
-
-    const selectList = workList[Number(router.query.id) - 1];
+    const data =  work.contents[0];
 
     return (
     <div id="wrapper">
@@ -32,17 +27,25 @@ const Work_Topic: FC = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1}}
         >
-        <h1 className={styles.title}>{selectList.name}</h1>
+        <h1 className={styles.title}>{data.site_name}</h1>
         <div className={styles.imgBox}>
-            <Image src={selectList.imgPath} layout={'responsive'} width={320} height={180}/>
+            <Image src={data.lead_img.url} layout={'responsive'} width={320} height={180}/>
         </div>
-        <div className={styles.detailBox}>
-            <dl className={styles.detailBox__lists}>
-                <dt>作成時期</dt><dd>社会人3年目</dd>
-                <dt>スキル</dt><dd>HTML/CSS/jQuey</dd>
-                <dt>作成期間</dt><dd>20営業日</dd>
-            </dl>
-        </div>
+        {((data) => {
+            if(data.create_time){
+                {
+                    return(
+                        <div className={styles.detailBox}>
+                            <dl className={styles.detailBox__lists}>
+                                <dt>作成時期</dt><dd>{data.creat_time}</dd>
+                                <dt>スキル</dt><dd>{data.create_skill}</dd>
+                                <dt>作成期間</dt><dd>{data.create_span}</dd>
+                            </dl>
+                        </div>
+                    )
+                }
+            }
+        })(data)}
         <div className={styles.contentBox}>
             <p className={styles.contentBox__txt}>テスト</p>
         </div>
@@ -52,3 +55,30 @@ const Work_Topic: FC = () => {
 }
 
 export default Work_Topic;
+
+type WorkType = {
+    id: string,
+    site_name: string,
+    link_path: string,
+    lead_img: object,
+    service_img: string,
+    service_txt: string,
+    create_time: string,
+    create_skill: string,
+    create_span: string
+}
+
+export const getServerSideProps:GetServerSideProps = async (context) => {
+    const id = context.query.id;
+    const work:WorkType[] = await client.get({
+        endpoint: "cont",
+        queries: {
+            filters: `link_path[contains]${id}`,
+        }
+    });
+    return {
+        props: {
+            work,
+        }
+    }
+}
