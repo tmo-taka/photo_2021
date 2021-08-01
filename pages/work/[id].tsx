@@ -31,6 +31,7 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSi
         <div className={styles.imgBox}>
             <Image src={data.lead_img.url} layout={'responsive'} width={320} height={180}/>
         </div>
+
         {((data) => {
             if(data.create_time){
                 {
@@ -46,9 +47,15 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSi
                 }
             }
         })(data)}
-        <div className={styles.contentBox}>
-            <p className={styles.contentBox__txt}>テスト</p>
-        </div>
+
+        {((data) => {
+            if(data.create_time){
+                <div className={styles.contentBox}>
+                    <p className={styles.contentBox__txt}>{data.service_txt}</p>
+                </div>
+            }
+        })(data)}
+
         </motion.div>
     </div>
     )
