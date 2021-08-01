@@ -9,8 +9,10 @@ import styles from '@style/module/top.module.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { listenerCount } from 'events'
+import { client } from "./api/client";
+import { GetServerSideProps , InferGetServerSidePropsType } from 'next';
 
-const Home: FC = () => {
+const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
   const slideSettings = {
     dots: true,
@@ -40,12 +42,6 @@ const Home: FC = () => {
       {skill: "CMS(Firebase / Strapi)"},
     ]
   }
-
-  const workList = [
-    {name: "ズバット引越し手続き", path: '/work/1', imgPath: "/img/work/work_1.png"},
-    {name: "ズバット引越し比較", path: '/work/2', imgPath: "/img/work/work_2.png"},
-    {name: "デジタラボ", path: '/work/3', imgPath: "/img/work/work_3.png"}
-  ]
 
   return (
     <div id="wrapper" className={styles.wrapper}>
@@ -96,9 +92,16 @@ const Home: FC = () => {
           <div className={styles.worksBlock__box}>
             <Slider {...slideSettings}>
               {
-                workList.map((list) => {
+                work.contents.map((list) => {
                   return (
-                    <div className={styles.slide}><Link href="/work/[id]" as={list.path}><a className={styles.slide__link}><Image src={list.imgPath} layout={'responsive'} width={320} height={180}/><div className={styles.slide__link__hover}>{list.name}</div></a></Link></div>
+                    <div className={styles.slide}>
+                      <Link href={list.link_path} as={list.link_path}>
+                        <a className={styles.slide__link}>
+                          <Image src={list.lead_img.url} layout={'responsive'} width={320} height={180}/>
+                          <div className={styles.slide__link__hover}>{list.site_name}</div>
+                        </a>
+                      </Link>
+                    </div>
                   );
                 })
               }
@@ -125,3 +128,29 @@ const Home: FC = () => {
 }
 
 export default Home;
+
+type WorkType = {
+  id: string,
+  site_name: string,
+  link_path: string,
+  lead_img: object,
+  service_img: string,
+  service_txt: string,
+  create_time: string,
+  create_skill: string,
+  create_span: string
+}
+
+export const getServerSideProps:GetServerSideProps = async () => {
+  const work:WorkType[] = await client.get({
+      endpoint: "cont",
+      queries: {
+          limit: 5,
+      }
+  });
+  return {
+      props: {
+          work,
+      }
+  }
+}
