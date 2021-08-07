@@ -1,0 +1,32 @@
+@charset "UTF-8";
+@import '../_common.scss';
+
+@include mq-range(sp){
+    .header {
+        padding: 3vw;
+        border-bottom: solid 1px #CCC;
+        width: 100%;
+        &In {
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            font-size: 2.0rem;
+            ul {
+                display: none;
+            }
+        }
+    }
+}
+
+@include mq-range(pc){
+    .footer {
+        padding: 24px 0;
+        border-bottom: solid 1px #CCC;
+        width: 100%;
+        &In {
+            text-align: center;
+            font-size: 1.3rem;
+        }
+    }
+}

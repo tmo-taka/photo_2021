@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '@style/module/work/top.module.scss'
+import Footer from '@component/module/footer'
 import { motion } from "framer-motion";
 import { client } from "../api/client";
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
@@ -45,6 +46,12 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
         }
         </ul>
       </div>
+      <div className={styles.backBtn}>
+          <Link href="/">
+              <a>TOPへ戻る</a>
+          </Link>
+      </div>
+      <Footer />
     </div>
   )
 }

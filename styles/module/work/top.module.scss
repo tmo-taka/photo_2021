@@ -9,6 +9,7 @@
 
 @include mq-range(pc){
     .listBox {
+        padding: 68px 0;
         &__title {
             margin-bottom: 68px;
             padding: 24px 0;
@@ -35,6 +36,33 @@
             font-size: 1.6rem;
             font-weight: bold;
             text-align: center;
+        }
+    }
+
+    .backBtn {
+        padding: 48px 0;
+        display: flex;
+        justify-content: space-around;
+        a {
+            border: solid 1px #000;
+            padding: 16px;
+            display: block;
+            width: 360px;
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            background: linear-gradient(90deg,
+            #000000,
+            #000000,
+            #ffffff,
+            #ffffff);
+            background-position: 99% 50%;
+            background-size: 300% 300%;
+            transition: all 0.7s ease-out;
+            &:hover {
+                background-position: 1% 50%;
+                color: #FFF;
+            }
         }
     }
 }

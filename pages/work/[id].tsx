@@ -1,8 +1,10 @@
 import React, {FC} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router';
-import styles from '@style/module/top.module.scss'
+import styles from '@style/module/work/topic.module.scss'
+import Footer from '@component/module/footer'
 import { motion } from "framer-motion";
 import { client } from "../api/client";
 import { GetServerSideProps , InferGetServerSidePropsType } from 'next';
@@ -29,7 +31,9 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSi
         >
         <h1 className={styles.title}>{data.site_name}</h1>
         <div className={styles.imgBox}>
-            <Image src={data.lead_img.url} layout={'responsive'} width={320} height={180}/>
+            <div className={styles.imgBoxIn}>
+                <Image src={data.lead_img.url} layout={'responsive'} width={320} height={180} />
+            </div>
         </div>
 
         {((data) => {
@@ -37,11 +41,13 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSi
                 {
                     return(
                         <div className={styles.detailBox}>
-                            <dl className={styles.detailBox__lists}>
-                                <dt>作成時期</dt><dd>{data.creat_time}</dd>
-                                <dt>スキル</dt><dd>{data.create_skill}</dd>
-                                <dt>作成期間</dt><dd>{data.create_span}</dd>
-                            </dl>
+                            <div className={styles.detailBoxIn}>
+                                <dl className={styles.detailBoxIn__lists}>
+                                    <dt>作成時期</dt><dd>{data.create_time}</dd>
+                                    <dt>スキル</dt><dd>{data.create_skill}</dd>
+                                    <dt>作成期間</dt><dd>{data.create_span}</dd>
+                                </dl>
+                            </div>
                         </div>
                     )
                 }
@@ -49,13 +55,24 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSi
         })(data)}
 
         {((data) => {
-            if(data.create_time){
-                <div className={styles.contentBox}>
-                    <p className={styles.contentBox__txt}>{data.service_txt}</p>
-                </div>
+            if(data.service_txt){
+                {
+                    return(
+                        <div className={styles.contentBox}>
+                            <p className={styles.contentBox__txt}>{data.service_txt}</p>
+                        </div>
+                    )
+                }
             }
         })(data)}
 
+        <div className={styles.backBtn}>
+            <Link href="/work/" as="workList">
+                <a>一覧へ戻る</a>
+            </Link>
+        </div>
+
+        <Footer />
         </motion.div>
     </div>
     )
@@ -83,6 +100,7 @@ export const getServerSideProps:GetServerSideProps = async (context) => {
             filters: `link_path[contains]${id}`,
         }
     });
+    console.log(work);
     return {
         props: {
             work,

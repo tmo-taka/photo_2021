@@ -1,0 +1,85 @@
+@charset "UTF-8";
+@import '../../_common.scss';
+
+@include mq-range(pc){
+    // body {
+    //     margin: 0 auto;
+    //     width: 1240px;
+    // }
+    .title {
+        padding: 36px 64px;
+        font-size: 2.0rem;
+    }
+
+    .imgBox {
+        padding: 64px 0;
+        background-color: silver;
+        &In {
+            margin: 0 auto;
+            width: 640px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.3);
+        }
+    }
+
+    .detailBox {
+        padding: 64px 0;
+        background-color: #FFF;
+        &In {
+            margin: 0 auto;
+            width: 540px;
+            &__lists {
+                padding: 6px;
+                dt {
+                    margin-bottom: 4px;
+                    padding: 4px;
+                    display: block;
+                    width: 16%;
+                    font-size: 1.4rem;
+                }
+                dd {
+                    margin: 0 0 16px auto;
+                    border-bottom: solid 1px #000;
+                    padding: 8px;
+                    width: 84%;
+                    font-size: 1.8rem;
+                }
+            }
+        }
+    }
+
+    .contentBox {
+        padding: 64px 0;
+        background-color: silver;
+        &__txt {
+            margin: 0 auto;
+            width: 540px;
+        }
+    }
+
+    .backBtn {
+        padding: 48px 0;
+        display: flex;
+        justify-content: space-around;
+        a {
+            border: solid 1px #000;
+            padding: 16px;
+            display: block;
+            width: 360px;
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            background: linear-gradient(90deg,
+            #000000,
+            #000000,
+            #ffffff,
+            #ffffff);
+            background-position: 99% 50%;
+            background-size: 300% 300%;
+            transition: all 0.7s ease-out;
+            &:hover {
+                background-position: 1% 50%;
+                color: #FFF;
+            }
+        }
+    }
+}
