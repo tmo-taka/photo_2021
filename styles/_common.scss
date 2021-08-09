@@ -9,6 +9,8 @@ $breakpoint-range: (
 $pc-min-size: 1280px;
 $pc-max-size: 1960px;
 
+$accent-color: #3589BB;
+
 @mixin mq-range($breakpoint: md) {
     @media #{map-get($breakpoint-range, $breakpoint)} {
         @content;

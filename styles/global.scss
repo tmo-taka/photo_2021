@@ -1,0 +1,6 @@
+@charset "UTF-8";
+@import './_common.scss';
+
+.slick-dots li button:before {
+    color: $accent-color !important;
+}

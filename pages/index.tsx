@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { listenerCount } from 'events'
 import { client } from "./api/client";
 import { GetServerSideProps , InferGetServerSidePropsType } from 'next';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
@@ -52,76 +53,92 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;500&family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
       </Head>
       <Header />
       <div className={styles.mainV}>
         <h1 className={styles.mainV__title}>俺のポートフォリオ</h1>
       </div>
-      <section id="skill" className={styles.skillBlock}>
-        <h2 className={styles.skillBlock__title}>Skill</h2>
-        <div className={styles.skillBlock__box}>
-          <div className={styles.skillBlock__boxIn}>
-            <h3 className={styles.skillBlock__boxIn__title}>programming</h3>
-            <ul className={styles.skillBlock__boxIn__lists}>
-              {
-                skills.programming.map((list) => {
-                  return (
-                      <li>{list.skill}</li>
-                  );
-                })
-              }
-            </ul>
-          </div>
 
-          <div className={styles.skillBlock__boxIn}>
-            <h3 className={styles.skillBlock__boxIn__title}>tool</h3>
-            <ul className={styles.skillBlock__boxIn__lists}>
-              {
-                skills.tool.map((list) => {
-                  return (
-                      <li>{list.skill}</li>
-                  );
-                })
-              }
-            </ul>
+      <ScrollAnimation animateIn="fadeIn">
+        <section id="skill" className={styles.skillBlock}>
+          <ScrollAnimation animateIn='bounce' animateOnce={true}>
+            <h2 className={styles.skillBlock__title}><span>S</span>kill</h2>
+          </ScrollAnimation>
+          <div className={styles.skillBlock__box}>
+            <div className={styles.skillBlock__boxIn}>
+              <h3 className={styles.skillBlock__boxIn__title}>programming</h3>
+              <ul className={styles.skillBlock__boxIn__lists}>
+                {
+                  skills.programming.map((list) => {
+                    return (
+                        <li>{list.skill}</li>
+                    );
+                  })
+                }
+              </ul>
+            </div>
+
+            <div className={styles.skillBlock__boxIn}>
+              <h3 className={styles.skillBlock__boxIn__title}>tool</h3>
+              <ul className={styles.skillBlock__boxIn__lists}>
+                {
+                  skills.tool.map((list) => {
+                    return (
+                        <li>{list.skill}</li>
+                    );
+                  })
+                }
+              </ul>
+            </div>
           </div>
-        </div>
-      </section>
-      <section id="works" className={styles.worksBlock}>
-          <h2 className={styles.worksBlock__title}>Works</h2>
-          <div className={styles.worksBlock__box}>
-            <Slider {...slideSettings}>
-              {
-                work.contents.map((list) => {
-                  return (
-                    <div className={styles.slide}>
-                      <Link href={list.link_path} as={list.link_path}>
-                        <a className={styles.slide__link}>
-                          <Image src={list.lead_img.url} layout={'responsive'} width={320} height={180}/>
-                          <div className={styles.slide__link__hover}>{list.site_name}</div>
-                        </a>
-                      </Link>
-                    </div>
-                  );
-                })
-              }
-            </Slider>
-          </div>
-          <div className={styles.worksBlock__btn}>
-          <Link href="/work/" as="workList">
-            <a>一覧へ</a>
-          </Link>
-          </div>
-      </section>
-      <section id="profile" className={styles.profileBlock}>
-          <h2 className={styles.profileBlock__title}>Profile</h2>
-          <dl className={styles.profileBlock__box}>
-            <dt>Name:</dt>
-            <dd>Takahara Tomoya</dd>
-            <dt>Carier:</dt>
-            <dd>名城大学を卒業後、新卒として、株式会社ウェブクルーに入社</dd>
-          </dl>
-      </section>
+        </section>
+      </ScrollAnimation>
+
+      <ScrollAnimation animateIn="fadeIn">
+        <section id="works" className={styles.worksBlock}>
+            <ScrollAnimation animateIn='bounce' animateOnce={true}>
+              <h2 className={styles.worksBlock__title}>W<span>o</span>rks</h2>
+            </ScrollAnimation>
+            <div className={styles.worksBlock__box}>
+              <Slider {...slideSettings}>
+                {
+                  work.contents.map((list) => {
+                    return (
+                      <div className={styles.slide}>
+                        <Link href={list.link_path} as={list.link_path}>
+                          <a className={styles.slide__link}>
+                            <Image src={list.lead_img.url} layout={'responsive'} width={320} height={180}/>
+                            <div className={styles.slide__link__hover}>{list.site_name}</div>
+                          </a>
+                        </Link>
+                      </div>
+                    );
+                  })
+                }
+              </Slider>
+            </div>
+            <div className={styles.worksBlock__btn}>
+            <Link href="/work/" as="workList">
+              <a>一覧へ</a>
+            </Link>
+            </div>
+        </section>
+      </ScrollAnimation>
+
+      <ScrollAnimation animateIn="fadeIn">
+        <section id="profile" className={styles.profileBlock}>
+            <ScrollAnimation animateIn='bounce' animateOnce={true}>
+              <h2 className={styles.profileBlock__title}>Pro<span>f</span>ile</h2>
+            </ScrollAnimation>
+            <dl className={styles.profileBlock__box}>
+              <dt>Name:</dt>
+              <dd>Takahara Tomoya</dd>
+              <dt>Carier:</dt>
+              <dd>名城大学を卒業後、新卒として、株式会社ウェブクルーに入社</dd>
+            </dl>
+        </section>
+      </ScrollAnimation>
       <Menu />
     </div>
   )

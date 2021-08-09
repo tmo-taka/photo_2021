@@ -1,0 +1,23 @@
+@mixin normal_button($width: 240px){
+    a {
+        border: solid 1px #000;
+        padding: 16px;
+        display: block;
+        width: $width;
+        color: #000;
+        text-align: center;
+        text-decoration: none;
+        background: linear-gradient(90deg,
+        #000000,
+        #000000,
+        #ffffff,
+        #ffffff);
+        background-position: 99% 50%;
+        background-size: 300% 300%;
+        transition: all 0.7s ease-out;
+        &:hover {
+            background-position: 1% 50%;
+            color: #FFF;
+        }
+    }
+}

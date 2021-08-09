@@ -112,6 +112,8 @@
 }
 
 @include mq-range(pc){
+    @import '../_mixin_pc.scss';
+
     .wrapper {
         padding: 0 0 64px;
     }
@@ -131,6 +133,9 @@
             text-align: center;
             font-size: 3.2rem;
             letter-spacing: 0.1em;
+            span {
+                color: $accent-color;
+            }
         }
         &__box {
             padding: 64px 0;
@@ -161,6 +166,9 @@
             text-align: center;
             font-size: 3.2rem;
             letter-spacing: 0.1em;
+            span {
+                color: $accent-color;
+            }
         }
         &__box {
             margin: 0 auto 64px;
@@ -175,15 +183,7 @@
             display: flex;
             justify-content: flex-end;
             width: 1000px;
-            a {
-                border: solid 1px #000;
-                padding: 16px;
-                display: block;
-                width: 240px;
-                color: #000;
-                text-align: center;
-                text-decoration: none;
-            }
+            @include normal_button();
         }
     }
 
@@ -192,7 +192,6 @@
             display: block;
             position: relative;
             &__hover {
-                opacity: 0;
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -201,13 +200,17 @@
                 align-items: center;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0,0,0,0.6);
+                background-color: rgba($accent-color, .3);
                 color: #FFF;
+                font-weight: bold;
                 text-decoration: none;
+                transform-origin: center;
+                transform: scale(0);
+                transition: all 0.3s;
             }
             &:hover {
                 .slide__link__hover {
-                    opacity: 1;
+                    transform: scale(1);
                 }
             }
         }
@@ -220,6 +223,9 @@
             text-align: center;
             font-size: 3.2rem;
             letter-spacing: 0.1em;
+            span {
+                color: $accent-color;
+            }
         }
         &__box {
             margin: 0 auto;
