@@ -3,23 +3,26 @@
 
 @include mq-range(sp){
     .menuList {
-        width: 14vw;
+        width: 18vw;
         &__li {
             border-radius: 40px;
+            padding: 8% 0;
             position:absolute;
             display: block;
             background-color: #FFF;
+            width: 20vw;
+            text-align: center;
             &:nth-child(1) {
-                bottom: 20vw;
-                right: 20vw;
+                bottom: 26vw;
+                right: 26vw;
             }
             &:nth-child(2) {
-                bottom: 12vw;
-                right: 12vw;
+                bottom: 15vw;
+                right: 15vw;
             }
             &:nth-child(3) {
-                bottom: 4vw;
-                right: 4vw;
+                bottom: 3vw;
+                right: 3vw;
             }
             a {
                 padding: 4vw 2vw;

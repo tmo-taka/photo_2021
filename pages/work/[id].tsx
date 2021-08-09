@@ -67,7 +67,7 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSi
         })(data)}
 
         <div className={styles.backBtn}>
-            <Link href="/work/" as="workList">
+            <Link href="/work/">
                 <a>一覧へ戻る</a>
             </Link>
         </div>

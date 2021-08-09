@@ -5,5 +5,10 @@ module.exports = {
     images: {
         domains: ['images.microcms-assets.io'],
     },
-    exportTrailingSlash: true
+    //exportTrailingSlash: true,
+    /*exportPathMap: async function() {
+        return {
+            "/work": { page: "/workList" },
+        };
+    }*/
 };

@@ -119,7 +119,7 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
               </Slider>
             </div>
             <div className={styles.worksBlock__btn}>
-            <Link href="/work/" as="workList">
+            <Link href="/work/">
               <a>一覧へ</a>
             </Link>
             </div>
