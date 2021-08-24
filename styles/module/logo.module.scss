@@ -1,0 +1,36 @@
+@charset "UTF-8";
+@import '../_common.scss';
+
+@include mq-range(sp){
+}
+
+@include mq-range(pc){
+    .logo {
+        width: 400px;
+        &_item {
+            fill: #000;                     /*塗りつぶし色*/
+            stroke-width: 2;                  /*線の太さ*/
+            stroke-dasharray: 2500;           /*線の間隔*/
+            stroke-dashoffset: 0;             /*線の始まりの開始位置*/
+            animation-name: anime-logo;       /*keyframe名*/
+            animation-duration: 3s;           /*所要時間*/
+            animation-timing-function: linear; /*進行割合*/
+        }
+    }
+}
+
+/* アニメーション設定 */
+@keyframes anime-logo {
+    0% {
+      fill: #fff;                     /*塗りつぶし色*/
+      stroke-dashoffset: 2500;          /*線の始まりの開始位置*/
+      stroke: #000;                   /*パスの色*/
+    }
+    80% {
+      fill: #fff;                     /*塗りつぶし色*/
+    }
+    100% {
+      stroke-dashoffset: 0;             /*線の始まりの開始位置*/
+      stroke: #FFF;                  /*パスの色*/
+    }
+  }

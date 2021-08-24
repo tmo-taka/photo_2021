@@ -2,6 +2,8 @@
 @import '../_common.scss';
 
 @include mq-range(sp){
+    @import '../_mixin_sp.scss';
+
     .mainV {
         width: 100%;
         padding: 6vw;
@@ -56,14 +58,7 @@
             padding: 4.8%;
             display: flex;
             justify-content: space-around;
-            a {
-                border: solid 1px #000;
-                padding: 3.2% 8%;
-                display: block;
-                width: 64%;
-                text-align: center;
-                text-decoration: none;
-            }
+            @include normal_button();
         }
     }
 
@@ -93,7 +88,7 @@
         }
     }
     .profileBlock {
-        padding: 14% 4.8%;
+        padding: 14% 0;
         &__title {
             margin-bottom: 8%;
             text-align: center;
@@ -104,19 +99,20 @@
         }
         &__box {
             margin: 0 auto;
-            padding: 6% 4%;
+            padding: 6% 4% 6%;
+            position: relative;
             width: 100%;
-            box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+            background: url('../../public/img/illust_back.svg') top left / 4px auto $accent-color;
+            color: #FFF;
             dt {
-                margin-bottom: 2%;
-                font-size: 1.3rem;
+                margin-bottom: 3.6%;
+                font-size: 1.6rem;
             }
             dd {
-                border-bottom: solid #000 1px;
-                font-size: 1.8rem;
+                font-size: 1.6rem;
                 line-height: 1.4em;
                 &:not(:last-child){
-                    margin-bottom: 6%;
+                    margin-bottom: 12%;
                 }
             }
         }
@@ -131,10 +127,75 @@
     }
     .mainV {
         width: 100%;
+        min-height: calc(100vh -173px);
         padding: 64px;
         &__title {
+            margin: 0 auto;
+            position: relative;
+            width: 600px;
             text-align: center;
             font-size: 2.4rem;
+            &::before,
+            &::after {
+                content:"";
+                position: absolute;
+                background: $accent-color;
+                width: 0;
+                height:2px;
+                transition: all 0.2s linear;
+            }
+            &::before {
+                right: 0;
+                bottom: 0;
+            }
+            &::after {
+                left: 0;
+                top: 0;
+            }
+            &:hover {
+                &::before,
+                &::after {
+                    width: 100%;
+                }
+                &::before {
+                    transition-delay: 0.3s;
+                }
+                &::after {
+                    transition-delay: 0s;
+                }
+
+                .mainV__title__in {
+                    &::before,
+                    &::after {
+                        height: 100%;
+                    }
+                    &::before {
+                        transition-delay: 0.5s;
+                    }
+                    &::after {
+                        transition-delay: 0.2s;
+                    }
+                }
+            }
+            &__in {
+                &::before,
+                &::after {
+                    content:"";
+                    position: absolute;
+                    background: #0481A2;
+                    width:2px;
+                    height:0;
+                    transition: all 0.1s linear;
+                }
+                &::before {
+                    left: 0;
+                    bottom: 0;
+                }
+                &::after {
+                    right: 0;
+                    bottom: 0;
+                }
+            }
         }
     }
     .skillBlock {

@@ -1,0 +1,11 @@
+@mixin normal_button($width: 60%) {
+    a {
+        border: solid 1px #000;
+        padding: 2% 4%;
+        display: block;
+        width: $width;
+        color: #000;
+        text-align: center;
+        text-decoration: none;
+    }
+}

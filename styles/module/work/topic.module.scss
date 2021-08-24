@@ -1,6 +1,68 @@
 @charset "UTF-8";
 @import '../../_common.scss';
 
+@include mq-range(sp){
+    @import '../../_mixin_sp.scss';
+
+    .title {
+        padding: 4.8% 0;
+        text-align: center;
+        font-size: 1.8rem;
+    }
+
+    .imgBox {
+        padding: 16% 8%;
+        background-color: rgba($accent-color, .3);
+        &In {
+            margin: 0 auto;
+            width: 100%px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.3);
+        }
+    }
+
+    .detailBox {
+        padding: 10% 0;
+        background-color: #FFF;
+        &In {
+            margin: 0 auto;
+            width: 100%;
+            &__lists {
+                padding: 2.4% 6%;
+                dt {
+                    margin-bottom: 4.8%;
+                    padding: 4.8% 4.8% 4.8% 0;
+                    display: block;
+                    width: 60%;
+                    font-size: 1.4rem;
+                }
+                dd {
+                    margin: 0 0 8% auto;
+                    border-bottom: solid 1px #000;
+                    padding: 4.8%;
+                    width: 86%;
+                    font-size: 1.8rem;
+                }
+            }
+        }
+    }
+
+    .contentBox {
+        padding: 16% 8%;
+        background-color: rgba($accent-color, .3);
+        &__txt {
+            margin: 0 auto;
+            width: 100%;
+        }
+    }
+
+    .backBtn {
+        padding: 48px 0;
+        display: flex;
+        justify-content: space-around;
+        @include normal_button();
+    }
+}
+
 @include mq-range(pc){
     @import '../../_mixin_pc.scss';
 

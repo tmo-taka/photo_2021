@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "target": "es5",
     "lib": [
       "dom",
@@ -9,7 +10,8 @@
     "baseUrl": ".",
     "paths": {
       "@style/*": ["styles/*"],
-      "@component/*": ["component/*"]
+      "@component/*": ["component/*"],
+      "@svg/*": ["public/img/svg/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -30,5 +32,6 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "typeRoots": ["node_modules/@types", "src/types"],
 }

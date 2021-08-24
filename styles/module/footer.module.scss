@@ -2,19 +2,14 @@
 @import '../_common.scss';
 
 @include mq-range(sp){
-    .header {
-        padding: 3vw;
-        border-bottom: solid 1px #CCC;
+    .footer {
+        padding: 6% 0;
         width: 100%;
+        background-color: $accent-color;
         &In {
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            font-size: 2.0rem;
-            ul {
-                display: none;
-            }
+            text-align: center;
+            color: #FFF;
+            font-size: 1.2rem;
         }
     }
 }

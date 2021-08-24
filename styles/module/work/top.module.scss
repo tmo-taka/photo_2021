@@ -2,9 +2,46 @@
 @import '../../_common.scss';
 
 @include mq-range(sp){
+    @import '../../_mixin_sp.scss';
     .listBox {
-
+        padding: 4.8% 0;
+        &__title {
+            margin-bottom: 8%;
+            padding: 4.8% 0;
+            text-align: center;
+            font-size: 3.0rem;
+        }
+        &__content {
+            margin: 0 auto;
+            padding: 3.6% 4.8%;
+            width: 100%;
+            div{
+                &:not(:last-child){
+                    margin-bottom: 18%;
+                }
+            }
+        }
     }
+
+    .list {
+        width: 100%;
+        box-shadow: 0 0 8px rgba(0,0,0,0.25);
+        &__txt {
+            border-top: solid 1px #000;
+            padding: 4%;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+
+    .backBtn {
+        padding: 48px 0;
+        display: flex;
+        justify-content: space-around;
+        @include normal_button();
+    }
+
 }
 
 @include mq-range(pc){

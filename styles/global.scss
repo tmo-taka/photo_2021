@@ -4,3 +4,31 @@
 .slick-dots li button:before {
     color: $accent-color !important;
 }
+
+@include mq-range(sp){
+    .prevArrow {
+        border-top: solid 3px $accent-color;
+        border-left: solid 3px $accent-color;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 3vw;
+        width: 1.2em;
+        height: 1.2em;
+        transform: translateY(-50%) rotate(-45deg);
+        z-index: 3;
+    }
+
+    .nextArrow {
+        border-top: solid 3px $accent-color;
+        border-right: solid 3px $accent-color;
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 3vw;
+        width: 1.2em;
+        height: 1.2em;
+        transform: translateY(-50%) rotate(45deg);
+        z-index: 3;
+    }
+}

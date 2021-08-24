@@ -5,7 +5,9 @@ import Link from 'next/link'
 import Slider from "react-slick";
 import Header from '@component/module/header'
 import Menu from '@component/module/menu_sp'
+import Footer from '@component/module/footer'
 import styles from '@style/module/top.module.scss'
+import Logo from "@component/atoms/logo"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { listenerCount } from 'events'
@@ -15,6 +17,28 @@ import ScrollAnimation from 'react-animate-on-scroll';
 
 const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
+  function SlideNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className="nextArrow"
+        style={{ ...style}}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SlidePrevArrow(props) {
+    const { style, onClick } = props;
+    return (
+      <div
+        className="prevArrow"
+        style={{ ...style}}
+        onClick={onClick}
+      />
+    );
+  }
+
   const slideSettings = {
     dots: true,
     infinite: true,
@@ -22,7 +46,15 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000
+    autoplaySpeed: 2000,
+    lazyLoad: true,
+    responsive: [{
+       breakpoint: 750, //750px以下のサイズに適用
+        settings: {
+          nextArrow: <SlideNextArrow/>,
+          prevArrow: <SlidePrevArrow/>
+        }
+    }]
   };
 
   const skills = {
@@ -57,12 +89,17 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
       </Head>
       <Header />
       <div className={styles.mainV}>
-        <h1 className={styles.mainV__title}>俺のポートフォリオ</h1>
+
+        <h1 className={styles.mainV__title}>
+          <div className={styles.mainV__title__in}>
+            <Logo/>
+          </div>
+        </h1>
       </div>
 
-      <ScrollAnimation animateIn="fadeIn">
+      <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
         <section id="skill" className={styles.skillBlock}>
-          <ScrollAnimation animateIn='bounce' animateOnce={true}>
+          <ScrollAnimation animateIn='bounce'>
             <h2 className={styles.skillBlock__title}><span>S</span>kill</h2>
           </ScrollAnimation>
           <div className={styles.skillBlock__box}>
@@ -95,9 +132,9 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
         </section>
       </ScrollAnimation>
 
-      <ScrollAnimation animateIn="fadeIn">
+      <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
         <section id="works" className={styles.worksBlock}>
-            <ScrollAnimation animateIn='bounce' animateOnce={true}>
+            <ScrollAnimation animateIn='bounce'>
               <h2 className={styles.worksBlock__title}>W<span>o</span>rks</h2>
             </ScrollAnimation>
             <div className={styles.worksBlock__box}>
@@ -126,9 +163,9 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
         </section>
       </ScrollAnimation>
 
-      <ScrollAnimation animateIn="fadeIn">
+      <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
         <section id="profile" className={styles.profileBlock}>
-            <ScrollAnimation animateIn='bounce' animateOnce={true}>
+            <ScrollAnimation animateIn='bounce'>
               <h2 className={styles.profileBlock__title}>Pro<span>f</span>ile</h2>
             </ScrollAnimation>
             <dl className={styles.profileBlock__box}>
@@ -140,6 +177,7 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
         </section>
       </ScrollAnimation>
       <Menu />
+      <Footer />
     </div>
   )
 }
