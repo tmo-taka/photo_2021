@@ -127,8 +127,8 @@
     }
     .mainV {
         width: 100%;
-        min-height: calc(100vh -173px);
-        padding: 64px;
+        min-height: calc(100vh - 173px);
+        padding: 88px 64px 12px;
         &__title {
             margin: 0 auto;
             position: relative;
@@ -152,7 +152,7 @@
                 left: 0;
                 top: 0;
             }
-            &:hover {
+            &.move {
                 &::before,
                 &::after {
                     width: 100%;

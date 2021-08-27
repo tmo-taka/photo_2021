@@ -10,7 +10,7 @@ import styles from '@style/module/top.module.scss'
 import Logo from "@component/atoms/logo"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { listenerCount } from 'events'
+import { useEffect, useState } from 'react';
 import { client } from "./api/client";
 import { GetServerSideProps , InferGetServerSidePropsType } from 'next';
 import ScrollAnimation from 'react-animate-on-scroll';
@@ -76,6 +76,12 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
     ]
   }
 
+  const [moveJudge,setMoveFlag] = useState<boolean>(false)
+
+  useEffect(()=>{
+    setTimeout(() => setMoveFlag(!moveJudge),3000);
+  },[])
+
   return (
     <div id="wrapper" className={styles.wrapper}>
       <Head>
@@ -90,9 +96,9 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
       <Header />
       <div className={styles.mainV}>
 
-        <h1 className={styles.mainV__title}>
+        <h1 className={`${styles.mainV__title} ${moveJudge ? styles.move : ''}`} >
           <div className={styles.mainV__title__in}>
-            <Logo/>
+            <Logo />
           </div>
         </h1>
       </div>
