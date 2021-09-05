@@ -1,4 +1,5 @@
 module.exports = {
+
     experimental: {
         optimizeFonts: true,
     },
@@ -11,4 +12,4 @@ module.exports = {
             "/work": { page: "/workList" },
         };
     }*/
-};
+}

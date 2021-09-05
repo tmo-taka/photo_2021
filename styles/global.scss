@@ -2,13 +2,13 @@
 @import './_common.scss';
 
 .slick-dots li button:before {
-    color: $accent-color !important;
+    color: $main-color !important;
 }
 
 @include mq-range(sp){
     .prevArrow {
-        border-top: solid 3px $accent-color;
-        border-left: solid 3px $accent-color;
+        border-top: solid 3px $main-color;
+        border-left: solid 3px $main-color;
         display: block;
         position: absolute;
         top: 50%;
@@ -20,8 +20,8 @@
     }
 
     .nextArrow {
-        border-top: solid 3px $accent-color;
-        border-right: solid 3px $accent-color;
+        border-top: solid 3px $main-color;
+        border-right: solid 3px $main-color;
         display: block;
         position: absolute;
         top: 50%;

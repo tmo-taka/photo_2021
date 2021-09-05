@@ -12,7 +12,7 @@
 
     .imgBox {
         padding: 16% 8%;
-        background-color: rgba($accent-color, .3);
+        background-color: rgba($main-color, .3);
         &In {
             margin: 0 auto;
             width: 100%px;
@@ -48,7 +48,7 @@
 
     .contentBox {
         padding: 16% 8%;
-        background-color: rgba($accent-color, .3);
+        background-color: rgba($main-color, .3);
         &__txt {
             margin: 0 auto;
             width: 100%;
@@ -73,7 +73,7 @@
 
     .imgBox {
         padding: 64px 0;
-        background-color: rgba($accent-color, .3);
+        background-color: rgba($main-color, .3);
         &In {
             margin: 0 auto;
             width: 640px;
@@ -109,7 +109,7 @@
 
     .contentBox {
         padding: 64px 0;
-        background-color: rgba($accent-color, .3);
+        background-color: rgba($main-color, .3);
         &__txt {
             margin: 0 auto;
             width: 540px;

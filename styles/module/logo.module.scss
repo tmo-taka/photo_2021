@@ -2,6 +2,23 @@
 @import '../_common.scss';
 
 @include mq-range(sp){
+  .logo {
+      width: 100%;
+      &_item {
+          fill: #FFF;                     /*塗りつぶし色*/
+          stroke-width: 2;                  /*線の太さ*/
+          stroke-dasharray: 2500;           /*線の間隔*/
+          stroke-dashoffset: 0;             /*線の始まりの開始位置*/
+          animation-name: anime-logo;       /*keyframe名*/
+          animation-duration: 3s;           /*所要時間*/
+          animation-timing-function: linear; /*進行割合*/
+          &_em {
+            composes: logo_item;
+            fill: $accent-color;
+            animation-delay: 0.5s;
+          }
+      }
+  }
 }
 
 @include mq-range(pc){
@@ -15,6 +32,11 @@
             animation-name: anime-logo;       /*keyframe名*/
             animation-duration: 3s;           /*所要時間*/
             animation-timing-function: linear; /*進行割合*/
+            &_em {
+              composes: logo_item;
+              fill: #3589BB;
+              animation-delay: 0.5s;
+            }
         }
     }
 }

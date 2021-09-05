@@ -1,8 +1,8 @@
-import React, {FC,useState} from 'react'
+import React, {useState} from 'react'
 import MenuList from '@component/atoms/list'
 import styles from '@style/module/menu_sp.module.scss'
 
-const Menu: FC = () => {
+const Menu = () => {
 
     const [menuFlag,setMenuFlag] = useState<boolean>(false)
 

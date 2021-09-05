@@ -3,19 +3,7 @@
 
 @include mq-range(sp){
     .header {
-        padding: 3vw;
-        border-bottom: solid 1px #CCC;
-        width: 100%;
-        &In {
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            font-size: 2.0rem;
-            ul {
-                display: none;
-            }
-        }
+        display: none;
     }
 }
 

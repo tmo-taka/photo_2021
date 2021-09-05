@@ -1,8 +1,8 @@
-import React, {FC} from 'react'
+import React from 'react'
 import HeaderList from '@component/atoms/list'
 import styles from '@style/module/Header.module.scss'
 
-const Header: FC = () => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerIn}>

@@ -1,9 +1,9 @@
-import React, {FC} from 'react'
+import React from 'react'
 import Link from 'next/link';
 import styles from '@style/module/menu_common.module.scss'
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
-const HeaderList: FC = () => {
+const HeaderList = () => {
   let lists = [
     {name: "Skill", to: "#skill"},
     {name: "Works", to: "#works"},

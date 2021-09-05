@@ -13,10 +13,10 @@
             align-items: center;
             width: 12vw;
             height: 12vw;
-            background-color: $accent-color;
+            background-color: $main-color;
             border-radius: 50%;
             &.on {
-                background-color: $accent-color;
+                background-color: $main-color;
                 transition: all .3s;
                 .menu {
                     &__icon {
@@ -107,7 +107,7 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background-color: $accent-color;
+        background-color: $main-color;
         /*丸のスタート位置と形状*/
         transform: scale(0);/*scaleをはじめは0に*/
         right:-50px;
