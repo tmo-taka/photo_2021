@@ -2,14 +2,10 @@ module.exports = {
     presets: ['next/babel'],
     plugins: [
         [
-            'module-resolver',
+            "babel-plugin-styled-components",
             {
-                "root": ["./"],
-                /*"alias": {
-                    "@svg": './public/img/svg',
-                },*/
-            },
+                "ssr":false
+            }
         ],
-        //"inline-react-svg",
     ]
 }

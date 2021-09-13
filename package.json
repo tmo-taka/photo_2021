@@ -40,6 +40,7 @@
     "@types/react": "^17.0.19",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-styled-components": "^1.13.2",
     "webpack-cli": "^4.7.0"
   }
 }
