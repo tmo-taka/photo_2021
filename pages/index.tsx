@@ -48,6 +48,7 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
     autoplay: true,
     autoplaySpeed: 2000,
     lazyLoad: true,
+    rtl: true,
     responsive: [{
        breakpoint: 750, //750px以下のサイズに適用
         settings: {
@@ -76,10 +77,30 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
     ]
   }
 
+  //スクロール位置を取得
+  const handleScroll = () => {
+    setScrollY(window.scrollY)
+  }
+
+  const [scrollY, setScrollY] = useState<number>(0);
   const [moveJudge,setMoveFlag] = useState<boolean>(false)
+
+  function displayMenu(scrollY:number){
+    if(scrollY > 60) {
+      return true
+    }else {
+      return false
+    }
+  }
+  let displayFlag: boolean = false;
 
   useEffect(()=>{
     setTimeout(() => setMoveFlag(!moveJudge),3000);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   },[])
 
   return (
@@ -182,7 +203,7 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
             </dl>
         </section>
       </ScrollAnimation>
-      <Menu />
+      <Menu displayFlag={displayMenu(scrollY)} />
       <Footer />
     </div>
   )

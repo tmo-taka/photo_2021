@@ -31,12 +31,13 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.08 * (index + 1)}}
+                className={styles.listWrapper}
                 >
               <li className={styles.list} key={list.id}>
                 <Link href={list.link_path}  as={list.link_path}>
-                    <div>
+                    <div className={styles.listIn}>
                       <Image src={list.lead_img.url} layout={'responsive'} width={320} height={180}/>
-                      <div className={styles.list__txt}>{list.site_name}</div>
+                      <div className={styles.listIn__txt}>{list.site_name}</div>
                     </div>
                 </Link>
               </li>

@@ -8,6 +8,9 @@
         bottom: 3vw;
         right: 6vw;
         z-index:4;
+        &.on {
+            display: none;
+        }
         &__icon {
             display: flex;
             align-items: center;

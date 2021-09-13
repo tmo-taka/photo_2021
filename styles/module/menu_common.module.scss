@@ -37,9 +37,10 @@
 @include mq-range(pc){
     .menuList {
         display :flex;
-        width: 720px;
+        justify-content: space-around;
+        width: 648px;
         &__li {
-            width: 240px;
+            width: 200px;
             a {
                 color: #000;
                 text-decoration: none;

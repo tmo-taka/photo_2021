@@ -9,14 +9,15 @@
 
 @include mq-range(pc){
     .header {
-        padding: 24px 0;
+        margin: 0 auto;
+        padding: 24px 16px;
         border-bottom: solid 1px #CCC;
-        width: 100%;
+        width: $pc-min-size;
         &In {
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
-            width: 1240px;
+            width: 100%;
             font-size: 2.4rem;
         }
     }

@@ -1,6 +1,7 @@
 @mixin normal_button($width: 240px){
     a {
         border: solid 1px #000;
+        border-radius: 4px;
         padding: 16px;
         display: block;
         width: $width;
@@ -8,8 +9,8 @@
         text-align: center;
         text-decoration: none;
         background: linear-gradient(90deg,
-        #000000,
-        #000000,
+        rgba(0,0,0,.3),
+        rgba(0,0,0,.3),
         #ffffff,
         #ffffff);
         background-position: 99% 50%;

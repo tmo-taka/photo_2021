@@ -2,7 +2,11 @@ import React, {useState} from 'react'
 import MenuList from '@component/atoms/list'
 import styles from '@style/module/menu_sp.module.scss'
 
-const Menu = () => {
+type Props = {
+    displayFlag ?: Boolean
+}
+
+const Menu = ({displayFlag}: Props) => {
 
     const [menuFlag,setMenuFlag] = useState<boolean>(false)
 
@@ -12,7 +16,7 @@ const Menu = () => {
 
     return (
         <div>
-            <div className={styles.menu} onClick={menuControl}>
+            <div className={`${styles.menu} ${displayFlag ? "" : styles.on}`} onClick={menuControl}>
                 <div className={`${styles.menu__icon} ${menuFlag ? styles.on : ""}`}>
                     <div className={styles.menu__icon__border}>
                         <span className={styles.menu__icon__border__top}></span>
