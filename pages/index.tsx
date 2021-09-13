@@ -126,34 +126,36 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
 
       <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
         <section id="skill" className={styles.skillBlock}>
-          <ScrollAnimation animateIn='bounce'>
-            <h2 className={styles.skillBlock__title}><span>S</span>kill</h2>
-          </ScrollAnimation>
-          <div className={styles.skillBlock__box}>
-            <div className={styles.skillBlock__boxIn}>
-              <h3 className={styles.skillBlock__boxIn__title}>programming</h3>
-              <ul className={styles.skillBlock__boxIn__lists}>
-                {
-                  skills.programming.map((list) => {
-                    return (
-                        <li>{list.skill}</li>
-                    );
-                  })
-                }
-              </ul>
-            </div>
+          <div className={styles.skillBlockIn}>
+            <ScrollAnimation animateIn='bounce'>
+              <h2 className={styles.skillBlockIn__title}><span>S</span>kill</h2>
+            </ScrollAnimation>
+            <div className={styles.skillBlockIn__box}>
+              <div className={styles.skillBlockIn__boxIn}>
+                <h3 className={styles.skillBlockIn__boxIn__title}>programming</h3>
+                <ul className={styles.skillBlockIn__boxIn__lists}>
+                  {
+                    skills.programming.map((list) => {
+                      return (
+                          <li>{list.skill}</li>
+                      );
+                    })
+                  }
+                </ul>
+              </div>
 
-            <div className={styles.skillBlock__boxIn}>
-              <h3 className={styles.skillBlock__boxIn__title}>tool</h3>
-              <ul className={styles.skillBlock__boxIn__lists}>
-                {
-                  skills.tool.map((list) => {
-                    return (
-                        <li>{list.skill}</li>
-                    );
-                  })
-                }
-              </ul>
+              <div className={styles.skillBlockIn__boxIn}>
+                <h3 className={styles.skillBlockIn__boxIn__title}>tool</h3>
+                <ul className={styles.skillBlockIn__boxIn__lists}>
+                  {
+                    skills.tool.map((list) => {
+                      return (
+                          <li>{list.skill}</li>
+                      );
+                    })
+                  }
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -161,10 +163,11 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
 
       <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
         <section id="works" className={styles.worksBlock}>
+          <div className={styles.worksBlockIn}>
             <ScrollAnimation animateIn='bounce'>
-              <h2 className={styles.worksBlock__title}>W<span>o</span>rks</h2>
+              <h2 className={styles.worksBlockIn__title}>W<span>o</span>rks</h2>
             </ScrollAnimation>
-            <div className={styles.worksBlock__box}>
+            <div className={styles.worksBlockIn__box}>
               <Slider {...slideSettings}>
                 {
                   work.contents.map((list) => {
@@ -182,25 +185,28 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
                 }
               </Slider>
             </div>
-            <div className={styles.worksBlock__btn}>
+            <div className={styles.worksBlockIn__btn}>
             <Link href="/work/">
               <a>一覧へ</a>
             </Link>
             </div>
+          </div>
         </section>
       </ScrollAnimation>
 
       <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
         <section id="profile" className={styles.profileBlock}>
+          <div className={styles.profileBlockIn}>
             <ScrollAnimation animateIn='bounce'>
-              <h2 className={styles.profileBlock__title}>Pro<span>f</span>ile</h2>
+              <h2 className={styles.profileBlockIn__title}>Pro<span>f</span>ile</h2>
             </ScrollAnimation>
-            <dl className={styles.profileBlock__box}>
+            <dl className={styles.profileBlockIn__box}>
               <dt>Name:</dt>
               <dd>Takahara Tomoya</dd>
               <dt>Carier:</dt>
               <dd>名城大学を卒業後、新卒として、株式会社ウェブクルーに入社</dd>
             </dl>
+          </div>
         </section>
       </ScrollAnimation>
       <Menu displayFlag={displayMenu(scrollY)} />

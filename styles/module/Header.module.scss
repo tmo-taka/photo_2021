@@ -12,10 +12,12 @@
         margin: 0 auto;
         padding: 24px 16px;
         border-bottom: solid 1px #CCC;
-        width: $pc-min-size;
+        width: 100%;
+        min-width: $pc-min-size;
         &In {
             margin: 0 auto;
             display: flex;
+            width: $pc-min-size;
             justify-content: space-between;
             width: 100%;
             font-size: 2.4rem;

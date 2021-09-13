@@ -23,24 +23,26 @@
     }
     .skillBlock {
         padding: 18% 4.8%;
-        &__title {
-            margin-bottom: 8%;
-            text-align: center;
-            font-size: 3.0rem;
-            span {
-                color: $main-color;
-            }
-        }
-        &__box {
-            &In {
-                padding: 10% 0;
-                &__title {
-                    margin-bottom: 2.4%;
-                    font-size: 2.8rem;
+        &In {
+            &__title {
+                margin-bottom: 8%;
+                text-align: center;
+                font-size: 3.0rem;
+                span {
+                    color: $main-color;
                 }
-                ul {
-                    li {
-                        line-height: 1.2em;
+            }
+            &__box {
+                &In {
+                    padding: 10% 0;
+                    &__title {
+                        margin-bottom: 2.4%;
+                        font-size: 2.8rem;
+                    }
+                    ul {
+                        li {
+                            line-height: 1.2em;
+                        }
                     }
                 }
             }
@@ -48,27 +50,29 @@
     }
     .worksBlock {
         padding: 18% 4.8%;
-        &__title {
-            margin-bottom: 8%;
-            text-align: center;
-            font-size: 3.0rem;
-            span {
-                color: $main-color;
-            }
-        }
-        &__box {
-            margin-bottom: 8%;
-            padding: 10% 0;
+        &In {
             &__title {
-                margin-bottom: 2.4%;
-                font-size: 2.8rem;
+                margin-bottom: 8%;
+                text-align: center;
+                font-size: 3.0rem;
+                span {
+                    color: $main-color;
+                }
             }
-        }
-        &__btn {
-            padding: 4.8%;
-            display: flex;
-            justify-content: space-around;
-            @include normal_button();
+            &__box {
+                margin-bottom: 8%;
+                padding: 10% 0;
+                &__title {
+                    margin-bottom: 2.4%;
+                    font-size: 2.8rem;
+                }
+            }
+            &__btn {
+                padding: 4.8%;
+                display: flex;
+                justify-content: space-around;
+                @include normal_button();
+            }
         }
     }
 
@@ -99,30 +103,32 @@
     }
     .profileBlock {
         padding: 18% 0 0;
-        &__title {
-            margin-bottom: 8%;
-            text-align: center;
-            font-size: 3.0rem;
-            span {
-                color: $main-color;
+        &In {
+            &__title {
+                margin-bottom: 8%;
+                text-align: center;
+                font-size: 3.0rem;
+                span {
+                    color: $main-color;
+                }
             }
-        }
-        &__box {
-            margin: 0 auto;
-            padding: 14% 4%;
-            position: relative;
-            width: 100%;
-            background: url('../../public/img/illust_back.svg') top left / 4px auto $main-color;
-            color: #FFF;
-            dt {
-                margin-bottom: 3.6%;
-                font-size: 1.6rem;
-            }
-            dd {
-                font-size: 1.6rem;
-                line-height: 1.4em;
-                &:not(:last-child){
-                    margin-bottom: 12%;
+            &__box {
+                margin: 0 auto;
+                padding: 14% 4%;
+                position: relative;
+                width: 100%;
+                background: url('../../public/img/illust_back.svg') top left / 4px auto $main-color;
+                color: #FFF;
+                dt {
+                    margin-bottom: 3.6%;
+                    font-size: 1.6rem;
+                }
+                dd {
+                    font-size: 1.6rem;
+                    line-height: 1.4em;
+                    &:not(:last-child){
+                        margin-bottom: 12%;
+                    }
                 }
             }
         }
@@ -134,6 +140,7 @@
 
     .mainV {
         width: 100%;
+        min-width: $pc-min-size;
         min-height: calc(100vh - 173px);
         padding: 88px 64px 12px;
         &__title {
@@ -209,29 +216,33 @@
         padding: 80px 0;
         width: 100%;
         min-width: $pc-min-size;
-        &__title {
-            margin-bottom: 16px;
-            text-align: center;
-            font-size: 3.2rem;
-            letter-spacing: 0.1em;
-            span {
-                color: $main-color;
-            }
-        }
-        &__box {
-            padding: 64px 0;
-            display: flex;
-            justify-content: space-around;
+        &In {
+            margin: 0 auto;
             width: $pc-min-size;
-            &In {
-                width: 300px;
-                &__title {
-                    margin-bottom: 24px;
-                    font-size: 2.8rem;
+            &__title {
+                margin-bottom: 16px;
+                text-align: center;
+                font-size: 3.2rem;
+                letter-spacing: 0.1em;
+                span {
+                    color: $main-color;
                 }
-                ul {
-                    li {
-                        line-height: 1.2em;
+            }
+            &__box {
+                padding: 64px 0;
+                display: flex;
+                justify-content: space-around;
+                width: $pc-min-size;
+                &In {
+                    width: 300px;
+                    &__title {
+                        margin-bottom: 24px;
+                        font-size: 2.8rem;
+                    }
+                    ul {
+                        li {
+                            line-height: 1.2em;
+                        }
                     }
                 }
             }
@@ -241,29 +252,33 @@
         padding: 80px 0;
         width: 100%;
         min-width: $pc-min-size;
-        &__title {
-            margin-bottom: 32px;
-            text-align: center;
-            font-size: 3.2rem;
-            letter-spacing: 0.1em;
-            span {
-                color: $main-color;
-            }
-        }
-        &__box {
-            margin: 0 auto 64px;
-            width: 840px;
-            &__title {
-                margin-bottom: 12px;
-                font-size: 2.8rem;
-            }
-        }
-        &__btn {
+        &In {
             margin: 0 auto;
-            display: flex;
-            justify-content: flex-end;
-            width: 1000px;
-            @include normal_button();
+            width: $pc-min-size;
+            &__title {
+                margin-bottom: 32px;
+                text-align: center;
+                font-size: 3.2rem;
+                letter-spacing: 0.1em;
+                span {
+                    color: $main-color;
+                }
+            }
+            &__box {
+                margin: 0 auto 64px;
+                width: 840px;
+                &__title {
+                    margin-bottom: 12px;
+                    font-size: 2.8rem;
+                }
+            }
+            &__btn {
+                margin: 0 auto;
+                display: flex;
+                justify-content: flex-end;
+                width: 1000px;
+                @include normal_button();
+            }
         }
     }
 
@@ -300,30 +315,37 @@
 
     .profileBlock {
         padding: 80px 0;
-        &__title {
-            margin-bottom: 48px;
-            text-align: center;
-            font-size: 3.2rem;
-            letter-spacing: 0.1em;
-            span {
-                color: $main-color;
-            }
-        }
-        &__box {
+        width: 100%;
+        min-width: $pc-min-size;
+        &In {
             margin: 0 auto;
-            padding: 48px;
-            width: 1000px;
-            box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
-            dt {
-                margin-bottom: 24px;
-                font-size: 1.6rem;
+            width: $pc-min-size;
+
+            &__title {
+                margin-bottom: 48px;
+                text-align: center;
+                font-size: 3.2rem;
+                letter-spacing: 0.1em;
+                span {
+                    color: $main-color;
+                }
             }
-            dd {
-                border-bottom: solid #000 1px;
-                font-size: 2.0rem;
-                line-height: 1.4em;
-                &:not(:last-child){
-                    margin-bottom: 36px;
+            &__box {
+                margin: 0 auto;
+                padding: 48px;
+                width: 1000px;
+                box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+                dt {
+                    margin-bottom: 24px;
+                    font-size: 1.6rem;
+                }
+                dd {
+                    border-bottom: solid #000 1px;
+                    font-size: 2.0rem;
+                    line-height: 1.4em;
+                    &:not(:last-child){
+                        margin-bottom: 36px;
+                    }
                 }
             }
         }
