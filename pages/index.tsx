@@ -17,27 +17,31 @@ import ScrollAnimation from 'react-animate-on-scroll';
 
 const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
-  function SlideNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className="nextArrow"
-        style={{ ...style}}
-        onClick={onClick}
-      />
-    );
-  }
+  type PropsArrow = {
+    className: string,
+    style?: React.CSSProperties,
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  };
 
-  function SlidePrevArrow(props) {
-    const { style, onClick } = props;
+  const SlideNextArrow: FC<PropsArrow> = (props) => {
     return (
-      <div
-        className="prevArrow"
-        style={{ ...style}}
-        onClick={onClick}
-      />
+        <div
+          className="nextArrow"
+          style={{ ...props.style}}
+          onClick={props.onClick}
+        />
     );
-  }
+  };
+
+  const SlidePrevArrow: FC<PropsArrow> = (props) => {
+    return (
+        <div
+          className="prevArrow"
+          style={{ ...props.style}}
+          onClick={props.onClick}
+        />
+    );
+  };
 
   const slideSettings = {
     dots: true,
