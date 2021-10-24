@@ -1,4 +1,5 @@
-import React, {FC} from 'react'
+import React from 'react'
+import {FC} from 'react/cjs/react.production.min'
 import Head from 'next/head'
 import Image from 'next/image'
 import Header from '@component/module/header'

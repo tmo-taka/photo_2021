@@ -1,4 +1,5 @@
-import React, {FC} from 'react'
+import React from 'react'
+import {FC} from 'react/index'
 import Header from '@component/module/header'
 import styles from '@style/module/top.module.scss'
 

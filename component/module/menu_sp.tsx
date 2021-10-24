@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React from 'react'
+import { useState } from 'react/index'
 import MenuList from '@component/atoms/list'
 import styles from '@style/module/menu_sp.module.scss'
 
@@ -33,6 +34,5 @@ const Menu = ({displayFlag}: Props) => {
         </div>
     );
 }
-
 
 export default Menu;

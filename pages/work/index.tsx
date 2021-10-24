@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {FC} from 'react/index'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -16,7 +16,7 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <title>これがポートフォリオです</title>
         <meta property="og:title" content="My page title" key="title" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;500&family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
       </Head>

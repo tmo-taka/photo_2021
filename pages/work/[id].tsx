@@ -1,8 +1,7 @@
-import React, {FC} from 'react'
+import React, {FC} from 'react/index'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router';
 import styles from '@style/module/work/topic.module.scss'
 import Footer from '@component/module/footer'
 import { motion } from "framer-motion";
@@ -12,6 +11,11 @@ import { GetServerSideProps , InferGetServerSidePropsType } from 'next';
 const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
     const data =  work.contents[0];
+
+    const transition = {
+        duration: 1,
+        ease: [0.43, 0.13, 0.23, 0.96]
+    };
 
     return (
     <div id="wrapper">
@@ -25,9 +29,9 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSi
         </Head>
 
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1}}
+            exit= {{ y: "50%", opacity: 0, transition }}
+            animate= {{ y: "0%", opacity: 1, transition }}
+            enter= {{ y: "50%", opacity: 0, transition }}
         >
         <h1 className={styles.title}>{data.site_name}</h1>
         <div className={styles.imgBox}>

@@ -1,14 +1,14 @@
 import React from 'react'
 import {AppProps} from 'next/app';
-import { AnimateSharedLayout } from "framer-motion";
+import {AnimatePresence} from "framer-motion";
 import '@style/reset.scss';
 import '@style/global.scss';
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }) => {
   return　(
-    <AnimateSharedLayout>
-      <Component {...pageProps} />
-    </AnimateSharedLayout>
+      <AnimatePresence exitBeforeEnter>
+        <Component {...pageProps} />
+      </AnimatePresence>
   )
 }
 

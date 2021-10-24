@@ -1,4 +1,5 @@
-import React, {FC} from 'react'
+import React from 'react/index'
+import {FC, useEffect, useState} from 'react/index'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,7 +11,6 @@ import styles from '@style/module/top.module.scss'
 import Logo from "@component/atoms/logo"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useEffect, useState } from 'react';
 import { client } from "./api/client";
 import { GetServerSideProps , InferGetServerSidePropsType } from 'next';
 import ScrollAnimation from 'react-animate-on-scroll';
@@ -18,9 +18,9 @@ import ScrollAnimation from 'react-animate-on-scroll';
 const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
   type PropsArrow = {
-    className: string,
+    className?: string,
     style?: React.CSSProperties,
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
   };
 
   const SlideNextArrow: FC<PropsArrow> = (props) => {
@@ -42,6 +42,8 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
         />
     );
   };
+
+  let displayFlag:boolean = false;
 
   const slideSettings = {
     dots: true,
@@ -87,7 +89,7 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
   }
 
   const [scrollY, setScrollY] = useState<number>(0);
-  const [moveJudge,setMoveFlag] = useState<boolean>(false)
+  const [moveJudge, setMoveFlag] = useState<boolean>(false)
 
   function displayMenu(scrollY:number){
     if(scrollY > 60) {
@@ -96,15 +98,12 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
       return false
     }
   }
-  let displayFlag: boolean = false;
 
   useEffect(()=>{
     setTimeout(() => setMoveFlag(!moveJudge),3000);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    document.addEventListener("scroll", handleScroll );
+    return (): void => document.removeEventListener("scroll", handleScroll);
   },[])
 
   return (
