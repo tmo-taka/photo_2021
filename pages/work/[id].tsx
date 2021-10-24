@@ -17,6 +17,16 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSi
         ease: [0.43, 0.13, 0.23, 0.96]
     };
 
+    const container = {
+        hidden: { opacity: 1, scale: 0, transition },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition,
+        },
+        duration: 1,
+    };
+
     return (
     <div id="wrapper">
         <Head>
@@ -29,9 +39,9 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSi
         </Head>
 
         <motion.div
-            exit= {{ y: "50%", opacity: 0, transition }}
-            animate= {{ y: "0%", opacity: 1, transition }}
-            enter= {{ y: "50%", opacity: 0, transition }}
+            variants={container}
+            initial="hidden"
+            animate="visible"
         >
         <h1 className={styles.title}>{data.site_name}</h1>
         <div className={styles.imgBox}>
@@ -104,7 +114,7 @@ export const getServerSideProps:GetServerSideProps = async (context) => {
             filters: `link_path[contains]${id}`,
         }
     });
-    console.log(work);
+
     return {
         props: {
             work,

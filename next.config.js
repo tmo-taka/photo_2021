@@ -6,10 +6,9 @@ module.exports = {
     images: {
         domains: ['images.microcms-assets.io'],
     },
-    //exportTrailingSlash: true,
-    /*exportPathMap: async function() {
-        return {
-            "/work": { page: "/workList" },
-        };
-    }*/
+    target: "serverless",
+
+    future: {
+        webpack5: true,
+    },
 }
