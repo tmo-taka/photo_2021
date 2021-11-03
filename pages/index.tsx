@@ -1,7 +1,6 @@
 import React from 'react/index'
 import {FC, useEffect, useState} from 'react/index'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import Slider from "react-slick";
 import Header from '@component/module/header'
@@ -178,7 +177,7 @@ const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProp
                       <div className={styles.slide}>
                         <Link href={list.link_path} as={list.link_path}>
                           <a className={styles.slide__link}>
-                            <Image src={list.lead_img.url} layout={'responsive'} width={320} height={180}/>
+                            <img src={list.lead_img.url}/>
                             <div className={styles.slide__link__hover}>{list.site_name}</div>
                           </a>
                         </Link>

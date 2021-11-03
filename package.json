@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start && next export",
+    "build": "next build && next export",
+    "start": "next start",
     "watch": "webpack --watch"
   },
   "dependencies": {
+    "@types/imagemin-svgo": "^10.0.0",
     "@types/node": "^15.6.1",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
@@ -16,9 +17,13 @@
     "framer-motion": "^4.1.17",
     "fs": "0.0.1-security",
     "globby": "^11.0.3",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-svgo": "^9.0.0",
     "microcms-js-sdk": "^1.2.0",
     "mini-css-extract-plugin": "^1.6.0",
     "next": "10.2.3",
+    "next-optimized-images": "^2.6.2",
+    "next-transpile-modules": "^9.0.0",
     "optimize-css-assets-webpack-plugin": "^6.0.0",
     "path": "^0.12.7",
     "react": "17.0.2",
@@ -39,6 +44,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
+    "@netlify/plugin-nextjs": "^4.0.0-beta.3",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-styled-components": "^1.13.2",

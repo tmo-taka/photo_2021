@@ -1,6 +1,5 @@
 import React, {FC} from 'react/index'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import styles from '@style/module/work/topic.module.scss'
 import Footer from '@component/module/footer'
@@ -46,7 +45,7 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSi
         <h1 className={styles.title}>{data.site_name}</h1>
         <div className={styles.imgBox}>
             <div className={styles.imgBoxIn}>
-                <Image src={data.lead_img.url} layout={'responsive'} width={320} height={180} />
+                <img src={data.lead_img.url} />
             </div>
         </div>
 

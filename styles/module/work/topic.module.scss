@@ -15,8 +15,11 @@
         background-color: $main-color;
         &In {
             margin: 0 auto;
-            width: 100%px;
+            width: 100%;
             box-shadow: 0 0 8px rgba(0,0,0,0.3);
+            img {
+                width: 100%;
+            }
         }
     }
 
@@ -79,6 +82,9 @@
             margin: 0 auto;
             width: 640px;
             box-shadow: 0 0 8px rgba(0,0,0,0.3);
+            img {
+                width: 100%;
+            }
         }
     }
 

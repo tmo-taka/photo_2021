@@ -1,7 +1,6 @@
 import React, {FC} from 'react/index'
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
 import styles from '@style/module/work/top.module.scss'
 import Footer from '@component/module/footer'
 import { motion } from "framer-motion";
@@ -36,7 +35,7 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
               <li className={styles.list} key={list.id}>
                 <Link href={list.link_path}  as={list.link_path}>
                     <div className={styles.listIn}>
-                      <Image src={list.lead_img.url} layout={'responsive'} width={320} height={180}/>
+                      <img src={list.lead_img.url}/>
                       <div className={styles.listIn__txt}>{list.site_name}</div>
                     </div>
                 </Link>
