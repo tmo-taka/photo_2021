@@ -11,10 +11,10 @@ import Logo from "@component/atoms/logo"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { client } from "./api/client";
-import { GetServerSideProps , InferGetServerSidePropsType } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import ScrollAnimation from 'react-animate-on-scroll';
 
-const Home: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Home: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
   type PropsArrow = {
     className?: string,
@@ -231,7 +231,7 @@ type WorkType = {
   create_span: string
 }
 
-export const getServerSideProps:GetServerSideProps = async () => {
+export const getStaticProps:GetStaticProps = async () => {
   const work:WorkType[] = await client.get({
       endpoint: "cont",
       queries: {

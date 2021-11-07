@@ -5,9 +5,9 @@ import styles from '@style/module/work/topic.module.scss'
 import Footer from '@component/module/footer'
 import { motion } from "framer-motion";
 import { client } from "../api/client";
-import { GetServerSideProps , InferGetServerSidePropsType } from 'next';
+import { GetStaticPaths, GetStaticProps, InferGetServerSidePropsType, GetStaticPropsContext } from 'next';
 
-const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getStaticProps>) => {
 
     const data =  work.contents[0];
 
@@ -94,20 +94,37 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getServerSi
 export default Work_Topic;
 
 type WorkType = {
-    id: string,
-    site_name: string,
-    link_path: string,
-    lead_img: object,
-    service_img: string,
-    service_txt: string,
-    create_time: string,
-    create_skill: string,
-    create_span: string
+    contents: [
+        {
+            id: string,
+            site_name: string,
+            link_path: string,
+            lead_img: object,
+            service_img: string,
+            service_txt: string,
+            create_time: string,
+            create_skill: string,
+            create_span: string,
+        }
+    ]
 }
 
-export const getServerSideProps:GetServerSideProps = async (context) => {
-    const id = context.query.id;
-    const work:WorkType[] = await client.get({
+export const getStaticPaths:GetStaticPaths = async () => {
+    const workLists:WorkType = await client.get({
+        endpoint: "cont"
+    })
+
+    const paths = workLists.contents.map(workList => `${workList.link_path}`)
+    // 事前ビルドしたいパスをpathsとして渡す fallbackについては後述
+    return {
+        paths: paths,
+        fallback: false
+    }
+}
+
+export const getStaticProps:GetStaticProps = async (context:GetStaticPropsContext) => {
+    const id = context.params.id;
+    const work:WorkType = await client.get({
         endpoint: "cont",
         queries: {
             filters: `link_path[contains]${id}`,
