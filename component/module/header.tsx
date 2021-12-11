@@ -1,6 +1,6 @@
 import React from 'react'
 import HeaderList from '@component/atoms/list'
-import styles from '../../styles/module/header.module.scss'
+import styles from '@style/module/header.module.scss'
 
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
         <HeaderList/>
       </div>
     </header>
-  )
+    )
 }
 
 
