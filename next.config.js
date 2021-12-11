@@ -1,5 +1,4 @@
 const withOptimizedImages = require('next-optimized-images');
-const path = require("path");
 //const withTM = require('next-transpile-modules')(['imagemin-svgo']);
 
 module.exports = {
@@ -30,18 +29,6 @@ module.exports = {
 
     future: {
         webpack5: true,
-    },
-    webpack: function (config) {
-        // netlifyのため
-        config.resolve = {
-            extensions: ['.ts'],
-            alias: {
-                '@style/': path.resolve(__dirname, 'styles/'),
-                '@component/': path.resolve(__dirname, 'component/'),
-                '@svg/': path.resolve(__dirname, 'public/img/svg/'),
-            },
-        }
-        return config
     },
 }
 
