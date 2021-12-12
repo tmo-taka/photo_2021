@@ -1,6 +1,6 @@
 import React from 'react'
 import HeaderList from '@component/atoms/list'
-import styles from '@style/module/header.module.scss'
+import styles from '@style/module/header_.module.scss'
 
 const Header = () => {
   return (
