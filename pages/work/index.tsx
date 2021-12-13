@@ -35,7 +35,9 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
               <li className={styles.list} key={list.id}>
                 <Link href={list.link_path}  as={list.link_path}>
                     <div className={styles.listIn}>
-                      <img src={list.lead_img.url}/>
+                      <div className={styles.listIn__img}>
+                        <img src={list.lead_img.url}/>
+                      </div>
                       <div className={styles.listIn__txt}>{list.site_name}</div>
                     </div>
                 </Link>

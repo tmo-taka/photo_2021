@@ -6,7 +6,7 @@ const Header = () => {
   return (
       <header className={styles.header}>
         <div className={styles.headerIn}>
-          <div>新しいポートフォリオテスト</div>
+          <div className={styles.headerIn_title}>takahara's portfolio</div>
           <HeaderList/>
         </div>
       </header>
