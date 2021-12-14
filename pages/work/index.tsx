@@ -31,8 +31,9 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.08 * (index + 1)}}
                 className={styles.listWrapper}
+                key={list.id}
                 >
-              <li className={styles.list} key={list.id}>
+              <li className={styles.list}>
                 <Link href={list.link_path}  as={list.link_path}>
                     <div className={styles.listIn}>
                       <div className={styles.listIn__img}>
