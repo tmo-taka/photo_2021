@@ -137,9 +137,9 @@ const Home: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 <h3 className={styles.skillBlockIn__boxIn__title}>programming</h3>
                 <ul className={styles.skillBlockIn__boxIn__lists}>
                   {
-                    skills.programming.map((list) => {
+                  skills.programming.map((list) => {
                       return (
-                          <li>{list.skill}</li>
+                          <li key={list.skill}>{list.skill}</li>
                       );
                     })
                   }
@@ -152,7 +152,7 @@ const Home: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   {
                     skills.tool.map((list) => {
                       return (
-                          <li>{list.skill}</li>
+                          <li key={list.skill}>{list.skill}</li>
                       );
                     })
                   }
@@ -174,7 +174,7 @@ const Home: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 {
                   work.contents.map((list) => {
                     return (
-                      <div className={styles.slide}>
+                      <div className={styles.slide} key={list.id}>
                         <Link href={list.link_path} as={list.link_path}>
                           <a className={styles.slide__link}>
                             <img src={list.lead_img.url}/>
