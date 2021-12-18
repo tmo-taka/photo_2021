@@ -5,30 +5,26 @@
     color: $main-color !important;
 }
 
-@include mq-range(sp){
-    .prevArrow {
-        border-top: solid 3px $main-color;
-        border-left: solid 3px $main-color;
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 3vw;
-        width: 1.2em;
-        height: 1.2em;
-        transform: translateY(-50%) rotate(-45deg);
-        z-index: 3;
-    }
+img {
+    display: block;
+}
 
-    .nextArrow {
-        border-top: solid 3px $main-color;
-        border-right: solid 3px $main-color;
-        display: block;
-        position: absolute;
-        top: 50%;
-        right: 3vw;
-        width: 1.2em;
-        height: 1.2em;
-        transform: translateY(-50%) rotate(45deg);
-        z-index: 3;
+@include mq-range(pc){
+    .slick-dots {
+        li button:before {
+            width: 36px !important;
+            height: 36px !important;
+            font-size: 14px !important;
+        }
+    }
+}
+
+@include mq-range(sp){
+    .slick-dots {
+        li button:before {
+            width: 6vw !important;
+            height: 6vw !important;
+            font-size: 16px !important;
+        }
     }
 }

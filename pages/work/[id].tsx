@@ -13,14 +13,13 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getStaticPr
 
     const transition = {
         duration: .4,
-        ease: "easeInOut",
+        ease: "easeOut",
     };
 
     const variants= {
         hidden: {
             opacity: 0,
             translateY: 20,
-            transition,
         },
         visible: {
             opacity: 1,
@@ -42,6 +41,7 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getStaticPr
         <motion.div
             initial="hidden"
             animate="visible"
+            transition={transition}
             variants={variants}
         >
         <h1 className={styles.title}>{data.site_name}</h1>

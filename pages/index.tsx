@@ -16,34 +16,6 @@ import ScrollAnimation from 'react-animate-on-scroll';
 
 const Home: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
-  type PropsArrow = {
-    className?: string,
-    style?: React.CSSProperties,
-    onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-  };
-
-  const SlideNextArrow: FC<PropsArrow> = (props) => {
-    return (
-        <div
-          className="nextArrow"
-          style={{ ...props.style}}
-          onClick={props.onClick}
-        />
-    );
-  };
-
-  const SlidePrevArrow: FC<PropsArrow> = (props) => {
-    return (
-        <div
-          className="prevArrow"
-          style={{ ...props.style}}
-          onClick={props.onClick}
-        />
-    );
-  };
-
-  let displayFlag:boolean = false;
-
   const slideSettings = {
     dots: true,
     infinite: true,
@@ -54,13 +26,6 @@ const Home: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
     autoplaySpeed: 2000,
     lazyLoad: true,
     rtl: true,
-    responsive: [{
-       breakpoint: 750, //750px以下のサイズに適用
-        settings: {
-          nextArrow: <SlideNextArrow/>,
-          prevArrow: <SlidePrevArrow/>
-        }
-    }]
   };
 
   const skills = {
