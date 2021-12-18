@@ -12,18 +12,19 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getStaticPr
     const data =  work.contents[0];
 
     const transition = {
-        duration: 1,
-        ease: [0.43, 0.13, 0.23, 0.96]
+        duration: .4,
+        ease: "easeOut",
     };
 
-    const container = {
-        hidden: { opacity: 1, scale: 0, transition },
+    const variants= {
+        hidden: {
+            opacity: 0,
+            translateY: 20,
+        },
         visible: {
             opacity: 1,
-            scale: 1,
-            transition,
+            translateY: 0,
         },
-        duration: 1,
     };
 
     return (
@@ -38,9 +39,10 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getStaticPr
         </Head>
 
         <motion.div
-            variants={container}
             initial="hidden"
             animate="visible"
+            transition={transition}
+            variants={variants}
         >
         <h1 className={styles.title}>{data.site_name}</h1>
         <div className={styles.imgBox}>

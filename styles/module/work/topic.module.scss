@@ -1,8 +1,9 @@
 @charset "UTF-8";
-@import '../../_common.scss';
+@import "@style/common/variable.scss";
+@import '@style/common/_mq.scss';
 
 @include mq-range(sp){
-    @import '../../_mixin_sp.scss';
+    @import '@style/common/_mixin_sp.scss';
 
     .title {
         padding: 4.8% 0;
@@ -68,7 +69,7 @@
 }
 
 @include mq-range(pc){
-    @import '../../_mixin_pc.scss';
+    @import '@style/common/_mixin_pc.scss';
 
     .title {
         padding: 36px 64px;

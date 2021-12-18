@@ -1,5 +1,5 @@
 const withOptimizedImages = require('next-optimized-images');
-//const withTM = require('next-transpile-modules')(['imagemin-svgo']);
+const path = require('path')
 
 module.exports = {
 
@@ -20,6 +20,9 @@ module.exports = {
         });
 
         return paths;
+    },
+    sassOptions: {
+        prependData: `@import "@style/common/variable.scss";`
     },
     images: {
         domains: ['images.microcms-assets.io'],

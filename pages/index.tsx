@@ -16,34 +16,6 @@ import ScrollAnimation from 'react-animate-on-scroll';
 
 const Home: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
-  type PropsArrow = {
-    className?: string,
-    style?: React.CSSProperties,
-    onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-  };
-
-  const SlideNextArrow: FC<PropsArrow> = (props) => {
-    return (
-        <div
-          className="nextArrow"
-          style={{ ...props.style}}
-          onClick={props.onClick}
-        />
-    );
-  };
-
-  const SlidePrevArrow: FC<PropsArrow> = (props) => {
-    return (
-        <div
-          className="prevArrow"
-          style={{ ...props.style}}
-          onClick={props.onClick}
-        />
-    );
-  };
-
-  let displayFlag:boolean = false;
-
   const slideSettings = {
     dots: true,
     infinite: true,
@@ -54,13 +26,6 @@ const Home: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
     autoplaySpeed: 2000,
     lazyLoad: true,
     rtl: true,
-    responsive: [{
-       breakpoint: 750, //750px以下のサイズに適用
-        settings: {
-          nextArrow: <SlideNextArrow/>,
-          prevArrow: <SlidePrevArrow/>
-        }
-    }]
   };
 
   const skills = {
@@ -137,9 +102,9 @@ const Home: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 <h3 className={styles.skillBlockIn__boxIn__title}>programming</h3>
                 <ul className={styles.skillBlockIn__boxIn__lists}>
                   {
-                    skills.programming.map((list) => {
+                  skills.programming.map((list) => {
                       return (
-                          <li>{list.skill}</li>
+                          <li key={list.skill}>{list.skill}</li>
                       );
                     })
                   }
@@ -152,7 +117,7 @@ const Home: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   {
                     skills.tool.map((list) => {
                       return (
-                          <li>{list.skill}</li>
+                          <li key={list.skill}>{list.skill}</li>
                       );
                     })
                   }
@@ -174,7 +139,7 @@ const Home: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 {
                   work.contents.map((list) => {
                     return (
-                      <div className={styles.slide}>
+                      <div className={styles.slide} key={list.id}>
                         <Link href={list.link_path} as={list.link_path}>
                           <a className={styles.slide__link}>
                             <img src={list.lead_img.url}/>

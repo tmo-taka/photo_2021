@@ -1,0 +1,27 @@
+@charset "UTF-8";
+@import "@style/common/variable.scss";
+@import '@style/common/_mq.scss';
+
+.slick-dots li button:before {
+    color: $main-color !important;
+}
+
+@include mq-range(pc){
+    .slick-dots {
+        li button:before {
+            width: 36px !important;
+            height: 36px !important;
+            font-size: 14px !important;
+        }
+    }
+}
+
+@include mq-range(sp){
+    .slick-dots {
+        li button:before {
+            width: 6vw !important;
+            height: 6vw !important;
+            font-size: 16px !important;
+        }
+    }
+}

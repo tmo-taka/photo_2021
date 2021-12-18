@@ -14,8 +14,8 @@ const HeaderList = () => {
         {
             lists.map((list) => {
                 return (
-                    <li className={styles.menuList__li}>
-                      <AnchorLink　href={list.to}>
+                    <li className={styles.menuList__li} key={list.to}>
+                      <AnchorLink href={list.to}>
                       {list.name}
                       </AnchorLink>
                     </li>

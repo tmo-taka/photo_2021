@@ -1,8 +1,9 @@
 @charset "UTF-8";
-@import '../_common.scss';
+@import "@style/common/variable.scss";
+@import '@style/common/_mq.scss';
 
 @include mq-range(sp){
-    @import '../_mixin_sp.scss';
+    @import '@style/common/_mixin_sp.scss';
 
     .mainV {
         width: 100%;
@@ -36,12 +37,14 @@
                 &In {
                     padding: 10% 0;
                     &__title {
-                        margin-bottom: 2.4%;
+                        margin-bottom: 5.8%;
                         font-size: 2.8rem;
                     }
                     ul {
+                        padding-left: 2.4%;
+                        border-left: solid 1px #333;
                         li {
-                            line-height: 1.2em;
+                            line-height: 1.6em;
                         }
                     }
                 }
@@ -80,6 +83,7 @@
     }
 
     .slide {
+        margin-bottom: 4vw;
         &__link {
             display: block;
             position: relative;
@@ -104,6 +108,7 @@
             }
         }
     }
+
     .profileBlock {
         padding: 18% 0 0;
         &In {
@@ -139,7 +144,7 @@
 }
 
 @include mq-range(pc){
-    @import '../_mixin_pc.scss';
+    @import '@style/common/_mixin_pc.scss';
 
     .mainV {
         width: 100%;
@@ -237,14 +242,16 @@
                 justify-content: space-around;
                 width: $pc-min-size;
                 &In {
-                    width: 300px;
+                    max-width: 300px;
                     &__title {
                         margin-bottom: 24px;
                         font-size: 2.8rem;
                     }
                     ul {
+                        padding-left: 8px;
+                        border-left: 1px solid #000;
                         li {
-                            line-height: 1.2em;
+                            line-height: 1.6em;
                         }
                     }
                 }
@@ -269,7 +276,7 @@
             }
             &__box {
                 margin: 0 auto 64px;
-                width: 840px;
+                width: 672px;
                 &__title {
                     margin-bottom: 12px;
                     font-size: 2.8rem;
@@ -289,7 +296,11 @@
     }
 
     .slide {
+        margin-bottom: 16px;
+        padding: 0 16px;
         &__link {
+            border: 1px solid #CCC;
+            border-radius: 16px;
             display: block;
             position: relative;
             overflow: hidden;
@@ -306,14 +317,13 @@
                 color: #FFF;
                 font-weight: bold;
                 text-decoration: none;
-                transform-origin: right top;
-                transform:scale(0, 1);
-                transition: transform .6s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+                transform-origin: center;
+                transform:scale(0);
+                transition: transform .3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
             }
             &:hover {
                 .slide__link__hover {
-                    transform: scale(1, 1);
-                    transform-origin: left top;
+                    transform: scale(1);
                 }
             }
         }
