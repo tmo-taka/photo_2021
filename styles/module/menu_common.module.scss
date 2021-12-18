@@ -1,5 +1,7 @@
 @charset "UTF-8";
-@import '../_common.scss';
+@import "@style/common/variable.scss";
+@import '@style/common/_mq.scss';
+
 
 @include mq-range(sp){
     .menuList {

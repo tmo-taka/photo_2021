@@ -1,12 +1,9 @@
 @charset "UTF-8";
-@import './_common.scss';
+@import "@style/common/variable.scss";
+@import '@style/common/_mq.scss';
 
 .slick-dots li button:before {
     color: $main-color !important;
-}
-
-img {
-    display: block;
 }
 
 @include mq-range(pc){

@@ -1,8 +1,9 @@
 @charset "UTF-8";
-@import '../_common.scss';
+@import "@style/common/variable.scss";
+@import '@style/common/_mq.scss';
 
 @include mq-range(sp){
-    @import '../_mixin_sp.scss';
+    @import '@style/common/_mixin_sp.scss';
 
     .mainV {
         width: 100%;
@@ -105,6 +106,7 @@
             }
         }
     }
+
     .profileBlock {
         padding: 18% 0 0;
         &In {
@@ -140,7 +142,7 @@
 }
 
 @include mq-range(pc){
-    @import '../_mixin_pc.scss';
+    @import '@style/common/_mixin_pc.scss';
 
     .mainV {
         width: 100%;
