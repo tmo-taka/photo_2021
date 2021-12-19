@@ -3,7 +3,11 @@ import Link from 'next/link';
 import styles from '@style/module/menu_common.module.scss'
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
-const HeaderList = () => {
+type Props = {
+  menuFlag ?: Boolean
+}
+
+const HeaderList = ({menuFlag}: Props) => {
   let lists = [
     {name: "Skill", to: "#skill"},
     {name: "Works", to: "#works"},
@@ -14,10 +18,8 @@ const HeaderList = () => {
         {
             lists.map((list) => {
                 return (
-                    <li className={styles.menuList__li} key={list.to}>
-                      <AnchorLink href={list.to}>
-                      {list.name}
-                      </AnchorLink>
+                    <li className={`${styles.menuList__li} ${menuFlag ? styles.menuList__li__on : ""}`}  key={list.to}>
+                      <AnchorLink href={list.to}>{list.name}</AnchorLink>
                     </li>
                 );
             })

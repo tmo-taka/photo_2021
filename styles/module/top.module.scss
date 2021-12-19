@@ -74,10 +74,10 @@
                 }
             }
             &__btn {
-                padding: 4.8%;
+                padding: 4.8% 0;
                 display: flex;
-                justify-content: space-around;
-                @include normal_button();
+                justify-content: flex-end;
+                @include normal_button(50%);
             }
         }
     }

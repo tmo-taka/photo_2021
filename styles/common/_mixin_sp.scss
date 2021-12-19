@@ -1,7 +1,6 @@
 @mixin normal_button($width: 60%) {
     a {
         border: solid 1px #000;
-        border-radius: 6px;
         padding: 3.6% 4%;
         display: block;
         width: $width;
