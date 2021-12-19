@@ -26,7 +26,7 @@ const Menu = ({displayFlag}: Props) => {
                     </div>
                 </div>
                 <nav className={`${styles.menu__nav} ${menuFlag ? styles.on : ""}`}>
-                    <MenuList />
+                    <MenuList menuFlag={menuFlag}/>
                 </nav>
             </div>
             <div className={`${styles.circle} ${menuFlag ? styles.on : ""}`}>
