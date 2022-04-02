@@ -17,6 +17,9 @@
       ],
       "@svg/*": [
         "public/img/svg/*"
+      ],
+      "@types/*": [
+        "src/types/*"
       ]
     },
     "allowJs": true,
