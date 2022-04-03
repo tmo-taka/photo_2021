@@ -10,12 +10,13 @@ import styles from '@style/module/top.module.scss'
 import Logo from "@component/atoms/logo"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { dehydrate, QueryClient, useQuery, UseQueryResult} from 'react-query';
+import { dehydrate, QueryClient, QueryClientProvider, useQuery, UseQueryResult} from 'react-query';
 import { client } from "./api/client";
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import ScrollAnimation from 'react-animate-on-scroll';
 import * as apiField from 'apiField';
-import { MethodSignature } from 'typescript';
+
+const queryClient = new QueryClient()
 
 type Props = {
   queryData: {
@@ -50,11 +51,9 @@ const Home: FC<Props> = (props: Props) => {
   const [scrollY, setScrollY] = useState<number>(0);
   const [moveJudge, setMoveFlag] = useState<boolean>(false);
 
-  const works:UseQueryResult<string> = useQuery(['works'], {enabled: false});
-  const tools:UseQueryResult<string> = useQuery(['tools'], {enabled: false});
-  const programings:UseQueryResult<string>  = useQuery(['programings'], {enabled: false});
-
-  // console.log(works);
+  const works:UseQueryResult<string> = useQuery(['works']);
+  const tools:UseQueryResult<string> = useQuery(['tools']);
+  const programings:UseQueryResult<string>  = useQuery(['programings']);
 
   function displayMenu(scrollY:number){
     if(scrollY > 60) {
@@ -72,6 +71,7 @@ const Home: FC<Props> = (props: Props) => {
   },[])
 
   return (
+    <QueryClientProvider client={queryClient}>
         <div id="wrapper" className={styles.wrapper}>
           <Head>
             <title>これがポートフォリオです</title>
@@ -180,6 +180,7 @@ const Home: FC<Props> = (props: Props) => {
           <Menu displayFlag={displayMenu(scrollY)} />
           <Footer />
         </div>
+    </QueryClientProvider>
   )
 }
 
@@ -214,11 +215,13 @@ const fetchProgramings = async() => {
 
 export const getStaticProps:GetStaticProps = async () => {
 
-  const queryClient = new QueryClient()
+  // const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery('works', fetchWorks)
   await queryClient.prefetchQuery('tools', fetchTools)
   await queryClient.prefetchQuery('programings', fetchProgramings)
+
+  console.log(queryClient);
 
   const queryData= dehydrate(queryClient);
 
