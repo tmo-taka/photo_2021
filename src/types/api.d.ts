@@ -22,14 +22,14 @@ declare module 'apiField' {
     }
 
     export interface Works {
-        contents: WorkType[]
+        data: WorkType[]
     }
 
     export interface Tools {
-        contents: ToolsType[]
+        data: ToolsType[]
     }
 
     export interface Programings {
-        contents: ToolsType[]
+        data: ToolsType[]
     }
 }

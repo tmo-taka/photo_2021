@@ -55,8 +55,6 @@ const Home: FC<Props> = (props: Props) => {
   const tools:UseQueryResult<Object> = useQuery(['tools']);
   const programings:UseQueryResult<Object>  = useQuery(['programings']);
 
-  console.log(programings);
-
   function displayMenu(scrollY:number){
     if(scrollY > 60) {
       return true
