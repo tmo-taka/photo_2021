@@ -74,8 +74,9 @@ const Home: FC<Props> = (props: Props) => {
     <QueryClientProvider client={queryClient}>
         <div id="wrapper" className={styles.wrapper}>
           <Head>
-            <title>これがポートフォリオです</title>
-            <meta property="og:title" content="My page title" key="title" />
+            <title>【takaharaポートフォリオ】TOP</title>
+            <meta property="og:title" content="【takaharaポートフォリオ】TOP" key="title" />
+            <meta name="description" content="自身のポートフォリオ サイトを公開しています。" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
             <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
@@ -214,8 +215,6 @@ const fetchProgramings = async() => {
 }
 
 export const getStaticProps:GetStaticProps = async () => {
-
-  // const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery('works', fetchWorks)
   await queryClient.prefetchQuery('tools', fetchTools)
