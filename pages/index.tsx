@@ -51,9 +51,11 @@ const Home: FC<Props> = (props: Props) => {
   const [scrollY, setScrollY] = useState<number>(0);
   const [moveJudge, setMoveFlag] = useState<boolean>(false);
 
-  const works:UseQueryResult<string> = useQuery(['works']);
-  const tools:UseQueryResult<string> = useQuery(['tools']);
-  const programings:UseQueryResult<string>  = useQuery(['programings']);
+  const works:UseQueryResult<Object> = useQuery(['works']);
+  const tools:UseQueryResult<Object> = useQuery(['tools']);
+  const programings:UseQueryResult<Object>  = useQuery(['programings']);
+
+  console.log(programings);
 
   function displayMenu(scrollY:number){
     if(scrollY > 60) {
