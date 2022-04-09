@@ -51,9 +51,9 @@ const Home: FC<Props> = (props: Props) => {
   const [scrollY, setScrollY] = useState<number>(0);
   const [moveJudge, setMoveFlag] = useState<boolean>(false);
 
-  const works:UseQueryResult<Object> = useQuery(['works']);
-  const tools:UseQueryResult<Object> = useQuery(['tools']);
-  const programings:UseQueryResult<Object>  = useQuery(['programings']);
+  const works:UseQueryResult<any> = useQuery(['works']);
+  const tools:UseQueryResult<any> = useQuery(['tools']);
+  const programings:UseQueryResult<any>  = useQuery(['programings']);
 
   function displayMenu(scrollY:number){
     if(scrollY > 60) {
@@ -219,8 +219,6 @@ export const getStaticProps:GetStaticProps = async () => {
   await queryClient.prefetchQuery('works', fetchWorks)
   await queryClient.prefetchQuery('tools', fetchTools)
   await queryClient.prefetchQuery('programings', fetchProgramings)
-
-  console.log(queryClient);
 
   const queryData= dehydrate(queryClient);
 
