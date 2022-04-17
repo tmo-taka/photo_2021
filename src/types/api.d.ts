@@ -1,5 +1,5 @@
 declare module 'apiField' {
-    type WorkType = {
+    export type WorkType = {
         id: string,
         site_name: string,
         link_path: string,
@@ -11,12 +11,12 @@ declare module 'apiField' {
         create_span: string
     }
 
-    type ToolType = {
+    export type ToolType = {
         id: string,
         name: string
     }
 
-    type ProgramingType = {
+    export type ProgramingType = {
         id: string,
         name: string
     }
