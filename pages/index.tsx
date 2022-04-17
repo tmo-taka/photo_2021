@@ -51,9 +51,6 @@ const Home: FC<Props> = (props: Props) => {
   const [scrollY, setScrollY] = useState<number>(0);
   const [moveJudge, setMoveFlag] = useState<boolean>(false);
 
-  function logger() : void {
-  }
-
   type useQueryWrapper<T> = {
     data: T
   }
@@ -61,8 +58,6 @@ const Home: FC<Props> = (props: Props) => {
   const works:useQueryWrapper<apiField.WorkType[]>  = useQuery(['works'],{enabled: false});
   const tools:useQueryWrapper<apiField.ToolType[]> = useQuery(['tools'],{enabled: false});
   const programings:useQueryWrapper<apiField.ProgramingType[]>  = useQuery(['programings'],{enabled: false});
-
-  console.log(Array.isArray(works.data))
 
   function displayMenu(scrollY:number){
     if(scrollY > 60) {

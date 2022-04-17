@@ -3,7 +3,11 @@ declare module 'apiField' {
         id: string,
         site_name: string,
         link_path: string,
-        lead_img: object,
+        lead_img: {
+            url: string,
+            width: number,
+            height: number,
+        },
         service_img: string,
         service_txt: string,
         create_time: string,
