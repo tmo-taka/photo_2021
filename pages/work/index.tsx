@@ -13,7 +13,11 @@ const queryClient = new QueryClient()
 
 const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
-  const works:UseQueryResult<string> = useQuery(['works']);
+  type useQueryWrapper<T> = {
+    data: T
+  }
+
+  const works:useQueryWrapper<apiField.WorkType[]> = useQuery(['works']);
 
   return (
     <QueryClientProvider client={queryClient}>
