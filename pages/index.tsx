@@ -55,9 +55,9 @@ const Home: FC<Props> = (props: Props) => {
     data: T
   }
 
-  const works:useQueryWrapper<apiField.WorkType[]>  = useQuery(['works'],{enabled: false});
-  const tools:useQueryWrapper<apiField.ToolType[]> = useQuery(['tools'],{enabled: false});
-  const programings:useQueryWrapper<apiField.ProgramingType[]>  = useQuery(['programings'],{enabled: false});
+  const works:useQueryWrapper<apiField.WorkType[]>  = useQuery(['works'],fetchWorks,{staleTime: Infinity});
+  const tools:useQueryWrapper<apiField.ToolType[]> = useQuery(['tools'],fetchTools,{staleTime: Infinity});
+  const programings:useQueryWrapper<apiField.ProgramingType[]>  = useQuery(['programings'],fetchProgramings,{staleTime: Infinity});
 
   function displayMenu(scrollY:number){
     if(scrollY > 60) {

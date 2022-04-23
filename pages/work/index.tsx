@@ -17,7 +17,7 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
     data: T
   }
 
-  const works:useQueryWrapper<apiField.WorkType[]> = useQuery(['works']);
+  const works:useQueryWrapper<apiField.WorkType[]> = useQuery(['works'],fetchWorks,{staleTime: Infinity});;
 
   return (
     <QueryClientProvider client={queryClient}>
