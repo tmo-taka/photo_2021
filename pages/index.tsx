@@ -10,8 +10,8 @@ import styles from '@style/module/top.module.scss'
 import Logo from "@component/atoms/logo"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { dehydrate, QueryClient, QueryClientProvider, useQuery, UseQueryResult} from 'react-query';
-import { client } from "./api/client";
+import { dehydrate, QueryClient, QueryClientProvider, useQuery} from 'react-query';
+import { fetchTools,fetchProgramings,fetchWorks } from "./api/getData";
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import ScrollAnimation from 'react-animate-on-scroll';
 import * as apiField from 'apiField';
@@ -190,33 +190,6 @@ const Home: FC<Props> = (props: Props) => {
 }
 
 export default Home;
-
-const fetchWorks = async() => {
-  const works: apiField.Works = await client.get({
-      endpoint: "cont",
-      queries: {
-          limit: 5,
-      }
-  })
-
-  return works.contents;
-}
-
-const fetchTools = async() => {
-  const tools: apiField.Tools = await client.get({
-      endpoint: 'tool',
-  })
-
-  return tools.contents;
-}
-
-const fetchProgramings = async() => {
-  const programings: apiField.Programings = await client.get({
-      endpoint: 'programing',
-  })
-
-  return programings.contents
-}
 
 export const getStaticProps:GetStaticProps = async () => {
 

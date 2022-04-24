@@ -4,8 +4,8 @@ import Link from 'next/link'
 import styles from '@style/module/work/top.module.scss'
 import Footer from '@component/module/footer'
 import { motion } from "framer-motion";
-import { client } from "../api/client";
-import { dehydrate, QueryClient, QueryClientProvider, useQuery, UseQueryResult} from 'react-query';
+import { dehydrate, QueryClient, QueryClientProvider, useQuery} from 'react-query';
+import { fetchWorks } from "../api/getData"
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import * as apiField from 'apiField';
 
@@ -73,13 +73,6 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default Work;
 
-const fetchWorks = async() => {
-  const works: apiField.Works = await client.get({
-      endpoint: "cont",
-  })
-
-  return works.contents;
-}
 
 export const getStaticProps:GetStaticProps = async () => {
   await queryClient.prefetchQuery('works', fetchWorks);
