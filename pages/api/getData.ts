@@ -4,9 +4,6 @@ import { client } from "./client";
 export const fetchWorks = async() => {
     const works: apiField.Works = await client.get({
         endpoint: "cont",
-        queries: {
-            limit: 5,
-        }
     })
     return works.contents;
 }

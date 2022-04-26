@@ -68,8 +68,14 @@
             margin: 0 auto;
             padding: 0 16px;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             width: $pc-min-size;
+            & > * {
+                &:not(:nth-child(1),:nth-child(2),:nth-child(3)){
+                    margin-top: 32px;
+                }
+            }
         }
     }
 

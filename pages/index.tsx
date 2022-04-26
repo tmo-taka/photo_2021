@@ -18,16 +18,7 @@ import * as apiField from 'apiField';
 
 const queryClient = new QueryClient()
 
-type Props = {
-  queryData: {
-    queries: [
-      {
-        [queryKey: string]: string,
-        // keys: (key: string) => Object
-      }
-    ]
-  }
-}
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home: FC<Props> = (props: Props) => {
 
@@ -58,6 +49,9 @@ const Home: FC<Props> = (props: Props) => {
   const works:useQueryWrapper<apiField.WorkType[]>  = useQuery(['works'],fetchWorks,{staleTime: Infinity});
   const tools:useQueryWrapper<apiField.ToolType[]> = useQuery(['tools'],fetchTools,{staleTime: Infinity});
   const programings:useQueryWrapper<apiField.ProgramingType[]>  = useQuery(['programings'],fetchProgramings,{staleTime: Infinity});
+
+  // NOTE: 上位5個のみ取得
+  const sortWorks = works.data.slice(-5);
 
   function displayMenu(scrollY:number){
     if(scrollY > 60) {
@@ -143,7 +137,7 @@ const Home: FC<Props> = (props: Props) => {
                 <div className={styles.worksBlockIn__box}>
                   <Slider {...slideSettings}>
                     {
-                      works.data.map((list) => {
+                      sortWorks.map((list) => {
                         return (
                           <div className={styles.slide} key={list.id}>
                             <Link href={list.link_path} as={list.link_path}>
