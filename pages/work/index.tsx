@@ -36,6 +36,7 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <ul className={styles.listBox__content}>
           {
             works.data.map((list,index) => {
+              const path = `/work/${list.slug}/`
               return (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -45,7 +46,7 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   key={list.id}
                   >
                 <li className={styles.list}>
-                  <Link href={list.link_path}  as={list.link_path}>
+                  <Link href={path}  as={path}>
                       <div className={styles.listIn}>
                         <div className={styles.listIn__img}>
                           <img src={list.lead_img.url}/>

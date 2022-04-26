@@ -138,9 +138,10 @@ const Home: FC<Props> = (props: Props) => {
                   <Slider {...slideSettings}>
                     {
                       sortWorks.map((list) => {
+                        const path = `/work/${list.slug}/`
                         return (
                           <div className={styles.slide} key={list.id}>
-                            <Link href={list.link_path} as={list.link_path}>
+                            <Link href={path} as={path}>
                               <a className={styles.slide__link}>
                                 <img src={list.lead_img.url}/>
                                 <div className={styles.slide__link__hover}>{list.site_name}</div>

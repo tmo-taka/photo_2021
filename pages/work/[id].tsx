@@ -21,7 +21,8 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getStaticPr
     const works:useQueryWrapper<apiField.WorkType[]> = useQuery(['works'],fetchWorks,{staleTime: Infinity});
     const router = useRouter();
     const targetWork:apiField.WorkType = works.data.find((work) => {
-        return work.link_path === router.asPath
+        const path = `/work/${work.slug}/`
+        return path === router.asPath
     })
 
     const transition = {
@@ -110,28 +111,13 @@ const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getStaticPr
 
 export default Work_Topic;
 
-type WorkType = {
-    contents: [
-        {
-            id: string,
-            site_name: string,
-            link_path: string,
-            lead_img: object,
-            service_img: string,
-            service_txt: string,
-            create_time: string,
-            create_skill: string,
-            create_span: string,
-        }
-    ]
-}
-
 export const getStaticPaths:GetStaticPaths = async () => {
     const works = await fetchWorks();
 
     // const paths = ['/work/1','/work/2','/work/3'];
 
-    const paths = works.map(workList => `${workList.link_path}`)
+    const paths = works.map(workList => `/work/${workList.slug}/`)
+
     return {
         paths: paths,
         fallback: false
