@@ -2,7 +2,7 @@ declare module 'apiField' {
     export type WorkType = {
         id: string,
         site_name: string,
-        link_path: string,
+        slug: string,
         lead_img: {
             url: string,
             width: number,
