@@ -26,6 +26,9 @@ module.exports = {
     },
     images: {
         domains: ['images.microcms-assets.io'],
+        //next/imagesのdeviceサイズを指定
+        deviceSizes:[320, 750],
+        formats: ['image/webp'],
     },
 
     target: "serverless",

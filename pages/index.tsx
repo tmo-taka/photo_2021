@@ -2,6 +2,8 @@ import React from 'react/index'
 import {FC, useEffect, useState} from 'react/index'
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
+import microCMSLoader from '@component/atoms/image_cms'
 import Slider from "react-slick";
 import Header from '@component/module/header'
 import Menu from '@component/module/menu_sp'
@@ -143,7 +145,16 @@ const Home: FC<Props> = (props: Props) => {
                           <div className={styles.slide} key={list.id}>
                             <Link href={path} as={path}>
                               <a className={styles.slide__link}>
-                                <img src={list.lead_img.url}/>
+                                <Image
+                                  loader={microCMSLoader}
+                                  className={styles.slide__link__img}
+                                  src={list.lead_img.url}
+                                  alt={list.site_name}
+                                  layout="fill"
+                                  objectFit="contain"
+                                  priority
+                                />
+                                {/* <img src={list.lead_img.url}/> */}
                                 <div className={styles.slide__link__hover}>{list.site_name}</div>
                               </a>
                             </Link>

@@ -87,6 +87,14 @@
         &__link {
             display: block;
             position: relative;
+            &>div:not(.slide__link__hover) {
+                position: static !important;
+                img {
+                    position: static !important;
+                    width: 100% !important;
+                    height: auto !important;
+                }
+            }
             &__hover {
                 opacity: 0;
                 position: absolute;
@@ -304,6 +312,14 @@
             display: block;
             position: relative;
             overflow: hidden;
+            &>div:not(.slide__link__hover) {
+                position: static !important;
+                img {
+                    position: static !important;
+                    width: 100% !important;
+                    height: auto !important;
+                }
+            }
             &__hover {
                 position: absolute;
                 top: 0;
