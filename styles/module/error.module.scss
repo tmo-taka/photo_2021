@@ -1,0 +1,43 @@
+@charset "UTF-8";
+@import "@style/common/variable.scss";
+@import '@style/common/_mq.scss';
+
+@include mq-range(sp){
+    @import '@style/common/_mixin_sp.scss';
+    .error {
+        margin: 0 auto;
+        padding: 30vw 0 ;
+        width: 100%;
+        &_title {
+            text-align: center;
+            color: #000;
+            font-size: 1.8rem;
+        }
+        &_btn {
+            padding: 24vw 0 8vw;
+            display: flex;
+            justify-content: center;
+            @include normal_button();
+        }
+    }
+}
+
+@include mq-range(pc){
+    @import '@style/common/_mixin_pc.scss';
+    .error {
+        margin: 0 auto;
+        padding: 64px 0;
+        width: 800px;
+        &_title {
+            text-align: center;
+            color: #000;
+            font-size: 2.0rem;
+        }
+        &_btn {
+            padding: 104px 0 24px;
+            display: flex;
+            justify-content: center;
+            @include normal_button();
+        }
+    }
+}
