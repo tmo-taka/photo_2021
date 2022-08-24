@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react/index'
+import { useState } from 'react'
 import MenuList from '@component/atoms/list'
 import styles from '@style/module/menu_sp.module.scss'
 

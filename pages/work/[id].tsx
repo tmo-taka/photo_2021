@@ -1,4 +1,4 @@
-import React, {FC} from 'react/index'
+import React, {FC} from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '@style/module/work/topic.module.scss'

@@ -1,5 +1,5 @@
-import React from 'react/index'
-import {FC, useEffect, useState} from 'react/index'
+import React from 'react'
+import {FC, useEffect, useState} from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Slider from "react-slick";
@@ -13,7 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { dehydrate, QueryClient, QueryClientProvider, useQuery} from 'react-query';
 import { fetchTools,fetchProgramings,fetchWorks } from "./api/getData";
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import ScrollAnimation from 'react-animate-on-scroll';
+// import ScrollAnimation from 'react-animate-on-scroll';
 import * as apiField from 'apiField';
 
 const queryClient = new QueryClient()
@@ -91,12 +91,12 @@ const Home: FC<Props> = (props: Props) => {
             </h1>
           </div>
 
-          <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
+          {/* <ScrollAnimation animateIn="fadeIn" animateOnce={true}> */}
             <section id="skill" className={styles.skillBlock}>
               <div className={styles.skillBlockIn}>
-                <ScrollAnimation animateIn='bounce'>
+                {/* <ScrollAnimation animateIn='bounce'> */}
                   <h2 className={styles.skillBlockIn__title}><span>S</span>kill</h2>
-                </ScrollAnimation>
+                {/* </ScrollAnimation> */}
                 <div className={styles.skillBlockIn__box}>
                   <div className={styles.skillBlockIn__boxIn}>
                     <h3 className={styles.skillBlockIn__boxIn__title}>programming</h3>
@@ -126,14 +126,14 @@ const Home: FC<Props> = (props: Props) => {
                 </div>
               </div>
             </section>
-          </ScrollAnimation>
+          {/* </ScrollAnimation> */}
 
-          <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
+          {/* <ScrollAnimation animateIn="fadeIn" animateOnce={true}> */}
             <section id="works" className={styles.worksBlock}>
               <div className={styles.worksBlockIn}>
-                <ScrollAnimation animateIn='bounce'>
+                {/* <ScrollAnimation animateIn='bounce'> */}
                   <h2 className={styles.worksBlockIn__title}>W<span>o</span>rks</h2>
-                </ScrollAnimation>
+                {/* </ScrollAnimation> */}
                 <div className={styles.worksBlockIn__box}>
                   <Slider {...slideSettings}>
                     {
@@ -160,14 +160,14 @@ const Home: FC<Props> = (props: Props) => {
                 </div>
               </div>
             </section>
-          </ScrollAnimation>
+          {/* </ScrollAnimation> */}
 
-          <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
+          {/* <ScrollAnimation animateIn="fadeIn" animateOnce={true}> */}
             <section id="profile" className={styles.profileBlock}>
               <div className={styles.profileBlockIn}>
-                <ScrollAnimation animateIn='bounce'>
+                {/* <ScrollAnimation animateIn='bounce'> */}
                   <h2 className={styles.profileBlockIn__title}>Pro<span>f</span>ile</h2>
-                </ScrollAnimation>
+                {/* </ScrollAnimation> */}
                 <dl className={styles.profileBlockIn__box}>
                   <dt>Name:</dt>
                   <dd>Takahara Tomoya</dd>
@@ -176,7 +176,7 @@ const Home: FC<Props> = (props: Props) => {
                 </dl>
               </div>
             </section>
-          </ScrollAnimation>
+          {/* </ScrollAnimation> */}
           <Menu displayFlag={displayMenu(scrollY)} />
           <Footer />
         </div>
