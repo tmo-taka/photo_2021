@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "ESNext",
     "lib": [
       "dom",
       "dom.iterable",
@@ -9,18 +9,10 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@style/*": [
-        "styles/*"
-      ],
-      "@component/*": [
-        "component/*"
-      ],
-      "@svg/*": [
-        "public/img/svg/*"
-      ],
-      "@types/*": [
-        "src/types/*"
-      ]
+      "@style/*": ["styles/*"],
+      "@component/*": ["component/*"],
+      "@svg/*": ["public/img/svg/*"],
+      // "@types/*": ["src/types/*"]
     },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -34,7 +26,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "declaration": true
   },
   "include": [
     "next-env.d.ts",

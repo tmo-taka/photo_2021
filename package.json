@@ -11,8 +11,8 @@
   "dependencies": {
     "@types/imagemin-svgo": "^10.0.1",
     "@types/node": "^18.7.13",
-    "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "animate.css": "^4.1.1",
     "css-loader": "^6.7.1",
     "framer-motion": "^7.2.1",
     "fs": "0.0.1-security",
@@ -27,8 +27,8 @@
     "path": "^0.12.7",
     "react": "18.2.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
+    "react-animation-on-scroll": "^5.1.0",
     "react-dom": "18.2.0",
-    "react-genie": "^0.2.2",
     "react-query": "^3.39.2",
     "react-slick": "^0.29.0",
     "sass": "^1.54.5",
@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
+    "@types/react": "^18.0.17",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-styled-components": "^2.0.7",
