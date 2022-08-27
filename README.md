@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 環境
 
-## Getting Started
+node v17系
 
-First, run the development server:
+# node 16 → 17のメモ
+下記のエラーが起きた
+そのため、imagemin-svgoを9系にダウングレード
+https://github.com/cyrilwanner/next-optimized-images/issues/270
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+# 技術選定
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## CSSLibrary
+個人ブログのため可読性、保守性を考慮してCSS in JSを使用したい。今回typescriptで記載せれているため、typescriptと親和性があるものにしたい。
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### 選定する上での優先順位
+1. typescript,Next.jsの親和性の高さ
+1. ビルド後のパフォーマンス(SSGのため)
+1. 今後の伸びしろ
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### 候補
+ - Emotions
+ - Compiled
+ - vanilla-extact
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+ #### Emotions
+ 特に悪い点はない安心感がある
 
-## Learn More
+ ### Compiled
+ [css mixin apiを作ろうとしている](https://github.com/atlassian-labs/compiled/issues/313)
+ マージしているっぽいけど、[Masayuki Izumiさんのブログ](https://zenn.dev/izumin/scraps/ba7be48d8a0bf9)だとできてへんやんって感じらしい
+ styleを上書きをする未来が見える...  
+ bugのissueもかなりありそうですね...
 
-To learn more about Next.js, take a look at the following resources:
+ ### vanilla-extact
+ そもそもCSS in JSでないw
+ ただpageレベルのCSS読み込みをcss Modulesで読み込んでいるので、これに置き換えるのはあり。  
+ 自由度も高そう。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ **ということでEmotionを導入**

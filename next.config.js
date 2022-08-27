@@ -31,12 +31,10 @@ module.exports = {
 
     target: "serverless",
 
-    future: {
-        webpack5: true,
-    },
+    future: {webpack5: true,},
 }
 
-//画像圧縮
+// 画像圧縮
 const optimizedImages = withOptimizedImages({
     reactStrictMode: true,
     trailingSlash: true,

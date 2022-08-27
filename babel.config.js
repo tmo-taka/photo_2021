@@ -1,11 +1,22 @@
 module.exports = {
-    presets: ['next/babel'],
-    plugins: [
+    presets: [
         [
-            "babel-plugin-styled-components",
+            'next/babel',
             {
-                "ssr":true,
+                "preset-react": {
+                    "runtime": "automatic",
+                    "importSource": "@emotion/react"
+                }
             }
         ],
-    ]
+    ],
+    plugins: [
+        // [
+        //     "babel-plugin-styled-components",
+        //     {
+        //         "ssr":true,
+        //     }
+        // ],
+        ["@emotion/babel-plugin"]
+    ],
 }

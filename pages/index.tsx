@@ -1,5 +1,5 @@
-import React from 'react/index'
-import {FC, useEffect, useState} from 'react/index'
+import React from 'react'
+import {FC, useEffect, useState} from "react"
 import Head from 'next/head'
 import Link from 'next/link'
 import Slider from "react-slick";
@@ -8,12 +8,12 @@ import Menu from '@component/module/menu_sp'
 import Footer from '@component/module/footer'
 import styles from '@style/module/top.module.scss'
 import Logo from "@component/atoms/logo"
+import { SectionWrap } from '@component/module/Sectionwrap';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { dehydrate, QueryClient, QueryClientProvider, useQuery} from 'react-query';
 import { fetchTools,fetchProgramings,fetchWorks } from "./api/getData";
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import ScrollAnimation from 'react-animate-on-scroll';
 import * as apiField from 'apiField';
 
 const queryClient = new QueryClient()
@@ -91,50 +91,38 @@ const Home: FC<Props> = (props: Props) => {
             </h1>
           </div>
 
-          <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-            <section id="skill" className={styles.skillBlock}>
-              <div className={styles.skillBlockIn}>
-                <ScrollAnimation animateIn='bounce'>
-                  <h2 className={styles.skillBlockIn__title}><span>S</span>kill</h2>
-                </ScrollAnimation>
-                <div className={styles.skillBlockIn__box}>
-                  <div className={styles.skillBlockIn__boxIn}>
-                    <h3 className={styles.skillBlockIn__boxIn__title}>programming</h3>
-                    <ul className={styles.skillBlockIn__boxIn__lists}>
-                      {
-                        programings.data.map((list) => {
-                          return (
-                              <li key={list.name}>{list.name}</li>
-                          );
-                        })
-                      }
-                    </ul>
-                  </div>
-
-                  <div className={styles.skillBlockIn__boxIn}>
-                    <h3 className={styles.skillBlockIn__boxIn__title}>tool</h3>
-                    <ul className={styles.skillBlockIn__boxIn__lists}>
-                      {
-                        tools.data.map((list) => {
-                          return (
-                              <li key={list.name}>{list.name}</li>
-                          );
-                        })
-                      }
-                    </ul>
-                  </div>
-                </div>
+          <SectionWrap section={{title:'skill',emIndex:1}}>
+            <div className={styles.skillBlockIn__box}>
+              <div className={styles.skillBlockIn__boxIn}>
+                <h3 className={styles.skillBlockIn__boxIn__title}>programming</h3>
+                <ul className={styles.skillBlockIn__boxIn__lists}>
+                  {
+                    programings.data.map((list) => {
+                      return (
+                          <li key={list.name}>{list.name}</li>
+                      );
+                    })
+                  }
+                </ul>
               </div>
-            </section>
-          </ScrollAnimation>
 
-          <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-            <section id="works" className={styles.worksBlock}>
-              <div className={styles.worksBlockIn}>
-                <ScrollAnimation animateIn='bounce'>
-                  <h2 className={styles.worksBlockIn__title}>W<span>o</span>rks</h2>
-                </ScrollAnimation>
-                <div className={styles.worksBlockIn__box}>
+              <div className={styles.skillBlockIn__boxIn}>
+                <h3 className={styles.skillBlockIn__boxIn__title}>tool</h3>
+                <ul className={styles.skillBlockIn__boxIn__lists}>
+                  {
+                    tools.data.map((list) => {
+                      return (
+                          <li key={list.name}>{list.name}</li>
+                      );
+                    })
+                  }
+                </ul>
+              </div>
+            </div>
+          </SectionWrap>
+
+          <SectionWrap section={{title:'works',emIndex:2}}>
+              <div className={styles.worksBlockIn__box}>
                   <Slider {...slideSettings}>
                     {
                       sortWorks.map((list) => {
@@ -157,26 +145,17 @@ const Home: FC<Props> = (props: Props) => {
                 <Link href="/work/">
                   <a>一覧へ</a>
                 </Link>
-                </div>
               </div>
-            </section>
-          </ScrollAnimation>
+          </SectionWrap>
 
-          <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-            <section id="profile" className={styles.profileBlock}>
-              <div className={styles.profileBlockIn}>
-                <ScrollAnimation animateIn='bounce'>
-                  <h2 className={styles.profileBlockIn__title}>Pro<span>f</span>ile</h2>
-                </ScrollAnimation>
-                <dl className={styles.profileBlockIn__box}>
-                  <dt>Name:</dt>
-                  <dd>Takahara Tomoya</dd>
-                  <dt>Carier:</dt>
-                  <dd>名城大学を卒業後、新卒として、株式会社ウェブクルーに入社</dd>
-                </dl>
-              </div>
-            </section>
-          </ScrollAnimation>
+          <SectionWrap section={{title:'profile',emIndex:4}}>
+            <dl className={styles.profileBlockIn__box}>
+              <dt>Name:</dt>
+              <dd>Takahara Tomoya</dd>
+              <dt>Carier:</dt>
+              <dd>名城大学を卒業後、新卒として、株式会社ウェブクルーに入社</dd>
+            </dl>
+          </SectionWrap>
           <Menu displayFlag={displayMenu(scrollY)} />
           <Footer />
         </div>

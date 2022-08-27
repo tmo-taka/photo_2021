@@ -1,4 +1,4 @@
-import React, {FC} from 'react/index'
+import React, {FC} from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '@style/module/work/topic.module.scss'
@@ -12,7 +12,7 @@ import * as apiField from 'apiField';
 
 const queryClient = new QueryClient()
 
-const Work_Topic: FC = ({ work }: InferGetServerSidePropsType<typeof getStaticProps>) => {
+const Work_Topic:FC = ({ work }: InferGetServerSidePropsType<typeof getStaticProps>) => {
 
     type useQueryWrapper<T> = {
         data: T
@@ -128,6 +128,7 @@ export const getStaticProps:GetStaticProps = async () => {
     await queryClient.prefetchQuery('works', fetchWorks);
 
     const queryData= dehydrate(queryClient);
+    console.log(queryData)
 
     return {
         props: {
