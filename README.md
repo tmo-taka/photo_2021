@@ -2,6 +2,11 @@
 
 node v17系
 
+# node 16 → 17のメモ
+下記のエラーが起きた
+そのため、imagemin-svgoを9系にダウングレード
+https://github.com/cyrilwanner/next-optimized-images/issues/270
+
 # 技術選定
 
 ## CSSLibrary

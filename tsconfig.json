@@ -12,7 +12,7 @@
       "@style/*": ["styles/*"],
       "@component/*": ["component/*"],
       "@svg/*": ["public/img/svg/*"],
-      // "@types/*": ["src/types/*"]
+      "@types/*": ["src/types/*"]
     },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -26,8 +26,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
     "incremental": true,
-    "declaration": true
+    "declaration": true,
   },
   "include": [
     "next-env.d.ts",
