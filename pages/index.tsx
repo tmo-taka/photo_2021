@@ -92,7 +92,7 @@ const Home: FC<Props> = (props: Props) => {
             </h1>
           </div>
 
-          <SectionWrap>
+          <SectionWrap section={{title:'skill',emIndex:1}}>
             <section id="skill" className={styles.skillBlock}>
               <div className={styles.skillBlockIn}>
                 <AnimationOnScroll animateIn='bounce'>
@@ -129,7 +129,7 @@ const Home: FC<Props> = (props: Props) => {
             </section>
           </SectionWrap>
 
-          <SectionWrap>
+          <SectionWrap section={{title:'works',emIndex:2}}>
             <section id="works" className={styles.worksBlock}>
               <div className={styles.worksBlockIn}>
                 <AnimationOnScroll animateIn='bounce'>
@@ -163,7 +163,7 @@ const Home: FC<Props> = (props: Props) => {
             </section>
           </SectionWrap>
 
-          <SectionWrap>
+          <SectionWrap section={{title:'profile',emIndex:4}}>
             <section id="profile" className={styles.profileBlock}>
               <div className={styles.profileBlockIn}>
                 <AnimationOnScroll animateIn='bounce'>
