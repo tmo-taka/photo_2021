@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Slider from "react-slick";
 import Header from '@component/module/header'
 import Menu from '@component/module/menu_sp'
-import Footer from '@component/module/footer'
+import { Footer } from '@component/module/Footer'
 import styles from '@style/module/top.module.scss'
 import Logo from "@component/atoms/logo"
 import { SectionWrap } from '@component/module/Sectionwrap';

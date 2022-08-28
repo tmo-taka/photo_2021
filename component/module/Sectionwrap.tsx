@@ -23,9 +23,15 @@ type Props = {
 export const SectionWrap = (props:Props) => {
     const { title } = props.section
     const camelTitle:string[] = (title.charAt(0).toUpperCase() + title.slice(1)).split("");
+
+
+    const judgeTitle = (title:string):boolean => {
+        return title === 'profile' ? true: false
+    }
+
     return (
         <AnimationOnScroll animateIn="fadeIn" animateOnce={true}>
-            <section id={props.section.title} css={section}>
+            <section id={props.section.title} css={judgeTitle(title) ? section_fullWidth: section}>
                 <div css={inSection}>
                     <AnimationOnScroll animateIn='bounce'>
                         <h2 css={sectionTitle}>
@@ -44,9 +50,19 @@ export const SectionWrap = (props:Props) => {
 }
 
 const section = (theme) => css`
-    padding: 18% 4.8%;
     ${sp`
         padding: 18% 4.8%;
+    `}
+    ${pc`
+        padding: 80px 0;
+        width: 100%;
+        min-width: ${theme.width.min};
+    `}
+`
+
+const section_fullWidth = (theme) => css`
+    ${sp`
+        padding: 18% 0;
     `}
     ${pc`
         padding: 80px 0;
