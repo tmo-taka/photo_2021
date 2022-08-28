@@ -3,7 +3,7 @@ import {FC, useEffect, useState} from "react"
 import Head from 'next/head'
 import Link from 'next/link'
 import Slider from "react-slick";
-import Header from '@component/module/header'
+import { Header } from '@component/module/Header'
 import Menu from '@component/module/menu_sp'
 import { Footer } from '@component/module/Footer'
 import styles from '@style/module/top.module.scss'

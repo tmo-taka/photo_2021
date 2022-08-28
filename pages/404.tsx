@@ -2,7 +2,7 @@ import React from 'react'
 import {FC} from 'react/cjs/react.production.min'
 import Head from 'next/head'
 import Link from 'next/link'
-import Header from '@component/module/header'
+import { Header } from '@component/module/Header'
 import styles from '@style/module/error.module.scss'
 
 const Home: FC = () => {
