@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { useState } from 'react'
 import MenuList from '@component/atoms/list'
 import styles from '@style/module/menu_sp.module.scss'
-import { css } from '@emotion/react'
+import { css, SerializedStyles } from '@emotion/react'
 
 type Props = {
     children?: ReactNode,
