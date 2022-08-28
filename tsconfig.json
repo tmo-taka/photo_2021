@@ -27,6 +27,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
+    "types": ["@emotion/react/types/css-prop"],
     "incremental": true,
     "declaration": true,
   },

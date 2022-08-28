@@ -2,7 +2,7 @@ import React, {FC} from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '@style/module/work/top.module.scss'
-import Footer from '@component/module/footer'
+import { Footer } from '@component/module/Footer'
 import { motion } from "framer-motion";
 import { dehydrate, QueryClient, QueryClientProvider, useQuery} from 'react-query';
 import { fetchWorks } from "../api/getData"
