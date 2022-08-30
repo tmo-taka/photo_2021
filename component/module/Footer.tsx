@@ -8,15 +8,15 @@ type Props = {
 
 export const Footer = (props:Props) => {
     return (
-        <footer css={footer}>
-            <div css={inFooter}>
+        <footer css={_footer}>
+            <div css={_inFooter}>
                 <div>Copyright © 2021 Apple Inc. All rights reserved.</div>
             </div>
         </footer>
     )
 }
 
-const footer = (theme) => css`
+const _footer = (theme) => css`
     ${sp`
         padding: 6% 0;
         width: 100%;
@@ -29,7 +29,7 @@ const footer = (theme) => css`
     `}
 `
 
-const inFooter = () => css`
+const _inFooter = () => css`
     ${sp`
         text-align: center;
         color: #000;

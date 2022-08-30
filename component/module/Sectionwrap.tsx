@@ -31,13 +31,13 @@ export const SectionWrap = (props:Props) => {
 
     return (
         <AnimationOnScroll animateIn="fadeIn" animateOnce={true}>
-            <section id={props.section.title} css={judgeTitle(title) ? section_fullWidth: section}>
-                <div css={inSection}>
+            <section id={props.section.title} css={judgeTitle(title) ? _sectionFullWidth: _section}>
+                <div css={_inSection}>
                     <AnimationOnScroll animateIn='bounce'>
-                        <h2 css={sectionTitle}>
+                        <h2 css={_sectionTitle}>
                             {
                                 camelTitle.map((s:string,index:number):ReactNode => {
-                                    return props.section.emIndex === (index + 1) ? <span key={index} css={active}>{s}</span> : <span key={index}>{s}</span>
+                                    return props.section.emIndex === (index + 1) ? <span key={index} css={_active}>{s}</span> : <span key={index}>{s}</span>
                                 })
                             }
                         </h2>
@@ -49,7 +49,7 @@ export const SectionWrap = (props:Props) => {
     )
 }
 
-const section = (theme) => css`
+const _section = (theme) => css`
     ${sp`
         padding: 18% 4.8%;
     `}
@@ -60,7 +60,7 @@ const section = (theme) => css`
     `}
 `
 
-const section_fullWidth = (theme) => css`
+const _sectionFullWidth = (theme) => css`
     ${sp`
         padding: 18% 0;
     `}
@@ -71,14 +71,14 @@ const section_fullWidth = (theme) => css`
     `}
 `
 
-const inSection = (theme) => css`
+const _inSection = (theme) => css`
     ${pc`
         margin: 0 auto;
         width: ${theme.width.min};
     `}
 `
 
-const sectionTitle = css`
+const _sectionTitle = css`
     ${sp`
         margin-bottom: 8%;
         text-align: center;
@@ -92,7 +92,7 @@ const sectionTitle = css`
     `}
 `
 
-const active = (theme) => css`
+const _active = (theme) => css`
     ${sp`
         color: ${theme.colors.primary}
     `}
