@@ -1,11 +1,11 @@
-import { ReactNode } from 'react'
-import { useState } from 'react'
+import { ReactNode,useState } from 'react'
 import MenuList from '@component/atoms/list'
-import { css, SerializedStyles, useTheme } from '@emotion/react'
+import {sp, pc} from '@style/common/mq'
+import { css, SerializedStyles, useTheme,Theme } from '@emotion/react'
 
 type Props = {
     children?: ReactNode,
-    displayFlag ?: boolean
+    displayFlag: boolean
 }
 
 type Border = {
@@ -54,6 +54,11 @@ const _menuPos = (displayFlag:boolean):SerializedStyles[] => {
             bottom: 3vw;
             right: 6vw;
             z-index: 4;
+        `,
+        css`
+            ${pc`
+                display:none
+            `}
         `
     ]
 
@@ -70,7 +75,7 @@ const _menuPos = (displayFlag:boolean):SerializedStyles[] => {
 }
 
 
-const _menuIco = (theme)=> css`
+const _menuIco = (theme:Theme)=> css`
     display: flex;
     align-items: center;
     width: 12vw;
@@ -138,7 +143,7 @@ const _navWrap = (menuFlag:boolean):SerializedStyles[] => {
 }
 
 const _circle = (menuFlag:boolean):SerializedStyles[] => {
-    const theme = useTheme();
+    const theme:Theme = useTheme();
     const styles:SerializedStyles[] = [
         css`
         position: fixed;

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { AnimationOnScroll } from 'react-animation-on-scroll';
-import { css } from '@emotion/react'
+import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
 
 const unionLength = (sectionTitle:string):readonly number[] => {
@@ -49,7 +49,7 @@ export const SectionWrap = (props:Props) => {
     )
 }
 
-const _section = (theme) => css`
+const _section = (theme:Theme) => css`
     ${sp`
         padding: 18% 4.8%;
     `}
@@ -60,7 +60,7 @@ const _section = (theme) => css`
     `}
 `
 
-const _sectionFullWidth = (theme) => css`
+const _sectionFullWidth = (theme:Theme) => css`
     ${sp`
         padding: 18% 0;
     `}
@@ -71,10 +71,10 @@ const _sectionFullWidth = (theme) => css`
     `}
 `
 
-const _inSection = (theme) => css`
+const _inSection = (theme:Theme) => css`
     ${pc`
         margin: 0 auto;
-        width: ${theme.width.min};
+        width: ${theme};
     `}
 `
 
@@ -92,11 +92,6 @@ const _sectionTitle = css`
     `}
 `
 
-const _active = (theme) => css`
-    ${sp`
-        color: ${theme.colors.primary}
-    `}
-    ${pc`
-        color: ${theme.colors.primary}
-    `}
+const _active = (theme:Theme) => css`
+    color: ${theme.colors.primary}
 `

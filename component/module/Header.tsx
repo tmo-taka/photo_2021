@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { css } from '@emotion/react'
+import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
 import HeaderList from '@component/atoms/list'
 
@@ -18,7 +18,7 @@ export const Header = (props:Props) => {
     )
 }
 
-const _header= (theme) => css`
+const _header= (theme:Theme) => css`
     ${sp`
         display: none;
     `}

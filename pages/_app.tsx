@@ -4,12 +4,12 @@ import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import '@style/common/reset.scss';
 import '@style/common/common.scss';
 import '@style/slick.scss';
-import { ThemeProvider } from '@emotion/react'
+import { ThemeProvider ,Theme} from '@emotion/react'
 
 const App = ({ Component, pageProps }) => {
   const [queryClient] = React.useState(() => new QueryClient())
 
-  const theme = {
+  const theme:Theme = {
     colors: {
       primary: "#3589BB"
     },

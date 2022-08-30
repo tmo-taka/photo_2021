@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { css } from '@emotion/react'
+import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
 
 type Props = {
@@ -16,7 +16,7 @@ export const Footer = (props:Props) => {
     )
 }
 
-const _footer = (theme) => css`
+const _footer = (theme:Theme) => css`
     ${sp`
         padding: 6% 0;
         width: 100%;

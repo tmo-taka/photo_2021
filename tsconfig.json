@@ -12,7 +12,7 @@
       "@style/*": ["styles/*"],
       "@component/*": ["component/*"],
       "@svg/*": ["public/img/svg/*"],
-      "@types/*": ["src/types/*"]
+      "*": ["src/types/*"]
     },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
