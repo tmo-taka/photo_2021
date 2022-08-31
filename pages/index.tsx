@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Slider from "react-slick";
 import { Header } from '@component/module/Header'
-import Menu from '@component/module/menu_sp'
+import { SpMenu } from '@component/module/SpMenu'
 import { Footer } from '@component/module/Footer'
 import styles from '@style/module/top.module.scss'
 import Logo from "@component/atoms/logo"
@@ -156,7 +156,7 @@ const Home: FC<Props> = (props: Props) => {
               <dd>名城大学を卒業後、新卒として、株式会社ウェブクルーに入社</dd>
             </dl>
           </SectionWrap>
-          <Menu displayFlag={displayMenu(scrollY)} />
+          <SpMenu displayFlag={displayMenu(scrollY)} />
           <Footer />
         </div>
     </QueryClientProvider>
