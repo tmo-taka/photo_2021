@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import Link from 'next/link';
 import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
 import HeaderList from '@component/atoms/list'
@@ -11,7 +12,9 @@ export const Header = (props:Props) => {
   return (
       <header css={_header}>
         <div css={_inHeader}>
-          <div css={_title}>takahara's portfolio</div>
+          <Link href="/" passHref>
+            <a css={_title}>takahara's portfolio</a>
+          </Link>
           <HeaderList/>
         </div>
       </header>
@@ -43,4 +46,6 @@ const _inHeader = () => css`
 const _title = () => css`
     font-size: 2.6rem;
     letter-spacing: .04em;
+    color: #000;
+    text-decoration: none;
 `

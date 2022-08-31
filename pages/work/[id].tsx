@@ -2,7 +2,7 @@ import React, {FC} from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '@style/module/work/topic.module.scss'
-import { Header} from '@component/module/Header'
+import { Header} from '@component/organisms/Header'
 import { Footer } from '@component/module/Footer'
 import { SpMenu } from '@component/module/SpMenu'
 import { motion } from "framer-motion";
