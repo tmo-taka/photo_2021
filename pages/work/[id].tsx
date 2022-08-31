@@ -2,7 +2,9 @@ import React, {FC} from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '@style/module/work/topic.module.scss'
+import { Header} from '@component/module/Header'
 import { Footer } from '@component/module/Footer'
+import { SpMenu } from '@component/module/SpMenu'
 import { motion } from "framer-motion";
 import { fetchWorks } from "../api/getData"
 import { useRouter } from 'next/router';
@@ -53,6 +55,8 @@ const Work_Topic:FC = ({ work }: InferGetServerSidePropsType<typeof getStaticPro
                     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;500&family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
                 </Head>
 
+                <Header />
+
                 <motion.div
                     initial="hidden"
                     animate="visible"
@@ -102,8 +106,9 @@ const Work_Topic:FC = ({ work }: InferGetServerSidePropsType<typeof getStaticPro
                     </Link>
                 </div>
 
-                <Footer />
+                <SpMenu />
                 </motion.div>
+                <Footer />
             </div>
         </QueryClientProvider>
     )

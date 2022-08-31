@@ -2,7 +2,9 @@ import React, {FC} from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '@style/module/work/top.module.scss'
+import { Header} from '@component/module/Header'
 import { Footer } from '@component/module/Footer'
+import { SpMenu } from '@component/module/SpMenu'
 import { motion } from "framer-motion";
 import { dehydrate, QueryClient, QueryClientProvider, useQuery} from 'react-query';
 import { fetchWorks } from "../api/getData"
@@ -31,6 +33,8 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;500&family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
         </Head>
 
+        <Header />
+
         <div className={styles.listBox}>
           <h1 className={styles.listBox__title}>Works</h1>
           <ul className={styles.listBox__content}>
@@ -55,6 +59,7 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                       </div>
                   </Link>
                 </li>
+                <SpMenu />
                 </motion.div>
               );
             })

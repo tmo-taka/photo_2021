@@ -32,19 +32,15 @@ const _header= (theme:Theme) => css`
 `
 
 const _inHeader = () => css`
-    ${pc `
-        margin: 0 auto;
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-        width: 100%;
-        font-size: 2.4rem;
-    `}
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 2.4rem;
 `
 
 const _title = () => css`
-    ${pc `
-        font-size: 2.6rem;
-        letter-spacing: .04em;
-    `}
+    font-size: 2.6rem;
+    letter-spacing: .04em;
 `
