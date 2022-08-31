@@ -4,7 +4,7 @@ import Link from 'next/link'
 import styles from '@style/module/work/topic.module.scss'
 import { Header} from '@component/organisms/Header'
 import { Footer } from '@component/module/Footer'
-import { SpMenu } from '@component/module/SpMenu'
+import { SpMenu } from '@component/organisms/SpMenu'
 import { motion } from "framer-motion";
 import { fetchWorks } from "../api/getData"
 import { useRouter } from 'next/router';
