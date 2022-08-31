@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { css } from '@emotion/react'
+import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
 import HeaderList from '@component/atoms/list'
 
@@ -9,16 +9,16 @@ type Props = {
 
 export const Header = (props:Props) => {
   return (
-      <header css={header}>
-        <div css={inHeader}>
-          <div css={title}>takahara's portfolio</div>
+      <header css={_header}>
+        <div css={_inHeader}>
+          <div css={_title}>takahara's portfolio</div>
           <HeaderList/>
         </div>
       </header>
     )
 }
 
-const header= (theme) => css`
+const _header= (theme:Theme) => css`
     ${sp`
         display: none;
     `}
@@ -31,7 +31,7 @@ const header= (theme) => css`
     `}
 `
 
-const inHeader = () => css`
+const _inHeader = () => css`
     ${pc `
         margin: 0 auto;
         display: flex;
@@ -42,7 +42,7 @@ const inHeader = () => css`
     `}
 `
 
-const title = () => css`
+const _title = () => css`
     ${pc `
         font-size: 2.6rem;
         letter-spacing: .04em;
