@@ -67,6 +67,7 @@
 
     .slide {
         margin-bottom: 4vw;
+        min-height: 50vw;
         &__link {
             display: block;
             position: relative;
@@ -205,6 +206,7 @@
     .skillBlock {
         &In {
             &__box {
+                margin: 0 auto;
                 padding: 64px 0;
                 display: flex;
                 justify-content: space-around;
@@ -252,6 +254,7 @@
     .slide {
         margin-bottom: 16px;
         padding: 0 16px;
+        min-height: 350px;
         &__link {
             border: 1px solid #CCC;
             border-radius: 16px;

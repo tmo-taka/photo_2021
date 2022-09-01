@@ -2,7 +2,8 @@ import React from 'react'
 import {FC} from 'react/cjs/react.production.min'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Header } from '@component/module/Header'
+import { Header } from '@component/organisms/Header'
+import { Footer } from '@component/module/Footer'
 import styles from '@style/module/error.module.scss'
 
 const Home: FC = () => {
@@ -26,6 +27,7 @@ const Home: FC = () => {
           </Link>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }
