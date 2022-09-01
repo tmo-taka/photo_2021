@@ -1,11 +1,11 @@
-import { ReactNode,useState } from 'react'
-import MenuList from '@component/atoms/list'
+import { FC,ReactNode,useState } from 'react'
+import {Nav} from '@component/module/Nav'
 import {sp, pc} from '@style/common/mq'
 import { css, SerializedStyles, useTheme,Theme } from '@emotion/react'
 
 type Props = {
     children?: ReactNode,
-    displayFlag: boolean
+    displayFlag?: boolean
 }
 
 type Border = {
@@ -13,7 +13,7 @@ type Border = {
     active: "isTop" | "isCen" | "isBot",
 }
 
-export const SpMenu = (props:Props) => {
+export const SpMenu: FC<Props> = ({children, displayFlag = true}) => {
 
     const [menuFlag,setMenuFlag] = useState<boolean>(false)
 
@@ -27,7 +27,7 @@ export const SpMenu = (props:Props) => {
 
     return (
         <div>
-            <div css={_menuPos(props.displayFlag)} onClick={() =>menuControl()}>
+            <div css={_menuPos(displayFlag)} onClick={() =>menuControl()}>
                 <div css={_menuIco}>
                     <div css={_icoWrap}>
                         {
@@ -38,7 +38,7 @@ export const SpMenu = (props:Props) => {
                     </div>
                 </div>
                 <nav css={_navWrap(menuFlag)}>
-                    <MenuList menuFlag={menuFlag}/>
+                    <Nav menuFlag={menuFlag} />
                 </nav>
             </div>
             <div css={_circle(menuFlag)}></div>

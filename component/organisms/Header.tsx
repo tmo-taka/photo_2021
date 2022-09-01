@@ -1,7 +1,8 @@
 import { ReactNode } from 'react'
+import Link from 'next/link';
 import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
-import HeaderList from '@component/atoms/list'
+import { Nav } from '@component/module/Nav'
 
 type Props = {
   children?: ReactNode,
@@ -11,8 +12,10 @@ export const Header = (props:Props) => {
   return (
       <header css={_header}>
         <div css={_inHeader}>
-          <div css={_title}>takahara's portfolio</div>
-          <HeaderList/>
+          <Link href="/" passHref>
+            <a css={_title}>takahara's portfolio</a>
+          </Link>
+          <Nav/>
         </div>
       </header>
     )
@@ -32,19 +35,17 @@ const _header= (theme:Theme) => css`
 `
 
 const _inHeader = () => css`
-    ${pc `
-        margin: 0 auto;
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-        width: 100%;
-        font-size: 2.4rem;
-    `}
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 2.4rem;
 `
 
 const _title = () => css`
-    ${pc `
-        font-size: 2.6rem;
-        letter-spacing: .04em;
-    `}
+    font-size: 2.6rem;
+    letter-spacing: .04em;
+    color: #000;
+    text-decoration: none;
 `

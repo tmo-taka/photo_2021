@@ -1,5 +1,5 @@
 import {FC} from 'react'
-import { Header } from '@component/module/Header'
+import { Header } from '@component/organisms/Header'
 import styles from '@style/module/top.module.scss'
 
 const Topic_1: FC = () => {
