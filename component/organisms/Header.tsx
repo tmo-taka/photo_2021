@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import Link from 'next/link';
 import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
-import HeaderList from '@component/atoms/list'
+import { Nav } from '@component/module/Nav'
 
 type Props = {
   children?: ReactNode,
@@ -15,7 +15,7 @@ export const Header = (props:Props) => {
           <Link href="/" passHref>
             <a css={_title}>takahara's portfolio</a>
           </Link>
-          <HeaderList/>
+          <Nav/>
         </div>
       </header>
     )

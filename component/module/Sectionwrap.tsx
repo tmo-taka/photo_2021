@@ -33,7 +33,7 @@ export const SectionWrap = (props:Props) => {
         <AnimationOnScroll animateIn="fadeIn" animateOnce={true}>
             <section id={props.section.title} css={judgeTitle(title) ? _sectionFullWidth: _section}>
                 <div css={_inSection}>
-                    <AnimationOnScroll animateIn='bounce'>
+                    <AnimationOnScroll animateIn='bounce' initiallyVisible={true}>
                         <h2 css={_sectionTitle}>
                             {
                                 camelTitle.map((s:string,index:number):ReactNode => {
