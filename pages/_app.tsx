@@ -11,7 +11,8 @@ const App = ({ Component, pageProps }) => {
 
   const theme:Theme = {
     colors: {
-      primary: "#3589BB"
+      primary: "#3589BB",
+      accent: "#FFB83F"
     },
     width: {
       min: "1280px",

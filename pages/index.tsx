@@ -6,9 +6,9 @@ import Slider from "react-slick";
 import { Header } from '@component/organisms/Header'
 import { SpMenu } from '@component/organisms/SpMenu'
 import { Footer } from '@component/module/Footer'
-import styles from '@style/module/top.module.scss'
-import Logo from "@component/atoms/logo"
+import { Logo } from "@component/atoms/Logo"
 import { SectionWrap } from '@component/module/Sectionwrap';
+import styles from '@style/module/top.module.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { dehydrate, QueryClient, QueryClientProvider, useQuery} from 'react-query';
