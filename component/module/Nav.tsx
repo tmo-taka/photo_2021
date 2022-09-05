@@ -1,5 +1,5 @@
 import { FC,ReactNode } from 'react'
-import { List } from '@component/atoms/list'
+import { List } from '@component/atoms/List'
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
@@ -23,7 +23,7 @@ export const Nav:FC<Props> = ({menuFlag=false, children}) => {
     ] as const
 
     return (
-        <ul css={nav}>
+        <ul css={_nav}>
             {
                 lists.map((list,index:0|1|2) => {return (<List key={list.to} topFlag={topFlag} menuFlag={menuFlag} linkTo={list.to} index={index}>{list.name}</List>)})
             }
@@ -31,7 +31,7 @@ export const Nav:FC<Props> = ({menuFlag=false, children}) => {
     )
 }
 
-const nav = () => css`
+const _nav = () => css`
     ${sp`
         width: 18vw;
     `}
