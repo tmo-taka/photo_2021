@@ -9,6 +9,7 @@ declare module '@emotion/react' {
 
 interface Colors {
     primary: string,
+    accent: string
 }
 
 interface Width {
