@@ -1,6 +1,7 @@
 import React from 'react'
 import {AnimatePresence} from "framer-motion";
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
+import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import '@style/common/reset.scss';
 import '@style/common/common.scss';
 import '@style/slick.scss';
@@ -29,7 +30,7 @@ const App = ({ Component, pageProps }) => {
           </AnimatePresence>
         </ThemeProvider>
       </Hydrate>
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
 }
