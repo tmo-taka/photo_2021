@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import {FC} from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '@style/module/work/topic.module.scss'
@@ -8,7 +8,7 @@ import { SpMenu } from '@component/organisms/SpMenu'
 import { motion } from "framer-motion";
 import { fetchWorks } from "../api/getData"
 import { useRouter } from 'next/router';
-import { dehydrate, QueryClient, QueryClientProvider, useQuery} from 'react-query';
+import { dehydrate, QueryClient, QueryClientProvider, useQuery} from '@tanstack/react-query';
 import { GetStaticPaths, GetStaticProps, InferGetServerSidePropsType, GetStaticPropsContext } from 'next';
 import * as apiField from 'apiField';
 
@@ -20,12 +20,9 @@ const Work_Topic:FC = ({ work }: InferGetServerSidePropsType<typeof getStaticPro
         data: T
     }
 
-    const works:useQueryWrapper<apiField.WorkType[]> = useQuery(['works'],fetchWorks,{staleTime: Infinity});
+    const works:useQueryWrapper<apiField.WorkType[]> = useQuery(['works'],fetchWorks,{cacheTime: Infinity});
     const router = useRouter();
-    const targetWork:apiField.WorkType = works.data.find((work) => {
-        const path = `/work/${work.slug}/`
-        return path === router.asPath
-    })
+    const targetWork:apiField.WorkType = works.data.find((work) => work.slug === router.query.id);
 
     const transition = {
         duration: .4,
@@ -47,8 +44,8 @@ const Work_Topic:FC = ({ work }: InferGetServerSidePropsType<typeof getStaticPro
         <QueryClientProvider client={queryClient}>
             <div id="wrapper">
                 <Head>
-                    <title>【takaharaポートフォリオ】{targetWork.site_name} </title>
-                    <meta property="og:title" content={`【takaharaポートフォリオ】` + targetWork.site_name} key="title" />
+                    <title key={targetWork.site_name}>【takaharaポートフォリオ】{targetWork.site_name} </title>
+                    <meta key={targetWork.site_name} property="og:title" content={`【takaharaポートフォリオ】` + targetWork.site_name}/>
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
                     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
@@ -130,10 +127,8 @@ export const getStaticPaths:GetStaticPaths = async () => {
 }
 
 export const getStaticProps:GetStaticProps = async () => {
-    await queryClient.prefetchQuery('works', fetchWorks);
-
+    await queryClient.prefetchQuery(['works'], fetchWorks);
     const queryData= dehydrate(queryClient);
-    console.log(queryData)
 
     return {
         props: {

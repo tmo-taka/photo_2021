@@ -11,7 +11,7 @@ import { SectionWrap } from '@component/module/Sectionwrap';
 import styles from '@style/module/top.module.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { dehydrate, QueryClient, QueryClientProvider, useQuery} from 'react-query';
+import { dehydrate, QueryClient, QueryClientProvider, useQuery} from '@tanstack/react-query';
 import { fetchTools,fetchProgramings,fetchWorks } from "./api/getData";
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import * as apiField from 'apiField';
@@ -46,9 +46,9 @@ const Home: FC<Props> = (props: Props) => {
     data: T
   }
 
-  const works:useQueryWrapper<apiField.WorkType[]>  = useQuery(['works'],fetchWorks,{staleTime: Infinity});
-  const tools:useQueryWrapper<apiField.ToolType[]> = useQuery(['tools'],fetchTools,{staleTime: Infinity});
-  const programings:useQueryWrapper<apiField.ProgramingType[]>  = useQuery(['programings'],fetchProgramings,{staleTime: Infinity});
+  const works:useQueryWrapper<apiField.WorkType[]>  = useQuery(['works'],fetchWorks,{cacheTime: Infinity});
+  const tools:useQueryWrapper<apiField.ToolType[]> = useQuery(['tools'],fetchTools,{cacheTime: Infinity});
+  const programings:useQueryWrapper<apiField.ProgramingType[]>  = useQuery(['programings'],fetchProgramings,{cacheTime: Infinity});
 
   // NOTE: 上位5個のみ取得
   const sortWorks = works.data.slice(-5);
@@ -167,9 +167,9 @@ export default Home;
 
 export const getStaticProps:GetStaticProps = async () => {
 
-  await queryClient.prefetchQuery('works', fetchWorks)
-  await queryClient.prefetchQuery('tools', fetchTools)
-  await queryClient.prefetchQuery('programings', fetchProgramings)
+  await queryClient.prefetchQuery(['works'], fetchWorks)
+  await queryClient.prefetchQuery(['tools'], fetchTools)
+  await queryClient.prefetchQuery(['programings'], fetchProgramings)
 
   const queryData= dehydrate(queryClient);
 
