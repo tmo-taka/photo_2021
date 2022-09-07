@@ -6,7 +6,7 @@ import { Header} from '@component/organisms/Header'
 import { Footer } from '@component/module/Footer'
 import { SpMenu } from '@component/organisms/SpMenu'
 import { motion } from "framer-motion";
-import { dehydrate, QueryClient, QueryClientProvider, useQuery} from 'react-query';
+import { dehydrate, QueryClient, QueryClientProvider, useQuery} from '@tanstack/react-query';
 import { fetchWorks } from "../api/getData"
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import * as apiField from 'apiField';
@@ -19,7 +19,7 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
     data: T
   }
 
-  const works:useQueryWrapper<apiField.WorkType[]> = useQuery(['works'],fetchWorks,{staleTime: Infinity});
+  const works:useQueryWrapper<apiField.WorkType[]> = useQuery(['works'],fetchWorks,{cacheTime: Infinity});
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -81,8 +81,7 @@ export default Work;
 
 
 export const getStaticProps:GetStaticProps = async () => {
-  await queryClient.prefetchQuery('works', fetchWorks);
-
+  await queryClient.prefetchQuery(['works'], fetchWorks);
   const queryData= dehydrate(queryClient);
 
   return {
