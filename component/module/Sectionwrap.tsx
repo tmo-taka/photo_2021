@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
+import "animate.css/animate.min.css";
 
 const unionLength = (sectionTitle:string):readonly number[] => {
     const arr:string[] = sectionTitle.split("");

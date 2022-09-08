@@ -1,17 +1,13 @@
-import React from 'react'
 import {FC, useEffect, useState} from "react"
-import Head from 'next/head'
 import Link from 'next/link'
 import Slider from "react-slick";
-import { Header } from '@component/organisms/Header'
-import { SpMenu } from '@component/organisms/SpMenu'
-import { Footer } from '@component/module/Footer'
+import { BaseLayout } from '@layout/BaseLayout';
 import { Logo } from "@component/atoms/Logo"
 import { SectionWrap } from '@component/module/Sectionwrap';
 import styles from '@style/module/top.module.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { dehydrate, QueryClient, QueryClientProvider, useQuery} from '@tanstack/react-query';
+import { dehydrate, QueryClient, useQuery} from '@tanstack/react-query';
 import { fetchTools,fetchProgramings,fetchWorks } from "./api/getData";
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import * as apiField from 'apiField';
@@ -69,19 +65,7 @@ const Home: FC<Props> = (props: Props) => {
   },[])
 
   return (
-    <QueryClientProvider client={queryClient}>
-        <div id="wrapper" className={styles.wrapper}>
-          <Head>
-            <title>【takaharaポートフォリオ】TOP</title>
-            <meta property="og:title" content="【takaharaポートフォリオ】TOP" key="title" />
-            <meta name="description" content="自身のポートフォリオ サイトを公開しています。" />
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
-            <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;500&family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
-          </Head>
-          <Header />
+    <BaseLayout title={"top"} displayFlag={displayMenu(scrollY)}>
           <div className={styles.mainV}>
 
             <h1 className={`${styles.mainV__title} ${moveJudge ? styles.move : ''}`} >
@@ -156,10 +140,7 @@ const Home: FC<Props> = (props: Props) => {
               <dd>名城大学を卒業後、新卒として、株式会社ウェブクルーに入社</dd>
             </dl>
           </SectionWrap>
-          <SpMenu displayFlag={displayMenu(scrollY)} />
-          <Footer />
-        </div>
-    </QueryClientProvider>
+    </BaseLayout>
   )
 }
 

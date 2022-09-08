@@ -1,15 +1,11 @@
 import {FC} from 'react'
-import Head from 'next/head'
 import Link from 'next/link'
 import styles from '@style/module/work/topic.module.scss'
-import { Header} from '@component/organisms/Header'
-import { Footer } from '@component/module/Footer'
-import { SpMenu } from '@component/organisms/SpMenu'
-import { motion } from "framer-motion";
+import { MotionLayout } from '@layout/MotionLayout'
 import { fetchWorks } from "../api/getData"
 import { useRouter } from 'next/router';
-import { dehydrate, QueryClient, QueryClientProvider, useQuery} from '@tanstack/react-query';
-import { GetStaticPaths, GetStaticProps, InferGetServerSidePropsType, GetStaticPropsContext } from 'next';
+import { dehydrate, QueryClient, useQuery} from '@tanstack/react-query';
+import { GetStaticPaths, GetStaticProps, InferGetServerSidePropsType } from 'next';
 import * as apiField from 'apiField';
 
 const queryClient = new QueryClient()
@@ -17,97 +13,61 @@ const queryClient = new QueryClient()
 const Work_Topic:FC = ({ work }: InferGetServerSidePropsType<typeof getStaticProps>) => {
 
     type useQueryWrapper<T> = {
-        data: T
+        data: T,
+        isLoading: boolean,
+        isError: boolean
     }
 
-    const works:useQueryWrapper<apiField.WorkType[]> = useQuery(['works'],fetchWorks,{cacheTime: Infinity});
+    const {data,isLoading:isError}:useQueryWrapper<apiField.WorkType[]> = useQuery(['works'],fetchWorks,{cacheTime: Infinity});
     const router = useRouter();
-    const targetWork:apiField.WorkType = works.data.find((work) => work.slug === router.query.id);
-
-    const transition = {
-        duration: .4,
-        ease: "easeOut",
-    };
-
-    const variants= {
-        hidden: {
-            opacity: 0,
-            translateY: 20,
-        },
-        visible: {
-            opacity: 1,
-            translateY: 0,
-        },
-    };
+    const targetWork:apiField.WorkType = data.find((work) => work.slug === router.query.id);
 
     return (
-        <QueryClientProvider client={queryClient}>
-            <div id="wrapper">
-                <Head>
-                    <title key={targetWork.site_name}>【takaharaポートフォリオ】{targetWork.site_name} </title>
-                    <meta key={targetWork.site_name} property="og:title" content={`【takaharaポートフォリオ】` + targetWork.site_name}/>
-                    <link rel="preconnect" href="https://fonts.googleapis.com" />
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-                    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
-                    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;500&family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
-                </Head>
-
-                <Header />
-
-                <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    transition={transition}
-                    variants={variants}
-                >
-                <h1 className={styles.title}>{targetWork.site_name}</h1>
-                <div className={styles.imgBox}>
-                    <div className={styles.imgBoxIn}>
-                        <img src={targetWork.lead_img.url} />
-                    </div>
+        <MotionLayout title={targetWork.site_name}>
+            <h1 className={styles.title}>{targetWork.site_name}</h1>
+            <div className={styles.imgBox}>
+                <div className={styles.imgBoxIn}>
+                    <img src={targetWork.lead_img.url} />
                 </div>
-
-                {((targetWork) => {
-                    if(targetWork.create_time){
-                        {
-                            return(
-                                <div className={styles.detailBox}>
-                                    <div className={styles.detailBoxIn}>
-                                        <dl className={styles.detailBoxIn__lists}>
-                                            <dt>作成時期</dt><dd>{targetWork.create_time}</dd>
-                                            <dt>スキル</dt><dd>{targetWork.create_skill}</dd>
-                                            <dt>作成期間</dt><dd>{targetWork.create_span}</dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                            )
-                        }
-                    }
-                })(targetWork)}
-
-                {((targetWork) => {
-                    if(targetWork.service_txt){
-                        {
-                            return(
-                                <div className={styles.contentBox}>
-                                    <p className={styles.contentBox__txt}>{targetWork.service_txt}</p>
-                                </div>
-                            )
-                        }
-                    }
-                })(targetWork)}
-
-                <div className={styles.backBtn}>
-                    <Link href="/work/">
-                        <a>一覧へ戻る</a>
-                    </Link>
-                </div>
-
-                <SpMenu />
-                </motion.div>
-                <Footer />
             </div>
-        </QueryClientProvider>
+
+            {((targetWork) => {
+                if(targetWork.create_time){
+                    {
+                        return(
+                            <div className={styles.detailBox}>
+                                <div className={styles.detailBoxIn}>
+                                    <dl className={styles.detailBoxIn__lists}>
+                                        <dt>作成時期</dt><dd>{targetWork.create_time}</dd>
+                                        <dt>スキル</dt><dd>{targetWork.create_skill}</dd>
+                                        <dt>作成期間</dt><dd>{targetWork.create_span}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        )
+                    }
+                }
+            })(targetWork)}
+
+            {((targetWork) => {
+                if(targetWork.service_txt){
+                    {
+                        return(
+                            <div className={styles.contentBox}>
+                                <p className={styles.contentBox__txt}>{targetWork.service_txt}</p>
+                            </div>
+                        )
+                    }
+                }
+            })(targetWork)}
+
+            <div className={styles.backBtn}>
+                <Link href="/work/">
+                    <a>一覧へ戻る</a>
+                </Link>
+            </div>
+
+        </MotionLayout>
     )
 }
 
@@ -115,9 +75,6 @@ export default Work_Topic;
 
 export const getStaticPaths:GetStaticPaths = async () => {
     const works = await fetchWorks();
-
-    // const paths = ['/work/1','/work/2','/work/3'];
-
     const paths = works.map(workList => `/work/${workList.slug}/`)
 
     return {
