@@ -7,6 +7,9 @@ node v17系
 そのため、imagemin-svgoを9系にダウングレード
 https://github.com/cyrilwanner/next-optimized-images/issues/270
 
+titleの動的出力をした際に文字と変数を組み合わせる場合はnodeを一つにしなければならない
+https://b.0218.jp/202207152029.html
+
 # 技術選定
 
 ## CSSLibrary
