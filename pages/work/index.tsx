@@ -1,10 +1,7 @@
-import React, {FC} from 'react'
-import Head from 'next/head'
+import {FC} from 'react'
 import Link from 'next/link'
 import styles from '@style/module/work/top.module.scss'
-import { Header} from '@component/organisms/Header'
-import { Footer } from '@component/module/Footer'
-import { SpMenu } from '@component/organisms/SpMenu'
+import { BaseLayout } from '@layout/BaseLayout';
 import { motion } from "framer-motion";
 import { dehydrate, QueryClient, QueryClientProvider, useQuery} from '@tanstack/react-query';
 import { fetchWorks } from "../api/getData"
@@ -22,19 +19,7 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const works:useQueryWrapper<apiField.WorkType[]> = useQuery(['works'],fetchWorks,{cacheTime: Infinity});
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <div id="wrapper">
-        <Head>
-          <title>【takaharaポートフォリオ】過去の実績一覧</title>
-          <meta property="og:title" content="【takaharaポートフォリオ】過去の実績一覧" key="title" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;500&family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
-        </Head>
-
-        <Header />
-
+    <BaseLayout title="過去の実績一覧">
         <div className={styles.listBox}>
           <h1 className={styles.listBox__title}>Works</h1>
           <ul className={styles.listBox__content}>
@@ -59,7 +44,6 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                       </div>
                   </Link>
                 </li>
-                <SpMenu />
                 </motion.div>
               );
             })
@@ -71,9 +55,7 @@ const Work: FC = ({ work }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 <a>TOPへ戻る</a>
             </Link>
         </div>
-        <Footer />
-      </div>
-    </QueryClientProvider>
+    </BaseLayout>
   )
 }
 
