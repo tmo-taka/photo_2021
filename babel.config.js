@@ -17,6 +17,9 @@ module.exports = {
         //         "ssr":true,
         //     }
         // ],
-        ["@emotion/babel-plugin"]
+        [
+            "@emotion/babel-plugin",
+            { "ssr": true }
+        ]
     ],
 }
