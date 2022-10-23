@@ -46,3 +46,8 @@ emotionを使用する場合は`/** @jsxImportSource @emotion/react */`をコン
 ## emotion/styledとemotion/react
 `emotion/react`だとSafari側でサーバー側とクラインアント側によるクラス名の違いでhydrateエラーが出ているそのため`emotion/styled`を使った方が良いかもしれない
 
+## custom Errorを作らなかったわけ
+[https://zenn.dev/nus3/scraps/3069a458562eca](https://zenn.dev/nus3/scraps/3069a458562eca)
+下記も重要
+> page以下のコンポーネントでイベントハンドラ以外のerrorがthorwされたらcustom error pageが表示される
+

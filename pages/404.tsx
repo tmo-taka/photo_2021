@@ -1,35 +1,66 @@
-import React from 'react'
-import {FC} from 'react/cjs/react.production.min'
+import { FC } from 'react'
+import { BaseLayout } from '@layout/BaseLayout';
 import Head from 'next/head'
 import Link from 'next/link'
-import { Header } from '@component/organisms/Header'
-import { Footer } from '@component/module/Footer'
-import styles from '@style/module/error.module.scss'
+import { css } from '@emotion/react'
+import { mixinBtn } from '@style/common/mixin'
+import {sp, pc} from '@style/common/mq'
 
 const Home: FC = () => {
   return (
-    <div id="wrapper">
+    <BaseLayout title={"エラーページ"}>
       <Head>
-        <title>【takaharaポートフォリオ】エラーページ</title>
-        <meta name="description" content="" />
         <meta name="robots" content="noindex nofollow" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;500&family=Montserrat:wght@100;200;400;500&display=swap" rel="stylesheet" />
       </Head>
-      <Header />
-      <div className={styles.error}>
-        <h1 className={styles.error_title}>ページが見つかりませんでした。</h1>
-        <div className={styles.error_btn}>
+      <div css={_error}>
+        <h1 css={_title}>ページが見つかりませんでした。</h1>
+        <div css={_btn}>
           <Link href="/">
-            <a>TOPへ戻る</a>
+            <a css={mixinBtn}>TOPへ戻る</a>
           </Link>
         </div>
       </div>
-      <Footer/>
-    </div>
+    </BaseLayout>
   )
 }
+
+const _error = () => css`
+  ${sp`
+      margin: 0 auto;
+      padding: 30vw 0 ;
+      width: 100%;
+  `}
+  ${pc`
+      margin: 0 auto;
+      padding: 64px 0;
+      width: 800px;
+  `}
+`
+
+const _title = () => css`
+  ${sp`
+      text-align: center;
+      color: #000;
+      font-size: 1.8rem;
+  `}
+  ${pc`
+      text-align: center;
+      color: #000;
+      font-size: 2.0rem;
+  `}
+`
+
+const _btn = () => css`
+  ${sp`
+      padding: 24vw 0 8vw;
+      display: flex;
+      justify-content: center;
+  `}
+  ${pc`
+      padding: 104px 0 24px;
+      display: flex;
+      justify-content: center;
+  `}
+`
 
 export default Home;
