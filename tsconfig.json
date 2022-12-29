@@ -12,7 +12,7 @@
       "@style/*": ["styles/*"],
       "@component/*": ["component/*"],
       "@layout/*": ["layouts/*"],
-      "@svg/*": ["public/img/svg/*"],
+      "@img/*": ["public/img/*"],
       "@types/*": ["src/types/*"]
     },
     "allowJs": true,
@@ -34,11 +34,13 @@
   },
   "include": [
     "next-env.d.ts",
+    "src/types/index.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "next-env.d.ts"
   ],
   "typeRoots": [
     "node_modules/@types",

@@ -51,3 +51,18 @@ emotionを使用する場合は`/** @jsxImportSource @emotion/react */`をコン
 下記も重要
 > page以下のコンポーネントでイベントハンドラ以外のerrorがthorwされたらcustom error pageが表示される
 
+## svgのコンポーネント管理できなかった。
+その際にsvgのtypeファイルを作成してNext.js内で設定を上書いたがうまくいかなかった。[参考URL](https://zenn.dev/catnose99/articles/49c12f84182bdf)
+- [platypusrex/next-plugin-svgr](https://github.com/platypusrex/next-plugin-svgr)
+ - 使ってみたものの下記エラー発生しsvgを変換出来なかった。
+ ```
+ Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) in react native project
+ ```
+
+- [@svgr/webpack](https://react-svgr.com/docs/next/)
+ - 使ってみたものの下記エラー発生しsvgを変換出来なかった。
+   [同様なエラー](https://github.com/gregberge/svgr/issues/361)
+    ```
+    Invalid tag: data:image/svg+xml;base64,  hoge
+    ```
+

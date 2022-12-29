@@ -17,6 +17,7 @@ module.exports = {
         //         "ssr":true,
         //     }
         // ],
+        // "inline-react-svg",
         [
             "@emotion/babel-plugin",
             { "ssr": true }
