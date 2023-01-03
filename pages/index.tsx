@@ -105,7 +105,7 @@ const Home: FC<Props> = (props: Props) => {
         </div>
       </SectionWrap>
 
-      <SectionWrap section={{title:'works',emIndex:2}}>
+      <SectionWrap section={{title:'works',emIndex:9}}>
           <div className={styles.worksBlockIn__box}>
               <Slider {...slideSettings}>
                 {

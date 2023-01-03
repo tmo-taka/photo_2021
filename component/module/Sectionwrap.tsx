@@ -1,31 +1,35 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, FC } from 'react'
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
 import "animate.css/animate.min.css";
 
-const unionLength = (sectionTitle:string):readonly number[] => {
-    const arr:string[] = sectionTitle.split("");
-    const unionArr:number[] = []
-    arr.map((i,index) => unionArr.push(index + 1))
-    const type = [...unionArr] as const
-
-    return type
-}
-
-type Props = {
+type Props<T> = {
     children?: ReactNode,
     section: {
         title: string,
-        emIndex: number,
+        emIndex: T
     }
 }
 
-export const SectionWrap = (props:Props) => {
+export const SectionWrap = (props:Props<number>):FC => {
+    return(rendering(props))
+}
+
+// NOTE: propsのtitleからemIndexの有効範囲をunion型で出力する関数
+const decidePropsType = (props:Props<number>):readonly number[] => {
+    const { title } = props.section
+    // NOTE: propsを分割代入して、titleのみを扱う
+    const wordArr:string[] = title.split("");
+    const wordCountArr:number[] = wordArr.map((i,index) => (index + 1))
+    const readOnlyWordCountArr = [...wordCountArr] as const
+    return readOnlyWordCountArr
+}
+
+// HACK: レンタリングする関数　propsのジェネリックにdecidePropsTypeのreturn値を使用
+const rendering = (props: Props<number>):FC => {
     const { title } = props.section
     const camelTitle:string[] = (title.charAt(0).toUpperCase() + title.slice(1)).split("");
-
-
     const judgeTitle = (title:string):boolean => {
         return title === 'profile' ? true: false
     }
