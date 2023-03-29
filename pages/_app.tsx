@@ -8,7 +8,6 @@ import { ThemeProvider ,Theme} from '@emotion/react'
 
 const App = ({ Component, pageProps }) => {
   const queryClient = new QueryClient();
-  console.log(queryClient);
 
   const theme:Theme = {
     colors: {

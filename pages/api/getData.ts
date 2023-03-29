@@ -1,3 +1,5 @@
+// APIからのフェッチ処理の共通化
+
 import * as apiField from 'apiField';
 import { client } from "./client";
 
