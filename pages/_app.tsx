@@ -1,6 +1,5 @@
-import React from 'react'
 import {AnimatePresence} from "framer-motion";
-import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Hydrate, QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import '@style/common/reset.scss';
 import '@style/common/common.scss';
@@ -8,7 +7,8 @@ import '@style/slick.scss';
 import { ThemeProvider ,Theme} from '@emotion/react'
 
 const App = ({ Component, pageProps }) => {
-  const [queryClient] = React.useState(() => new QueryClient())
+  const queryClient = new QueryClient();
+  console.log(queryClient);
 
   const theme:Theme = {
     colors: {
