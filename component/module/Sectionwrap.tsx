@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, FC } from 'react'
+import { ReactNode } from 'react'
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
@@ -12,22 +12,23 @@ type Props<T> = {
     }
 }
 
-export const SectionWrap = (props:Props<number>):FC => {
-    return(rendering(props))
-}
+// export const SectionWrap = (props:Props<number>):FC => {
+//     return(rendering(props))
+// }
 
 // NOTE: propsのtitleからemIndexの有効範囲をunion型で出力する関数
-const decidePropsType = (props:Props<number>):readonly number[] => {
-    const { title } = props.section
-    // NOTE: propsを分割代入して、titleのみを扱う
-    const wordArr:string[] = title.split("");
-    const wordCountArr:number[] = wordArr.map((i,index) => (index + 1))
-    const readOnlyWordCountArr = [...wordCountArr] as const
-    return readOnlyWordCountArr
-}
+// const decidePropsType = (props:Props<number>):readonly number[] => {
+//     const { title } = props.section
+//     // NOTE: propsを分割代入して、titleのみを扱う
+//     const wordArr:string[] = title.split("");
+//     const wordCountArr:number[] = wordArr.map((i,index) => (index + 1))
+//     const readOnlyWordCountArr = [...wordCountArr] as const
+//     return readOnlyWordCountArr
+// }
 
 // HACK: レンタリングする関数　propsのジェネリックにdecidePropsTypeのreturn値を使用
-const rendering = (props: Props<number>):FC => {
+// 表示しない場合のことも考慮して、nullをreturn typeに指定
+export const SectionWrap = (props: Props<number>):JSX.Element | null => {
     const { title } = props.section
     const camelTitle:string[] = (title.charAt(0).toUpperCase() + title.slice(1)).split("");
     const judgeTitle = (title:string):boolean => {
