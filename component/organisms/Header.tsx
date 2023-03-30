@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, memo } from 'react'
 import Link from 'next/link';
 import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
@@ -8,18 +8,20 @@ type Props = {
   children?: ReactNode,
 }
 
-export const Header = (props:Props) => {
+const ElementHeader = (props:Props) => {
   return (
-      <header css={_header}>
-        <div css={_inHeader}>
-          <Link href="/" passHref>
-            <a css={_title}>takahara's portfolio</a>
-          </Link>
-          <Nav/>
-        </div>
-      </header>
-    )
+    <header css={_header}>
+      <div css={_inHeader}>
+        <Link href="/" passHref>
+          <a css={_title}>takahara's portfolio</a>
+        </Link>
+        <Nav/>
+      </div>
+    </header>
+  )
 }
+
+export const Header = memo(ElementHeader);
 
 const _header= (theme:Theme) => css`
     ${sp`

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, memo } from 'react'
 import { css, Theme } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
 import { Git } from '@img/ico/Git'
@@ -9,7 +9,7 @@ type Props = {
     children?: ReactNode,
 }
 
-export const Footer = (props:Props) => {
+export const ElementFooter = (props:Props) => {
     return (
         <footer css={_footer}>
             <div css={_inFooter}>
@@ -29,6 +29,8 @@ export const Footer = (props:Props) => {
         </footer>
     )
 }
+
+export const Footer = memo(ElementFooter);
 
 const _footer = (theme:Theme) => css`
     ${sp`
