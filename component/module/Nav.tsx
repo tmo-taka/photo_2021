@@ -1,4 +1,4 @@
-import { FC,ReactNode } from 'react'
+import { FC,ReactNode,memo } from 'react'
 import { List } from '@component/atoms/List'
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react'
@@ -9,7 +9,7 @@ type Props = {
     children?: ReactNode
 }
 
-export const Nav:FC<Props> = ({menuFlag=false, children}) => {
+const Nav:FC<Props> = ({menuFlag=false, children}) => {
     let topFlag:boolean = useRouter().pathname === '/' ? true: false
 
     type List = {
@@ -30,6 +30,9 @@ export const Nav:FC<Props> = ({menuFlag=false, children}) => {
         </ul>
     )
 }
+
+// NOTE: スクロール時に再レンタリングされるためメモ化(引数を受け取るため 型を継承)
+export const MemoNav = memo(Nav) as typeof Nav;
 
 const _nav = () => css`
     ${sp`

@@ -1,5 +1,5 @@
 import { FC,ReactNode,useState } from 'react'
-import {Nav} from '@component/module/Nav'
+import { MemoNav } from '@component/module/Nav'
 import {sp, pc} from '@style/common/mq'
 import { css, SerializedStyles, useTheme,Theme } from '@emotion/react'
 
@@ -38,7 +38,7 @@ export const SpMenu: FC<Props> = ({children, displayFlag = true}) => {
                     </div>
                 </div>
                 <nav css={_navWrap(menuFlag)}>
-                    <Nav menuFlag={menuFlag} />
+                    <MemoNav menuFlag={menuFlag} />
                 </nav>
             </div>
             <div css={_circle(menuFlag)}></div>
