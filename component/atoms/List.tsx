@@ -13,19 +13,18 @@ type Props = {
   children ?: ReactNode
 }
 
-export const List = (props:Props) => {
+export const List = (props:Props):JSX.Element | null => {
   //NOTE: 動的style
-  const data:SerializedStyles[] = _list(props.index)
-  const styles:SerializedStyles[] = [_base, ...data]
+  const listPostion:SerializedStyles[] = _list(props.index)
+  const styles:SerializedStyles[] = [_base, ...listPostion]
   if(typeof _listAnimate(props.index,props.menuFlag) !== undefined){
     styles.push(_listAnimate(props.index,props.menuFlag))
   }
 
-  if(props.topFlag){
-    return <li><AnchorLink href={props.linkTo} css={styles}>{props.children}</AnchorLink></li>
-  }else {
-    return <li><Link href={`/${props.linkTo}`} passHref><a css={styles}>{props.children}</a></Link></li>
-  }
+  const topEl:JSX.Element = <li><AnchorLink href={props.linkTo} css={styles}>{props.children}</AnchorLink></li>
+  const underLayerEl:JSX.Element =<li><Link href={`/${props.linkTo}`} passHref><a css={styles}>{props.children}</a></Link></li>
+
+  return props.topFlag ? topEl : underLayerEl;
 }
 
 const _base = css`
@@ -87,11 +86,7 @@ const _list = (index:Props["index"]):SerializedStyles[] => {
 const _listAnimate = (index:Props["index"],menuFlag:Props["menuFlag"]):SerializedStyles | undefined => {
   const second:number = 0.3 -((index + 1) * 0.06);
   const delay:string = `${second}s`
-  if(menuFlag){
-    return css`animation: ${_animate()} .4s ${delay};`
-  }else {
-    return undefined
-  }
+  return menuFlag ? css`animation: ${_animate()} .4s ${delay}` : undefined;
 }
 
 const _animate = () => keyframes`
