@@ -15,8 +15,8 @@ type Props = {
 
 export const List = (props:Props):JSX.Element | null => {
   //NOTE: 動的style
-  const listPostion:SerializedStyles[] = _list(props.index)
-  const styles:SerializedStyles[] = [_base, ...listPostion]
+  const listPosition:SerializedStyles[] = _list(props.index)
+  const styles:SerializedStyles[] = [_base, ...listPosition]
   if(typeof _listAnimate(props.index,props.menuFlag) !== undefined){
     styles.push(_listAnimate(props.index,props.menuFlag))
   }
