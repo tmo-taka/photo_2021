@@ -16,16 +16,29 @@ type Props = {
 export const List = (props:Props):JSX.Element | null => {
   //NOTE: 動的style
   const listPosition:SerializedStyles[] = _list(props.index)
-  const styles:SerializedStyles[] = [_base, ...listPosition]
-  if(typeof _listAnimate(props.index,props.menuFlag) !== undefined){
-    styles.push(_listAnimate(props.index,props.menuFlag))
-  }
+  const styles:SerializedStyles[] = [_base, ...listPosition];
+  //NOTE: menuFlagがtrueの場合のみposition指定の表示をする
+  if(props.menuFlag){styles.push(_listAnimate(props.index,props.menuFlag))};
 
   const topEl:JSX.Element = <li><AnchorLink href={props.linkTo} css={styles}>{props.children}</AnchorLink></li>
   const underLayerEl:JSX.Element =<li><Link href={`/${props.linkTo}`} passHref><a css={styles}>{props.children}</a></Link></li>
 
   return props.topFlag ? topEl : underLayerEl;
 }
+
+const _listAnimate = (index:Props["index"],menuFlag:Props["menuFlag"]):SerializedStyles | undefined => {
+  // NOTE:徐々に表示させるアニメーション
+  const second:number = 0.3 -((index + 1) * 0.06);
+  const delay:string = `${second}s`
+  return menuFlag ? css`animation: ${_animate()} .4s ${delay}` : undefined;
+}
+
+const _animate = () => keyframes`
+  0%,100% {transform: scale(1);}
+	30% {transform: translateY(-25%);}
+	50% {transform: scale(1);}
+	90% {transform: translateY(0); transform: scale(1.2,0.8);}
+`
 
 const _base = css`
   ${sp`
@@ -82,16 +95,3 @@ const _list = (index:Props["index"]):SerializedStyles[] => {
 
   return styles
 }
-
-const _listAnimate = (index:Props["index"],menuFlag:Props["menuFlag"]):SerializedStyles | undefined => {
-  const second:number = 0.3 -((index + 1) * 0.06);
-  const delay:string = `${second}s`
-  return menuFlag ? css`animation: ${_animate()} .4s ${delay}` : undefined;
-}
-
-const _animate = () => keyframes`
-  0%,100% {transform: scale(1);}
-	30% {transform: translateY(-25%);}
-	50% {transform: scale(1);}
-	90% {transform: translateY(0); transform: scale(1.2,0.8);}
-`
