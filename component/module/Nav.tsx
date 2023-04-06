@@ -15,7 +15,8 @@ type List = {
 }
 
 const Nav:FC<Props> = ({menuFlag=false, children}):JSX.Element | null => {
-    let topFlag:boolean = useRouter().pathname === '/' ? true: false
+    // NOTE: TOP階層かの判別
+    const topFlag:boolean = (useRouter().pathname === '/')
 
     const lists:readonly List[] = [
         {name: "Skill", to: "#skill"},
