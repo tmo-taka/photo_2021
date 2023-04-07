@@ -1,11 +1,5 @@
 // サイト全体で使われるMenuリスト
 
-type List = {
-    name: string,
-    to: string,
-    emIndex: number
-}
-
 export const lists = [
     {name: "Skill", to: "#skill", emIndex: 1 },
     {name: "Works", to: "#works", emIndex: 2},
