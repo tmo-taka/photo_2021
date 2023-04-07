@@ -9,7 +9,7 @@ type Props = {
   topFlag: boolean,
   menuFlag: boolean,
   linkTo: string,
-  index: 0 | 1 | 2
+  index: number
   children ?: ReactNode
 }
 

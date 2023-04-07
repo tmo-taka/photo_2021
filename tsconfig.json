@@ -11,6 +11,7 @@
     "paths": {
       "@style/*": ["styles/*"],
       "@component/*": ["component/*"],
+      "@const/*": ["const/*"],
       "@layout/*": ["layouts/*"],
       "@img/*": ["public/img/*"],
       "@types/*": ["src/types/*"]

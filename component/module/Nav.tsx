@@ -1,28 +1,18 @@
 import { FC,ReactNode,memo } from 'react'
 import { List } from '@component/atoms/List'
 import { useRouter } from 'next/router';
-import { css } from '@emotion/react'
-import {sp, pc} from '@style/common/mq'
+import { css } from '@emotion/react';
+import { lists } from '@const/Menu';
+import {sp, pc} from '@style/common/mq';
 
 type Props = {
     menuFlag?: boolean,
     children?: ReactNode
 }
 
-type List = {
-    name: string,
-    to: string
-}
-
 const Nav:FC<Props> = ({menuFlag=false, children}):JSX.Element | null => {
     // NOTE: TOP階層かの判別
     const topFlag:boolean = (useRouter().pathname === '/')
-
-    const lists:readonly List[] = [
-        {name: "Skill", to: "#skill"},
-        {name: "Works", to: "#works"},
-        {name: "Profile", to: "#profile"},
-    ] as const
 
     return (
         <ul css={_nav}>
