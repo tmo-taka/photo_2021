@@ -13,14 +13,15 @@ type Props = {
 }
 
 export const SectionWrap = (props: Props):JSX.Element | null => {
-    const { title } = props
+    const { title } = props;
+    const id = title.toLowerCase() ;
     const emIndex:number = lists.find((obj) => obj.name === title).emIndex;
     const splitTitle:string[] = title.split("");
     const judgeTitle = (title):boolean => { return title === 'Profile'}
 
     return (
         <AnimationOnScroll animateIn="fadeIn" animateOnce={true}>
-            <section id={title} css={judgeTitle(title) ? _sectionFullWidth: _section}>
+            <section id={id} css={judgeTitle(title) ? _sectionFullWidth: _section}>
                 <div css={_inSection}>
                     <AnimationOnScroll animateIn='bounce' initiallyVisible={true}>
                         <h2 css={_sectionTitle}>
