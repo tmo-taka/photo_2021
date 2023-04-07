@@ -75,7 +75,7 @@ const Home: FC<Props> = (props: Props) => {
         </h1>
       </div>
 
-      <SectionWrap section={{title:'skill',emIndex:1}}>
+      <SectionWrap title={'Skill'}>
         <div className={styles.skillBlockIn__box}>
           <div className={styles.skillBlockIn__boxIn}>
             <h3 className={styles.skillBlockIn__boxIn__title}>programming</h3>
@@ -105,7 +105,7 @@ const Home: FC<Props> = (props: Props) => {
         </div>
       </SectionWrap>
 
-      <SectionWrap section={{title:'works',emIndex:2}}>
+      <SectionWrap title={'Works'}>
           <div className={styles.worksBlockIn__box}>
               <Slider {...slideSettings}>
                 {
@@ -132,7 +132,7 @@ const Home: FC<Props> = (props: Props) => {
           </div>
       </SectionWrap>
 
-      <SectionWrap section={{title:'profile',emIndex:4}}>
+      <SectionWrap title={'Profile'}>
         <dl className={styles.profileBlockIn__box}>
           <dt>Name:</dt>
           <dd>Takahara Tomoya</dd>

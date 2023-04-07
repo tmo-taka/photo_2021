@@ -1,49 +1,32 @@
 import { ReactNode } from 'react'
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { css, Theme } from '@emotion/react'
+import { lists } from '@const/Menu';
 import {sp, pc} from '@style/common/mq'
 import "animate.css/animate.min.css";
 
-type Props<T> = {
+type Title = typeof lists[number]['name'];
+
+type Props = {
     children?: ReactNode,
-    section: {
-        title: string,
-        emIndex: T
-    }
+    title: Title,
 }
 
-// export const SectionWrap = (props:Props<number>):FC => {
-//     return(rendering(props))
-// }
-
-// NOTE: propsのtitleからemIndexの有効範囲をunion型で出力する関数
-// const decidePropsType = (props:Props<number>):readonly number[] => {
-//     const { title } = props.section
-//     // NOTE: propsを分割代入して、titleのみを扱う
-//     const wordArr:string[] = title.split("");
-//     const wordCountArr:number[] = wordArr.map((i,index) => (index + 1))
-//     const readOnlyWordCountArr = [...wordCountArr] as const
-//     return readOnlyWordCountArr
-// }
-
-// HACK: レンタリングする関数　propsのジェネリックにdecidePropsTypeのreturn値を使用
-// 表示しない場合のことも考慮して、nullをreturn typeに指定
-export const SectionWrap = (props: Props<number>):JSX.Element | null => {
-    const { title } = props.section
-    const camelTitle:string[] = (title.charAt(0).toUpperCase() + title.slice(1)).split("");
-    const judgeTitle = (title:string):boolean => {
-        return title === 'profile' ? true: false
-    }
+export const SectionWrap = (props: Props):JSX.Element | null => {
+    const { title } = props
+    const emIndex:number = lists.find((obj) => obj.name === title).emIndex;
+    const splitTitle:string[] = title.split("");
+    const judgeTitle = (title):boolean => { return title === 'Profile'}
 
     return (
         <AnimationOnScroll animateIn="fadeIn" animateOnce={true}>
-            <section id={props.section.title} css={judgeTitle(title) ? _sectionFullWidth: _section}>
+            <section id={title} css={judgeTitle(title) ? _sectionFullWidth: _section}>
                 <div css={_inSection}>
                     <AnimationOnScroll animateIn='bounce' initiallyVisible={true}>
                         <h2 css={_sectionTitle}>
                             {
-                                camelTitle.map((s:string,index:number):ReactNode => {
-                                    return props.section.emIndex === (index + 1) ? <span key={index} css={_active}>{s}</span> : <span key={index}>{s}</span>
+                                splitTitle.map((s:string,index:number):ReactNode => {
+                                    return emIndex === (index + 1) ? <span key={index} css={_active}>{s}</span> : <span key={index}>{s}</span>
                                 })
                             }
                         </h2>
