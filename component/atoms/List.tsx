@@ -2,31 +2,32 @@ import { ReactNode } from 'react'
 import Link from 'next/link';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { css ,SerializedStyles, keyframes} from '@emotion/react'
+import { lists } from '@const/Menu';
 import {sp, pc} from '@style/common/mq'
-
 
 type Props = {
   topFlag: boolean,
   menuFlag: boolean,
-  linkTo: string,
-  index: number
+  name: string,
   children ?: ReactNode
 }
 
 export const List = (props:Props):JSX.Element | null => {
   //NOTE: 動的style
-  const listPosition:SerializedStyles[] = _list(props.index)
+  const targetList = lists.find((obj) => obj.name === props.name);
+  const index:number = lists.findIndex((obj) => Object.is(obj,targetList));
+  const listPosition:SerializedStyles[] = _list(index)
   const styles:SerializedStyles[] = [_base, ...listPosition];
   //NOTE: menuFlagがtrueの場合のみposition指定の表示をする
-  if(props.menuFlag){styles.push(_listAnimate(props.index,props.menuFlag))};
+  if(props.menuFlag){styles.push(_listAnimate(index,props.menuFlag))};
 
-  const topEl:JSX.Element = <li><AnchorLink href={props.linkTo} css={styles}>{props.children}</AnchorLink></li>
-  const underLayerEl:JSX.Element =<li><Link href={`/${props.linkTo}`} passHref><a css={styles}>{props.children}</a></Link></li>
+  const topEl:JSX.Element = <li><AnchorLink href={targetList.to} css={styles}>{targetList.name}</AnchorLink></li>
+  const underLayerEl:JSX.Element =<li><Link href={`/${targetList.to}`} passHref><a css={styles}>{targetList.name}</a></Link></li>
 
   return props.topFlag ? topEl : underLayerEl;
 }
 
-const _listAnimate = (index:Props["index"],menuFlag:Props["menuFlag"]):SerializedStyles | undefined => {
+const _listAnimate = (index,menuFlag:Props["menuFlag"]):SerializedStyles | undefined => {
   // NOTE:徐々に表示させるアニメーション
   const second:number = 0.3 -((index + 1) * 0.06);
   const delay:string = `${second}s`
@@ -62,7 +63,7 @@ const _base = css`
   `}
 `
 
-const _list = (index:Props["index"]):SerializedStyles[] => {
+const _list = (index):SerializedStyles[] => {
   const styles:SerializedStyles[] = [
     css`
       ${pc`

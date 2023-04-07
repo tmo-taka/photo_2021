@@ -17,8 +17,8 @@ const Nav:FC<Props> = ({menuFlag=false, children}):JSX.Element | null => {
     return (
         <ul css={_nav}>
             {
-                lists.map((list,index:number) => {
-                    return (<List key={list.to} topFlag={topFlag} menuFlag={menuFlag} linkTo={list.to} index={index}>{list.name}</List>)
+                lists.map((list) => {
+                    return (<List key={list.name} topFlag={topFlag} menuFlag={menuFlag} name={list.name} />)
                 })
             }
         </ul>
