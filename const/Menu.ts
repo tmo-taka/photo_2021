@@ -5,7 +5,7 @@ type List = {
     to: string
 }
 
-export const lists:readonly List[] = [
+export const lists = [
     {name: "Skill", to: "#skill"},
     {name: "Works", to: "#works"},
     {name: "Profile", to: "#profile"},

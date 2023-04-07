@@ -5,10 +5,13 @@ import { css ,SerializedStyles, keyframes} from '@emotion/react'
 import { lists } from '@const/Menu';
 import {sp, pc} from '@style/common/mq'
 
+// listsのnameプロパティの値からunion型を作成
+type listsName = typeof lists[number]['name'];
+
 type Props = {
   topFlag: boolean,
   menuFlag: boolean,
-  name: string,
+  name: listsName,
   children ?: ReactNode
 }
 
