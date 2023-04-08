@@ -1,21 +1,19 @@
 import { ReactNode } from 'react'
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { css, Theme } from '@emotion/react'
-import { lists } from '@const/Menu';
+import { menu, Name } from '@const/Menu';
 import {sp, pc} from '@style/common/mq'
 import "animate.css/animate.min.css";
 
-type Title = typeof lists[number]['name'];
-
 type Props = {
+    title: Name,
     children?: ReactNode,
-    title: Title,
 }
 
 export const SectionWrap = (props: Props):JSX.Element | null => {
     const { title } = props;
-    const id = title.toLowerCase() ;
-    const emIndex:number = lists.find((obj) => obj.name === title).emIndex;
+    const id = menu.getIdName(title);
+    const emIndex = menu.getIndex(title)
     const splitTitle:string[] = title.split("");
     const judgeTitle = (title):boolean => { return title === 'Profile'}
 

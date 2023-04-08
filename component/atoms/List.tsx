@@ -2,30 +2,29 @@ import { ReactNode } from 'react'
 import Link from 'next/link';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { css ,SerializedStyles, keyframes} from '@emotion/react'
-import { lists } from '@const/Menu';
+import { menu, Name } from '@const/Menu';
 import {sp, pc} from '@style/common/mq'
 
 // listsのnameプロパティの値からunion型を作成
-type listsName = typeof lists[number]['name'];
 
 type Props = {
   topFlag: boolean,
   menuFlag: boolean,
-  name: listsName,
+  name: Name,
   children ?: ReactNode
 }
 
 export const List = (props:Props):JSX.Element | null => {
   //NOTE: 動的style
-  const targetList = lists.find((obj) => obj.name === props.name);
-  const index:number = lists.findIndex((obj) => Object.is(obj,targetList));
+  const list = menu.getListObj(props.name);
+  const index = menu.getListObj(props.name);
   const listPosition:SerializedStyles[] = _list(index)
   const styles:SerializedStyles[] = [_base, ...listPosition];
   //NOTE: menuFlagがtrueの場合のみposition指定の表示をする
   if(props.menuFlag){styles.push(_listAnimate(index,props.menuFlag))};
 
-  const topEl:JSX.Element = <li><AnchorLink href={targetList.to} css={styles}>{targetList.name}</AnchorLink></li>
-  const underLayerEl:JSX.Element =<li><Link href={`/${targetList.to}`} passHref><a css={styles}>{targetList.name}</a></Link></li>
+  const topEl:JSX.Element = <li><AnchorLink href={list.to} css={styles}>{list.name}</AnchorLink></li>
+  const underLayerEl:JSX.Element =<li><Link href={`/${list.to}`} passHref><a css={styles}>{list.name}</a></Link></li>
 
   return props.topFlag ? topEl : underLayerEl;
 }

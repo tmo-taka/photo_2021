@@ -2,7 +2,7 @@ import { FC,ReactNode,memo } from 'react'
 import { List } from '@component/atoms/List'
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
-import { lists } from '@const/Menu';
+import { menu } from '@const/Menu';
 import {sp, pc} from '@style/common/mq';
 
 type Props = {
@@ -17,7 +17,7 @@ const Nav:FC<Props> = ({menuFlag=false, children}):JSX.Element | null => {
     return (
         <ul css={_nav}>
             {
-                lists.map((list) => {
+                menu.lists.map((list) => {
                     return (<List key={list.name} topFlag={topFlag} menuFlag={menuFlag} name={list.name} />)
                 })
             }
