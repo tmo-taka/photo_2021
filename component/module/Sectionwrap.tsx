@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { css, Theme } from '@emotion/react'
-import { menu, Name } from '@const/Menu';
+import { menu, Name } from '@features/menu';
 import {sp, pc} from '@style/common/mq'
 import "animate.css/animate.min.css";
 

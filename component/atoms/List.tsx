@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import Link from 'next/link';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { css ,SerializedStyles, keyframes} from '@emotion/react'
-import { menu, Name } from '@const/Menu';
+import { menu, Name } from '@features/menu';
 import {sp, pc} from '@style/common/mq'
 
 // listsのnameプロパティの値からunion型を作成

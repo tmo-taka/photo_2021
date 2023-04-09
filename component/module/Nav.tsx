@@ -2,7 +2,7 @@ import { FC,ReactNode,memo } from 'react'
 import { List } from '@component/atoms/List'
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
-import { menu } from '@const/Menu';
+import { menu } from '@features/menu';
 import {sp, pc} from '@style/common/mq';
 
 type Props = {
