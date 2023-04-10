@@ -1,8 +1,8 @@
+import { memo } from 'react'
 import { css, Theme, keyframes } from '@emotion/react'
 import {sp, pc} from '@style/common/mq'
 
-export const Logo = () => {
-
+export const ElementLogo = () => {
   return (
     <svg version="1.1" id="logo" css={_logo} xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 800 800" xmlSpace="preserve">
         <g id="logo_x5F_bottom">
@@ -32,6 +32,8 @@ export const Logo = () => {
     </svg>
   )
 }
+
+export const Logo = memo(ElementLogo);
 
 const _logo = () => css`
     ${sp`

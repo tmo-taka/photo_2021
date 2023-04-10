@@ -1,35 +1,32 @@
-import { FC,ReactNode } from 'react'
+import { FC,ReactNode,memo } from 'react'
 import { List } from '@component/atoms/List'
 import { useRouter } from 'next/router';
-import { css } from '@emotion/react'
-import {sp, pc} from '@style/common/mq'
+import { css } from '@emotion/react';
+import { menu } from '@features/menu';
+import {sp, pc} from '@style/common/mq';
 
 type Props = {
     menuFlag?: boolean,
     children?: ReactNode
 }
 
-export const Nav:FC<Props> = ({menuFlag=false, children}) => {
-    let topFlag:boolean = useRouter().pathname === '/' ? true: false
-
-    type List = {
-        name: string,
-        to: string
-    }
-    const lists:readonly List[] = [
-        {name: "Skill", to: "#skill"},
-        {name: "Works", to: "#works"},
-        {name: "Profile", to: "#profile"},
-    ] as const
+const Nav:FC<Props> = ({menuFlag=false, children}):JSX.Element | null => {
+    // NOTE: TOP階層かの判別
+    const topFlag:boolean = (useRouter().pathname === '/')
 
     return (
         <ul css={_nav}>
             {
-                lists.map((list,index:0|1|2) => {return (<List key={list.to} topFlag={topFlag} menuFlag={menuFlag} linkTo={list.to} index={index}>{list.name}</List>)})
+                menu.lists.map((list) => {
+                    return (<List key={list.name} topFlag={topFlag} menuFlag={menuFlag} name={list.name} />)
+                })
             }
         </ul>
     )
 }
+
+// NOTE: スクロール時に再レンタリングされるためメモ化(引数を受け取るため 型を継承)
+export const MemoNav = memo(Nav) as typeof Nav;
 
 const _nav = () => css`
     ${sp`

@@ -2,31 +2,46 @@ import { ReactNode } from 'react'
 import Link from 'next/link';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { css ,SerializedStyles, keyframes} from '@emotion/react'
+import { menu, Name } from '@features/menu';
 import {sp, pc} from '@style/common/mq'
 
+// listsのnameプロパティの値からunion型を作成
 
 type Props = {
   topFlag: boolean,
   menuFlag: boolean,
-  linkTo: string,
-  index: 0 | 1 | 2
+  name: Name,
   children ?: ReactNode
 }
 
-export const List = (props:Props) => {
+export const List = (props:Props):JSX.Element | null => {
   //NOTE: 動的style
-  const data:SerializedStyles[] = _list(props.index)
-  const styles:SerializedStyles[] = [_base, ...data]
-  if(typeof _listAnimate(props.index,props.menuFlag) !== undefined){
-    styles.push(_listAnimate(props.index,props.menuFlag))
-  }
+  const list = menu.getListObj(props.name);
+  const index = menu.getListObj(props.name);
+  const listPosition:SerializedStyles[] = _list(index)
+  const styles:SerializedStyles[] = [_base, ...listPosition];
+  //NOTE: menuFlagがtrueの場合のみposition指定の表示をする
+  if(props.menuFlag){styles.push(_listAnimate(index,props.menuFlag))};
 
-  if(props.topFlag){
-    return <li><AnchorLink href={props.linkTo} css={styles}>{props.children}</AnchorLink></li>
-  }else {
-    return <li><Link href={`/${props.linkTo}`} passHref><a css={styles}>{props.children}</a></Link></li>
-  }
+  const topEl:JSX.Element = <li><AnchorLink href={list.to} css={styles}>{list.name}</AnchorLink></li>
+  const underLayerEl:JSX.Element =<li><Link href={`/${list.to}`} passHref><a css={styles}>{list.name}</a></Link></li>
+
+  return props.topFlag ? topEl : underLayerEl;
 }
+
+const _listAnimate = (index,menuFlag:Props["menuFlag"]):SerializedStyles | undefined => {
+  // NOTE:徐々に表示させるアニメーション
+  const second:number = 0.3 -((index + 1) * 0.06);
+  const delay:string = `${second}s`
+  return menuFlag ? css`animation: ${_animate()} .4s ${delay}` : undefined;
+}
+
+const _animate = () => keyframes`
+  0%,100% {transform: scale(1);}
+	30% {transform: translateY(-25%);}
+	50% {transform: scale(1);}
+	90% {transform: translateY(0); transform: scale(1.2,0.8);}
+`
 
 const _base = css`
   ${sp`
@@ -50,7 +65,7 @@ const _base = css`
   `}
 `
 
-const _list = (index:Props["index"]):SerializedStyles[] => {
+const _list = (index):SerializedStyles[] => {
   const styles:SerializedStyles[] = [
     css`
       ${pc`
@@ -83,20 +98,3 @@ const _list = (index:Props["index"]):SerializedStyles[] => {
 
   return styles
 }
-
-const _listAnimate = (index:Props["index"],menuFlag:Props["menuFlag"]):SerializedStyles | undefined => {
-  const second:number = 0.3 -((index + 1) * 0.06);
-  const delay:string = `${second}s`
-  if(menuFlag){
-    return css`animation: ${_animate()} .4s ${delay};`
-  }else {
-    return undefined
-  }
-}
-
-const _animate = () => keyframes`
-  0%,100% {transform: scale(1);}
-	30% {transform: translateY(-25%);}
-	50% {transform: scale(1);}
-	90% {transform: translateY(0); transform: scale(1.2,0.8);}
-`
