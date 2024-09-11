@@ -34,6 +34,13 @@ module.exports = {
     future: {webpack5: true,},
 }
 
+const nextConfig = {
+    reactStrictMode: true,
+    experimental: {
+        appDir: true,
+    },
+}
+
 // 画像圧縮
 const optimizedImages = withOptimizedImages({
     reactStrictMode: true,
@@ -41,4 +48,5 @@ const optimizedImages = withOptimizedImages({
     handleImages: ['svg','png'],
 })
 
+module.exports = nextConfig;
 module.exports = optimizedImages;

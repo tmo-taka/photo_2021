@@ -9,12 +9,27 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@style/*": ["styles/*"],
-      "@component/*": ["component/*"],
-      "@features/*": ["features/*"],
-      "@layout/*": ["layouts/*"],
-      "@img/*": ["public/img/*"],
-      "@types/*": ["src/types/*"]
+      "@style/*": [
+        "styles/*"
+      ],
+      "@component/*": [
+        "component/*"
+      ],
+      "@features/*": [
+        "features/*"
+      ],
+      "@layout/*": [
+        "layouts/*"
+      ],
+      "@img/*": [
+        "public/img/*"
+      ],
+      "@types/*": [
+        "src/types/*"
+      ],
+      "@styled-system/*": [
+        "styled-system/*"
+      ]
     },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -29,15 +44,24 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
-    "types": ["@emotion/react/types/css-prop"],
+    "types": [
+      "@emotion/react/types/css-prop"
+    ],
     "incremental": true,
     "declaration": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     "src/types/index.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
