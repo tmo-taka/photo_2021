@@ -12,17 +12,17 @@ export default function Home({ props }) {
         })}>
             <h1 className={css({
                 pos: 'relative',
-                md: {pos: 'static', m: '0 auto', w: '600px', fontSize: '2.4rem', textAlign: 'center',
+                md: {pos: 'realtive', m: '0 auto', w: '600px', fontSize: '2.4rem', textAlign: 'center',
                     _before: {content: '', pos: 'absolute', bg: 'main', w: '0', h: '2px', transition: 'all', transitionDuration: '0.2', transitionTimingFunction: 'linear', right: '0', bottom: '0'},
                     _after: {content: '', pos: 'absolute', bg: 'main', w: '0', h: '2px', transition: 'all', transitionDuration: '0.2', transitionTimingFunction: 'linear', left: '0', top: '0'}
                 }
             })}>
                 <div className={css({
                     m: {base: '0 auto', md: undefined},
-                    pos: {base: 'absolute', md: 'static'},
-                    top: {base: '50%', md: 'auto'},
-                    left: {base: '0', md: 'auto'},
-                    right: {base: '0', md: 'auto'},
+                    pos: {base: 'absolute', md: undefined},
+                    top: {base: '50%', md: undefined},
+                    left: {base: '0', md: undefined},
+                    right: {base: '0', md: undefined},
                     y: {base: '50%', md: undefined},
                     md: {
                         _before: {content: '', bg: 'main', w: '2px', h: '0', transition: 'all', transitionDuration: '0.1', transitionTimingFunction: 'linear', left: '0', bottom: '0'},
