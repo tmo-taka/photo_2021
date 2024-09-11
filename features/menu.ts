@@ -7,7 +7,7 @@ const lists = [
 ] as const
 
 type Lists = typeof lists;
-export type Name = typeof lists[number]['name'];
+export type ListsPropUnion<T extends (keyof Lists[0])> = typeof lists[number][T];
 
 class Menu {
     lists: Lists;
@@ -16,18 +16,17 @@ class Menu {
         this.lists = lists;
     }
 
-    getListObj(name:Name) {
+    getListObj(name:ListsPropUnion<'name'>,):Lists[number] {
         // NOTE: 対象リストを取り出す
-        return this.lists.find((obj) => obj.name === name);
+        return this.lists.find((obj) => obj.name === name) as Lists[number];
     }
 
-    getIdName(name:Name):string {
+    getIdFromName(name:ListsPropUnion<'name'>):string {
         // NOTE: nameプロパティからid値を生成する
-        const listObj = this.getListObj(name);
-        return listObj.name.toLowerCase();
+        return name.toLowerCase();
     }
 
-    getIndex(name:Name):number {
+    getIndex(name:ListsPropUnion<'name'>):ListsPropUnion<'emIndex'> {
         // NOTE: 対象リストからemIndexを取り出す
         return this.getListObj(name).emIndex;
     }
