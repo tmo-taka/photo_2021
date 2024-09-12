@@ -5,7 +5,12 @@ export default defineConfig({
   preflight: true,
 
   // Where to look for your css declarations
-  include: ["./src/**/*.{js,jsx,ts,tsx}", "./app/**/*.{js,jsx,ts,tsx}", "./component/**/Logo.{js,jsx,ts,tsx}"],
+  include: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./component/**/Logo.{js,jsx,ts,tsx}",
+    "./component/**/SectionWrap.{js,jsx,ts,tsx}"
+  ],
 
   // Files to exclude
   exclude: [],
@@ -36,6 +41,9 @@ export default defineConfig({
         colors: {
           main: { value: '#3589BB' },
           accent: { value: '#FFB83F' }
+        },
+        sizes: {
+          minPc: { value: '1280px' }
         }
       }
     },
