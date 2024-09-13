@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 // import { AnimationOnScroll } from 'react-animation-on-scroll';
-import type{ ListsPropUnion } from '@features/menu';
-import { menu } from '@features/menu';
+import { menu, type ListsPropUnion} from '@libs/menu';
 import { css } from '@styled-system/css'
 
 type Props = {
@@ -13,8 +12,7 @@ export const SectionWrap = (props: Props):JSX.Element | null => {
     const { title } = props;
     const id = menu.getIdFromName(title);
     const emIndex = menu.getIndex(title)
-    const splitTitle:string[] = title.split("");
-    // const judgeTitle = (title):boolean => { return title === 'Profile'}
+    const splitTitle = title.split('')
 
     return (
         // <AnimationOnScroll animateIn="fadeIn" animateOnce={true}>
@@ -24,7 +22,9 @@ export const SectionWrap = (props: Props):JSX.Element | null => {
                         <h2 className={css(sectionTitle)}>
                             {
                                 splitTitle.map((s:string,index:number):ReactNode => {
-                                    return emIndex === (index + 1) ? <span key={index} className={css({color: 'main'})}>{s}</span> : <span key={index}>{s}</span>
+                                    return emIndex === (index + 1) ?
+                                        <span key={index} className={css({color: 'main'})}>{s}</span> :
+                                        <span key={index}>{s}</span>
                                 })
                             }
                         </h2>
@@ -38,7 +38,7 @@ export const SectionWrap = (props: Props):JSX.Element | null => {
 
 const section = {
     p: '18% 4.8%',
-    md: {p: '80px 0', w: '100%', minW: 'minPc'}
+    md: {p: '80px 0', w: '100%', minW: 'minPC'}
 }
 
 const sectionTitle = {

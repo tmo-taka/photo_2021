@@ -1,6 +1,7 @@
 "use client"
 
-import { css } from '@styled-system/css'
+import { css, cx } from '@styled-system/css'
+import { flex } from "@styled-system/patterns";
 import { stack, vstack, hstack } from '../styled-system/patterns'
 import { Logo } from '@component/atoms/Logo'
 import { SectionWrap } from '@component/module/SectionWrap'
@@ -37,7 +38,29 @@ export default function Home({ props }) {
             </div>
 
             <SectionWrap title={'Skill'}>
+                <div className={
+                    cx(css(skillBlock),flex({justify: 'space-around'}))
+                }>
+                    <div>
+
+                    </div>
+                </div>
+            </SectionWrap>
+
+            <SectionWrap title={'Works'}>
+            </SectionWrap>
+
+            <SectionWrap title={'Profile'}>
             </SectionWrap>
         </div>
     )
+}
+
+const skillBlock = {
+    md:{ m: '0 auto', p: '64px 0', w: 'minPC'}
+}
+
+const skillBlockIn = {
+    p: '10% 0',
+    md:{ maxW: '300px', p: undefined}
 }

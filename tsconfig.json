@@ -27,8 +27,12 @@
       "@types/*": [
         "src/types/*"
       ],
+      // app router
       "@styled-system/*": [
         "styled-system/*"
+      ],
+      "@libs/*": [
+        "src/libs/*"
       ]
     },
     "allowJs": true,
