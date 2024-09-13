@@ -1,4 +1,6 @@
-declare module 'apiField' {
+// HACK: 現在では、moduleキーワードは非推奨となっているため、namespaceキーワードの使用をするようにしてください。
+
+namespace ApiField {
     export type WorkType = {
         id: string,
         site_name: string,
@@ -20,7 +22,7 @@ declare module 'apiField' {
         name: string
     }
 
-    export type ProgramingType = {
+    export type ProgrammingType = {
         id: string,
         name: string
     }
@@ -33,7 +35,7 @@ declare module 'apiField' {
         contents: ToolsType[]
     }
 
-    export interface Programings {
-        contents: ToolsType[]
+    export interface Programmings {
+        contents: ProgrammingType[]
     }
 }

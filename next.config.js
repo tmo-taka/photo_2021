@@ -2,7 +2,6 @@ const withOptimizedImages = require('next-optimized-images');
 const path = require('path')
 
 module.exports = {
-
     experimental: {
         optimizeFonts: true,
     },
