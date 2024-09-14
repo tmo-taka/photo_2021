@@ -9,7 +9,8 @@ export default defineConfig({
     "./src/**/*.{js,jsx,ts,tsx}",
     "./app/**/*.{js,jsx,ts,tsx}",
     "./component/**/Logo.{js,jsx,ts,tsx}",
-    "./component/**/SectionWrap.{js,jsx,ts,tsx}"
+    "./component/**/SectionWrap.{js,jsx,ts,tsx}",
+    "./component/SkillLists.{js,jsx,ts,tsx}"
   ],
 
   // Files to exclude

@@ -5,8 +5,30 @@ import { flex } from "@styled-system/patterns";
 import { stack, vstack, hstack } from '../styled-system/patterns'
 import { Logo } from '@component/atoms/Logo'
 import { SectionWrap } from '@component/module/SectionWrap'
+import { SkillLists } from '@component/SkillLists'
+import { Loading } from '@component/Loading'
+import { fetchProgrammings , fetchTools} from '@utils/getDatasFromCms'
+import { useState, useEffect, Suspense } from 'react'
 
 export default function Home({ props }) {
+
+    const [programmingData, setProgrammingData] = useState<ApiField.ProgrammingType[]>([]);
+    const [toolData, setToolsData] = useState<ApiField.ToolType[]>([]);
+
+    const fetchProgrammingsFn = async () => {
+        const programmings = await fetchProgrammings();
+        await setProgrammingData(programmings)
+    }
+    const fetchToolsFn = async () => {
+        const tools = await fetchTools();
+        await setToolsData(tools)
+    }
+
+    useEffect(() => {
+        fetchProgrammingsFn();
+        fetchToolsFn();
+    },[])
+
     return (
         <div>
             <div className={css({
@@ -41,8 +63,13 @@ export default function Home({ props }) {
                 <div className={
                     cx(css(skillBlock),flex({justify: 'space-around'}))
                 }>
-                    <div>
-
+                    <div className={css(skillBlockIn)}>
+                        <Suspense fallback={(<Loading />)}>
+                            <SkillLists lists={programmingData} title='programming'/>
+                        </Suspense>
+                        <Suspense fallback={(<Loading />)}>
+                            <SkillLists lists={toolData} title='tools'/>
+                        </Suspense>
                     </div>
                 </div>
             </SectionWrap>
@@ -62,5 +89,5 @@ const skillBlock = {
 
 const skillBlockIn = {
     p: '10% 0',
-    md:{ maxW: '300px', p: undefined}
+    md:{ p: '0'}
 }

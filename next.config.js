@@ -31,6 +31,9 @@ module.exports = {
     target: "serverless",
 
     future: {webpack5: true,},
+
+    // cache容量
+    cacheMaxMemorySize: 50 * 1024 * 1024 // 50M
 }
 
 const nextConfig = {
