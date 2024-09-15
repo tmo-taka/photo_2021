@@ -10,7 +10,8 @@ export default defineConfig({
     "./app/**/*.{js,jsx,ts,tsx}",
     "./component/**/Logo.{js,jsx,ts,tsx}",
     "./component/**/SectionWrap.{js,jsx,ts,tsx}",
-    "./component/SkillLists.{js,jsx,ts,tsx}"
+    "./component/SkillLists.tsx",
+    "./component/Loading.tsx"
   ],
 
   // Files to exclude
@@ -35,6 +36,18 @@ export default defineConfig({
           '100%': {
             strokeDashoffset: '0',
             stroke: '#FFF'
+          }
+        },
+        loadingAnimate: {
+          '33%': {
+            translate: '0 10px',
+
+          },
+          '66%': {
+            translate: '0 -10px'
+          },
+          '100%': {
+            translate: '0'
           }
         }
       },

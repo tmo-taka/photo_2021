@@ -61,14 +61,19 @@ export default function Home({ props }) {
 
             <SectionWrap title={'Skill'}>
                 <div className={
-                    cx(css(skillBlock),flex({justify: 'space-around'}))
-                }>
+                        cx(css(skillBlock),flex({justify: 'space-around'}))
+                    }
+                >
                     <div className={css(skillBlockIn)}>
+                        <h3 className={css(skillTitle)}>programming</h3>
                         <Suspense fallback={(<Loading />)}>
-                            <SkillLists lists={programmingData} title='programming'/>
+                            <SkillLists lists={programmingData} />
                         </Suspense>
+                    </div>
+                    <div className={css(skillBlockIn)}>
+                        <h3 className={css(skillTitle)}>tools</h3>
                         <Suspense fallback={(<Loading />)}>
-                            <SkillLists lists={toolData} title='tools'/>
+                            <SkillLists lists={toolData}/>
                         </Suspense>
                     </div>
                 </div>
@@ -90,4 +95,9 @@ const skillBlock = {
 const skillBlockIn = {
     p: '10% 0',
     md:{ p: '0'}
+}
+
+const skillTitle = {
+    mb: '5.8%', fontSize: '2.8rem',
+    md: {mb: '24px'}
 }

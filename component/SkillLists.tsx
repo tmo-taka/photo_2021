@@ -2,7 +2,6 @@ import { css } from '@styled-system/css'
 
 type Props = {
     lists: ApiField.ProgrammingType[] | ApiField.ToolType[],
-    title: 'programming' | 'tools'
 }
 
 export const SkillLists = (props: Props):JSX.Element=> {
@@ -25,23 +24,15 @@ export const SkillLists = (props: Props):JSX.Element=> {
     }
 
     return (
-        <div>
-            <h3 className={css(skillTitle)}>{props.title}</h3>
-            <ul className={css(skillBox)}>
-                {createListElement(props.lists)}
-            </ul>
-        </div>
+        <ul className={css(skillBox)}>
+            {createListElement(props.lists)}
+        </ul>
     )
 }
 
 const skillBox = {
     pl: '2.4%', borderLeftWidth: '1px', borderLeftColor: 'main',
     md:{ pl: '8px'}
-}
-
-const skillTitle = {
-    mb: '5.8%', fontSize: '2.8rem',
-    md: {mb: '24px'}
 }
 
 const skillList = {
