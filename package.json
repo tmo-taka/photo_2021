@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@babel/preset-react": "^7.24.7",
     "@pandacss/dev": "^0.45.2",
     "@tanstack/react-query-devtools": "^5.55.4",
     "@types/react": "^18.3.5",

@@ -7,8 +7,9 @@ import { Logo } from '@component/atoms/Logo'
 import { SectionWrap } from '@component/module/SectionWrap'
 import { SkillLists } from '@component/SkillLists'
 import { Loading } from '@component/Loading'
+// import {fetchProgrammingsFn, fetchToolsFn} from './actions'
 import { fetchProgrammings , fetchTools} from '@utils/getDatasFromCms'
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect, useActionState, Suspense } from 'react'
 
 export default function Home({ props }) {
 

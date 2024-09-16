@@ -4,7 +4,7 @@ type Props = {
     lists: ApiField.ProgrammingType[] | ApiField.ToolType[],
 }
 
-export const SkillLists = (props: Props):JSX.Element=> {
+export const SkillLists = async (props: Props):JSX.Element=> {
     const createListElement = (lists: ApiField.ProgrammingType[] | ApiField.ToolType[]):JSX.Element[] => {
         if(!Array.isArray(lists)) {
             console.log(lists);
