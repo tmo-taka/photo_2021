@@ -62,7 +62,7 @@ export default function Home({ props }) {
 
             <SectionWrap title={'Skill'}>
                 <div className={
-                        cx(css(skillBlock),flex({justify: 'space-around'}))
+                        cx(css(skillBlock),flex({justify: 'space-around', wrap: 'wrap'}))
                     }
                 >
                     <div className={css(skillBlockIn)}>
@@ -84,6 +84,12 @@ export default function Home({ props }) {
             </SectionWrap>
 
             <SectionWrap title={'Profile'}>
+                <dl className={css(profileBlock)}>
+                    <dt className={css(profileTitle)}>Name:</dt>
+                    <dd className={cx(css(profileCont), css({mb: '6vw', md: {mb: '36px'}}))}>Takahara Tomoya</dd>
+                    <dt className={css(profileTitle)}>Carier:</dt>
+                    <dd className={css(profileCont)}>名城大学を卒業後、新卒として、株式会社ウェブクルーに入社</dd>
+                </dl>
             </SectionWrap>
         </div>
     )
@@ -94,11 +100,26 @@ const skillBlock = {
 }
 
 const skillBlockIn = {
-    p: '10% 0',
-    md:{ p: '0'}
+    m: '0 auto', w: '86vw', p: '10% 0',
+    md:{ p: '0', w: 'auto'}
 }
 
 const skillTitle = {
-    mb: '5.8%', fontSize: '2.8rem',
+    mb: '5.8%', fontSize: '3.6rem',
     md: {mb: '24px'}
+}
+
+const profileBlock = {
+    m: '0 auto', p: '14% 4%', pos: 'relative', w: '100%', color: 'white', bgImage: 'illustBack', bgPosition: 'top left', bgSize: '4px auto', bgColor: 'main',
+    md: {p: '48px', w: '1000px', boxShadow: '5px 10px 20px rgba(0,0,0,0.25)', color: 'black', bg: 'none'}
+}
+
+const profileTitle = {
+    mb: '2.4vw', fontSize: '1.6rem',
+    md: {mb: '24px', fontSize: '2.0rem'}
+}
+
+const profileCont = {
+    fontSize: '1.6rem', lineHeight: '1.4rem',
+    md: {fontSize: '2.0rem', lineHeight: '1.4rem', borderBottom: 'solid #000 1px'}
 }

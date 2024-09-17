@@ -52,6 +52,11 @@ export default defineConfig({
         }
       },
       tokens: {
+        assets: {
+          illustBack: {
+            value: { type: 'url', value: '/img/illust_back.svg' }
+          },
+        },
         colors: {
           main: { value: '#3589BB' },
           accent: { value: '#FFB83F' }

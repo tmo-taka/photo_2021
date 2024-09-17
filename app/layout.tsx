@@ -1,6 +1,7 @@
 "use client"
 
 import 'styles/index.css'
+import { css, cx } from '@styled-system/css'
 import { Montserrat } from 'next/font/google'
 
 const montserrat = Montserrat({
@@ -17,8 +18,8 @@ export default function RootLayout({
     children: React.ReactNode
   }) {
     return (
-      <html lang="en" className={montserrat.className}>
-        <body>{children}</body>
+      <html lang="en" className={cx(montserrat.className,css({fontSize: '62.5%'}))}>
+        <body className={css({fontSize: '1.6em'})}>{children}</body>
       </html>
     )
   }

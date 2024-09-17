@@ -42,6 +42,6 @@ const section = {
 }
 
 const sectionTitle = {
-    mb: '8%', textAlign: 'center', fontSize: '3.0rem',
+    mb: '8%', textAlign: 'center', fontSize: '4.0rem',
     md: {mb: '32px', textAlign: 'center', fontSize: '3.2rem', letterSpacing: '0.1em'}
 }
