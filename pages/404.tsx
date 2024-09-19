@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { BaseLayout } from '@layout/BaseLayout';
 import Head from 'next/head'
 import Link from 'next/link'
-import { css } from '@emotion/react'
+// import { css } from '@emotion/react'
 import { mixinBtn } from '@style/common/mixin'
 import {sp, pc} from '@style/common/mq'
 

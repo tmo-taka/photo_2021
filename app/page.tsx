@@ -1,35 +1,18 @@
-"use client"
-
 import { css, cx } from '@styled-system/css'
 import { flex } from "@styled-system/patterns";
-import { stack, vstack, hstack } from '../styled-system/patterns'
 import { Logo } from '@component/atoms/Logo'
 import { SectionWrap } from '@component/SectionWrap'
 import { SkillLists } from '@component/SkillLists'
 import { Loading } from '@component/Loading'
 import { Navigation } from '@component/Navigation'
-// import {fetchProgrammingsFn, fetchToolsFn} from './actions'
 import { fetchProgrammings , fetchTools} from '@utils/getDatasFromCms'
-import { useState, useEffect, useActionState, Suspense } from 'react'
+import { Suspense } from 'react'
 
-export default function Home({ props }) {
 
-    const [programmingData, setProgrammingData] = useState<ApiField.ProgrammingType[]>([]);
-    const [toolData, setToolsData] = useState<ApiField.ToolType[]>([]);
-
-    const fetchProgrammingsFn = async () => {
-        const programmings = await fetchProgrammings();
-        await setProgrammingData(programmings)
-    }
-    const fetchToolsFn = async () => {
-        const tools = await fetchTools();
-        await setToolsData(tools)
-    }
-
-    useEffect(() => {
-        fetchProgrammingsFn();
-        fetchToolsFn();
-    },[])
+export default async function Home({ props }) {
+    console.log('kore')
+    const programmingData = await fetchProgrammings()
+    const toolData = await fetchTools();
 
     return (
         <div>

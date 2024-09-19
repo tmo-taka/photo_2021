@@ -1,5 +1,5 @@
 import { defineConfig } from "@pandacss/dev";
-import { delay } from "framer-motion";
+// import { delay } from "framer-motion";
 
 export default defineConfig({
   // Whether to use css reset
