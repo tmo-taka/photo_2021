@@ -30,6 +30,11 @@ class Menu {
         // NOTE: 対象リストからemIndexを取り出す
         return this.getListObj(name).emIndex;
     }
+
+    whereIndex(name:ListsPropUnion<'name'>):number {
+        // NOTE: 対象リストからそのリストが何番目かを取り出す
+        return this.lists.findIndex((obj) => obj.name === name);
+    }
 }
 
 export const menu = new Menu(lists);

@@ -4,9 +4,10 @@ import { css, cx } from '@styled-system/css'
 import { flex } from "@styled-system/patterns";
 import { stack, vstack, hstack } from '../styled-system/patterns'
 import { Logo } from '@component/atoms/Logo'
-import { SectionWrap } from '@component/module/SectionWrap'
+import { SectionWrap } from '@component/SectionWrap'
 import { SkillLists } from '@component/SkillLists'
 import { Loading } from '@component/Loading'
+import { Navigation } from '@component/Navigation'
 // import {fetchProgrammingsFn, fetchToolsFn} from './actions'
 import { fetchProgrammings , fetchTools} from '@utils/getDatasFromCms'
 import { useState, useEffect, useActionState, Suspense } from 'react'
@@ -32,6 +33,7 @@ export default function Home({ props }) {
 
     return (
         <div>
+            <Navigation />
             <div className={css({
                 w:'100%', h:'100vh', p: '6vw', bg: 'main',
                 md: {minW: '1280px', minH: 'calc(100vh - 173px)', p: '88px 64px 12px', bg: '#FFF' }
