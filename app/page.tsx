@@ -19,16 +19,16 @@ export default async function Home({ props }) {
     const workList = cx(
         css(
             {
-                m: '0 auto 3em', w: '84vw',
+                m: '0 auto 6em', w: '84vw',
                 _last: { mb: 0 },
-                md: {w: '760px'}
+                md: {w: '840px'}
             }
         ),
         flex(
             {
                 justifyContent: 'space-between',
                 _odd: {
-                    flexDirection: 'row-reverse'
+                    flexDirection: 'row-reverse',
                 }
             }
         )
@@ -36,7 +36,7 @@ export default async function Home({ props }) {
 
     const workImage = {
         w: '18em', h: '10em', pos: 'relative',
-        md: {w: '320px', h: '160px'}
+        md: {w: '400px', h: '200px'}
     }
 
     const workTitle = {
@@ -145,6 +145,11 @@ const skillBlockIn = {
 const skillTitle = {
     mb: '5.8%', fontSize: '3.6rem',
     md: {mb: '24px'}
+}
+
+const moreLink = {
+    fontSize: '1.6rem', lineHeight: '1.4rem',
+    md: {fontSize: '2.0rem', lineHeight: '1.4rem', borderBottom: 'solid #000 1px'}
 }
 
 const profileBlock = {
