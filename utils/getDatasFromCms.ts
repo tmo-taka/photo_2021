@@ -2,10 +2,12 @@
 // import { cache } from 'react'
 import { client } from "@libs/client";
 
-export const fetchWorks = async():Promise<ApiField.WorkType[]> => {
+export const fetchWorks = async(limit:number = 10):Promise<ApiField.WorkType[]> => {
     const works: ApiField.Works = await client.get({
-        endpoint: "cont",
-    })
+            endpoint: "cont",
+            queries: { limit },
+        },
+    )
     return works.contents;
 }
 

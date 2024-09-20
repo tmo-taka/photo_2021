@@ -15,8 +15,12 @@ const nextConfig = {
     // cache容量
     cacheMaxMemorySize: 50 * 1024 * 1024, // 50M
     images: {
-        domains: ['images.microcms-assets.io'],
-        //next/imagesのdeviceサイズを指定
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.microcms-assets.io'
+            }
+        ]
     },
 }
 

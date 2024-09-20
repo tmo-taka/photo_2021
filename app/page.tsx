@@ -5,14 +5,63 @@ import { SectionWrap } from '@component/SectionWrap'
 import { SkillLists } from '@component/SkillLists'
 import { Loading } from '@component/Loading'
 import { Navigation } from '@component/Navigation'
-import { fetchProgrammings , fetchTools} from '@utils/getDatasFromCms'
+import { fetchProgrammings , fetchTools, fetchWorks } from '@utils/getDatasFromCms'
 import { Suspense } from 'react'
-
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default async function Home({ props }) {
     console.log('kore')
     const programmingData = await fetchProgrammings()
     const toolData = await fetchTools();
+    const workData = await fetchWorks(3);
+
+    const workList = cx(
+        css(
+            {
+                m: '0 auto 3em', w: '84vw',
+                _last: { mb: 0 },
+                md: {w: '760px'}
+            }
+        ),
+        flex(
+            {
+                justifyContent: 'space-between',
+                _odd: {
+                    flexDirection: 'row-reverse'
+                }
+            }
+        )
+    )
+
+    const workImage = {
+        w: '18em', h: '10em', pos: 'relative',
+        md: {w: '320px', h: '160px'}
+    }
+
+    const workTitle = {
+        fontSize: '2.0rem',
+        md: {fontSize: '2.4rem'}
+    }
+
+    const workListElement:JSX.Element[] = []
+    for (const work of workData) {
+        workListElement.push(
+            <Link href="" className={workList} key={work.id}>
+                <div className={css(workTitle)}>
+                    {work.site_name}
+                </div>
+                <div className={css(workImage)}>
+                    <Image
+                        fill
+                        src={work.lead_img.url}
+                        alt={work.site_name}
+                        sizes="(max-width: 768px) 70%, 400px"
+                    />
+                </div>
+            </Link>
+        )
+    }
 
     return (
         <div>
@@ -66,6 +115,10 @@ export default async function Home({ props }) {
             </SectionWrap>
 
             <SectionWrap title={'Works'}>
+                <div>
+                    {workListElement}
+                </div>
+                <Link href="/">More &gt;&gt;</Link>
             </SectionWrap>
 
             <SectionWrap title={'Profile'}>
