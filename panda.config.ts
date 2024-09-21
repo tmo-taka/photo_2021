@@ -13,7 +13,8 @@ export default defineConfig({
     "./component/SectionWrap.{js,jsx,ts,tsx}",
     "./component/SkillLists.tsx",
     "./component/Loading.tsx",
-    "./component/Navigation.tsx"
+    "./component/Navigation.tsx",
+    "./component/WorkLists.tsx"
   ],
 
   // Files to exclude

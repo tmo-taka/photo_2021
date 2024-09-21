@@ -5,9 +5,9 @@ import { SectionWrap } from '@component/SectionWrap'
 import { SkillLists } from '@component/SkillLists'
 import { Loading } from '@component/Loading'
 import { Navigation } from '@component/Navigation'
+import { WorkLists } from '@component/WorkLists'
 import { fetchProgrammings , fetchTools, fetchWorks } from '@utils/getDatasFromCms'
 import { Suspense } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 
 export default async function Home({ props }) {
@@ -15,53 +15,6 @@ export default async function Home({ props }) {
     const programmingData = await fetchProgrammings()
     const toolData = await fetchTools();
     const workData = await fetchWorks(3);
-
-    const workList = cx(
-        css(
-            {
-                m: '0 auto 6em', w: '84vw',
-                _last: { mb: 0 },
-                md: {w: '840px'}
-            }
-        ),
-        flex(
-            {
-                justifyContent: 'space-between',
-                _odd: {
-                    flexDirection: 'row-reverse',
-                }
-            }
-        )
-    )
-
-    const workImage = {
-        w: '18em', h: '10em', pos: 'relative',
-        md: {w: '400px', h: '200px'}
-    }
-
-    const workTitle = {
-        fontSize: '2.0rem',
-        md: {fontSize: '2.4rem'}
-    }
-
-    const workListElement:JSX.Element[] = []
-    for (const work of workData) {
-        workListElement.push(
-            <Link href="" className={workList} key={work.id}>
-                <div className={css(workTitle)}>
-                    {work.site_name}
-                </div>
-                <div className={css(workImage)}>
-                    <Image
-                        fill
-                        src={work.lead_img.url}
-                        alt={work.site_name}
-                        sizes="(max-width: 768px) 70%, 400px"
-                    />
-                </div>
-            </Link>
-        )
-    }
 
     return (
         <div>
@@ -115,10 +68,12 @@ export default async function Home({ props }) {
             </SectionWrap>
 
             <SectionWrap title={'Works'}>
-                <div>
-                    {workListElement}
+                <Suspense fallback={(<Loading />)}>
+                    <WorkLists workData={workData} />
+                </Suspense>
+                <div className={css(moreBlock)}>
+                    <Link href="/" className={css(moreLink)} >More &gt;&gt;</Link>
                 </div>
-                <Link href="/">More &gt;&gt;</Link>
             </SectionWrap>
 
             <SectionWrap title={'Profile'}>
@@ -147,9 +102,14 @@ const skillTitle = {
     md: {mb: '24px'}
 }
 
+const moreBlock= {
+    m: '0 auto', w: '840px', pt: '54px', textAlign: 'right',
+    md: {w: '86vw', pt: '3em', textAlign: 'right'}
+}
+
 const moreLink = {
-    fontSize: '1.6rem', lineHeight: '1.4rem',
-    md: {fontSize: '2.0rem', lineHeight: '1.4rem', borderBottom: 'solid #000 1px'}
+    color: 'main', fontSize: '1.8rem',
+    md: {fontSize: '2.4rem'}
 }
 
 const profileBlock = {
