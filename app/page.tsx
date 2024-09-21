@@ -25,7 +25,7 @@ export default async function Home({ props }) {
             })}>
                 <h1 className={css({
                     pos: 'relative',
-                    md: {pos: 'realtive', m: '0 auto', w: '600px', fontSize: '2.4rem', textAlign: 'center',
+                    md: {pos: 'relative', m: '0 auto', w: '600px', fontSize: '2.4rem', textAlign: 'center',
                         _before: {content: '', pos: 'absolute', bg: 'main', w: '0', h: '2px', transition: 'all', transitionDuration: '0.2', transitionTimingFunction: 'linear', right: '0', bottom: '0'},
                         _after: {content: '', pos: 'absolute', bg: 'main', w: '0', h: '2px', transition: 'all', transitionDuration: '0.2', transitionTimingFunction: 'linear', left: '0', top: '0'}
                     }
@@ -103,12 +103,12 @@ const skillTitle = {
 }
 
 const moreBlock= {
-    m: '0 auto', w: '840px', pt: '54px', textAlign: 'right',
+    m: '0 auto', w: 'contPC', pt: '54px', textAlign: 'right',
     md: {w: '86vw', pt: '3em', textAlign: 'right'}
 }
 
 const moreLink = {
-    color: 'main', fontSize: '1.8rem',
+    fontSize: '1.8rem',
     md: {fontSize: '2.4rem'}
 }
 

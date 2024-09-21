@@ -36,7 +36,7 @@ export const Logo = memo(ElementLogo);
 
 const logoWrap = {
     w: '100%',
-    md: {w: '400px'}
+    md: {m: '0 auto', w: '400px'}
 }
 
 const item = {

@@ -27,7 +27,7 @@ export const WorkLists = (props: Props):JSX.Element=> {
                 <div className={css(workTitle)}>
                     <motion.div
                         initial={{ scaleX: '0' }}
-                        whileInView={{ scaleX: '100%' }}
+                        whileInView={{ scaleX: '100%', transitionDelay: '250ms' }}
                         className={css(workTitleMarker)}
                     >
                     </motion.div>
@@ -57,7 +57,7 @@ const workList = cx(
         {
             m: '0 auto 6em', w: '84vw',
             _last: { mb: 0 },
-            md: {w: '840px'}
+            md: {w: 'contPC'}
         }
     ),
     flex(

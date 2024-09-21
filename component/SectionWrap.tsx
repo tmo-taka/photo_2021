@@ -38,7 +38,7 @@ export const SectionWrap = (props: Props):JSX.Element | null => {
 
 const section = {
     p: '18% 4.8%',
-    md: {p: '80px 0', w: '100%', minW: 'minPC'}
+    md: {p: '80px 0', w: 'contPC', minW: 'minPC'}
 }
 
 const sectionTitle = {

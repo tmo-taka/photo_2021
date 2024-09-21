@@ -79,7 +79,8 @@ export default defineConfig({
           accent: { value: '#FFB83F' }
         },
         sizes: {
-          minPC: { value: '1280px' }
+          minPC: { value: '1280px' },
+          contPC: { value: '920px' }
         }
       }
     },
