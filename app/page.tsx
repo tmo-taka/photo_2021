@@ -11,7 +11,6 @@ import { Suspense } from 'react'
 import Link from 'next/link'
 
 export default async function Home({ props }) {
-    console.log('kore')
     const programmingData = await fetchProgrammings()
     const toolData = await fetchTools();
     const workData = await fetchWorks(3);
@@ -72,7 +71,7 @@ export default async function Home({ props }) {
                     <WorkLists workData={workData} />
                 </Suspense>
                 <div className={css(moreBlock)}>
-                    <Link href="/" className={css(moreLink)} >More &gt;&gt;</Link>
+                    <Link href="/works/" className={css(moreLink)} >More &gt;&gt;</Link>
                 </div>
             </SectionWrap>
 
@@ -103,8 +102,15 @@ const skillTitle = {
 }
 
 const moreBlock= {
-    m: '0 auto', w: 'contPC', pt: '54px', textAlign: 'right',
-    md: {w: '86vw', pt: '3em', textAlign: 'right'}
+    m: '0 auto', w: '86vw', pt: '54px', textAlign: 'right',
+    md: {
+        w: 'contPC',
+        pt: '3em',
+        textAlign: 'right',
+        _hover: {
+            translate: '10px 0'
+        },
+    }
 }
 
 const moreLink = {

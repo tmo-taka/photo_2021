@@ -11,9 +11,7 @@ type Props = {
 }
 
 export const WorkLists = (props: Props):JSX.Element=> {
-    const ref = useRef(null)
-    const { scrollYProgress } = useScroll();
-    console.log(scrollYProgress);
+    const ref = useRef<HTMLDivElement>(null)
     const workListElement:JSX.Element[] = []
     for (const work of props.workData) {
         workListElement.push(
@@ -46,10 +44,14 @@ export const WorkLists = (props: Props):JSX.Element=> {
     }
 
     return (
-        <div ref={ref}>
+        <div ref={ref} className={css(workWrapper)}>
             {workListElement}
         </div>
     )
+}
+
+const workWrapper = {
+    md:{ m: '0 auto', p: '64px 0', w: 'minPC'}
 }
 
 const workList = cx(

@@ -6,7 +6,7 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     experimental: {
-        // appDir: true,
+        appDir: true,
         // serverActionsを使用するための定義
         serverActions: {
             bodySizeLimit: '500kb'
