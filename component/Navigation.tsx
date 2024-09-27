@@ -4,6 +4,8 @@ import { menu, type ListsPropUnion } from '@libs/menu';
 import { cx, css } from '@styled-system/css'
 import { flex, listAnimation } from "@styled-system/patterns";
 import Link from "next/link";
+import { ComponentProps } from 'react';
+
 
 type ListProps = {
     topFlag: boolean,
@@ -21,9 +23,31 @@ const List = (props: ListProps):JSX.Element | null => {
         md: {w: '200px', color: 'black', pos: 'static'}
     }
 
+    const link = css({
+        md: {
+            borderBottomWidth: '1px',
+            borderBottomColor: 'transparent',
+            transition: '.4s',
+            _hover: {
+                borderBottomColor: 'main'
+            }
+        }
+    })
+
+    type LinkProps = ComponentProps<typeof Link>;type NextLink = typeof Link;
+
+
+    const linkObj:LinkProps= {
+        href: {
+            pathname: '/' + list.to
+        },
+        as: '/' + list.to,
+        scroll: true
+    }
+
     return (
         <li className={cx(listAnimation({index: index}), css(base))}>
-            <Link href={`/${list.to}`}>{list.name}</Link>
+            <Link {...linkObj} className={link}>{list.name}</Link>
         </li>
     )
 }
@@ -42,13 +66,40 @@ export const Navigation = ({menuFlag=false, children}:NavigationProps):JSX.Eleme
         md: {w: '648px'}
     }
 
-    return (
-        <ul className={cx(css(navigation), flex({justify: 'space-around'}))}>
-            {
-                menu.lists.map((list) => {
-                    return (<List key={list.name} topFlag={topFlag} menuFlag={menuFlag} name={list.name} />)
-                })
+    const navigationWrap = cx(
+        css({
+            md: {
+                m: '0 auto',
+                w: 'minPC',
+                minW: 'contPC'
             }
-        </ul>
+        }),
+        flex({
+            justify: 'space-around',
+            align: 'center'
+        })
+    )
+
+    const title = css({
+        md: {
+            fontSize: '2.8rem',
+            fontWeight: 'bold',
+            letterSpacing: '.1em'
+        }
+    })
+
+    return (
+        <div className={navigationWrap}>
+            <h1 className={title}>
+                takahara
+            </h1>
+            <ul className={cx(css(navigation), flex({justify: 'space-around'}))}>
+                {
+                    menu.lists.map((list) => {
+                        return (<List key={list.name} topFlag={topFlag} menuFlag={menuFlag} name={list.name} />)
+                    })
+                }
+            </ul>
+        </div>
     )
 }
