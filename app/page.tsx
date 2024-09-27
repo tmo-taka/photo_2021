@@ -4,7 +4,6 @@ import { Logo } from '@component/atoms/Logo'
 import { SectionWrap } from '@component/SectionWrap'
 import { SkillLists } from '@component/SkillLists'
 import { Loading } from '@component/Loading'
-import { Navigation } from '@component/Navigation'
 import { WorkLists } from '@component/WorkLists'
 import { fetchProgrammings , fetchTools, fetchWorks } from '@utils/getDatasFromCms'
 import { Suspense } from 'react'
@@ -17,7 +16,6 @@ export default async function Home({ props }) {
 
     return (
         <div>
-            <Navigation />
             <div className={css({
                 w:'100%', h:'100vh', p: '6vw', bg: 'main',
                 md: {minW: '1280px', minH: 'calc(100vh - 173px)', p: '88px 64px 12px', bg: '#FFF' }

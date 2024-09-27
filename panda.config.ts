@@ -81,6 +81,16 @@ export default defineConfig({
         sizes: {
           minPC: { value: '1280px' },
           contPC: { value: '920px' }
+        },
+        gradients: {
+          // composite value
+          primary: {
+            value: {
+              type: 'linear',
+              placement: '45deg',
+              stops: ['#3589BB', 'white']
+            }
+          }
         }
       }
     },

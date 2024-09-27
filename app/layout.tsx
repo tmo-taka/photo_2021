@@ -3,6 +3,7 @@
 import 'styles/index.css'
 import { css, cx } from '@styled-system/css'
 import { Montserrat } from 'next/font/google'
+import { Navigation } from '@component/Navigation'
 
 const montserrat = Montserrat({
   weight: '200',
@@ -19,7 +20,10 @@ export default function RootLayout({
   }) {
     return (
       <html lang="en" className={cx(montserrat.className,css({fontSize: '62.5%'}))}>
-        <body className={css({fontSize: '1.6em'})}>{children}</body>
+        <body className={css({fontSize: '1.6em'})}>
+          <Navigation />
+          {children}
+        </body>
       </html>
     )
   }
