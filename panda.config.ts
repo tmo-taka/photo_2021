@@ -14,7 +14,8 @@ export default defineConfig({
     "./component/SkillLists.tsx",
     "./component/Loading.tsx",
     "./component/Navigation.tsx",
-    "./component/WorkLists.tsx"
+    "./component/WorkLists.tsx",
+    "./component/Footer.tsx"
   ],
 
   // Files to exclude

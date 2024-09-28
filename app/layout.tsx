@@ -4,6 +4,7 @@ import 'styles/index.css'
 import { css, cx } from '@styled-system/css'
 import { Montserrat } from 'next/font/google'
 import { Navigation } from '@component/Navigation'
+import { Footer } from '@component/Footer'
 
 const montserrat = Montserrat({
   weight: '200',
@@ -22,7 +23,8 @@ export default function RootLayout({
       <html lang="en" className={cx(montserrat.className,css({fontSize: '62.5%'}))}>
         <body className={css({fontSize: '1.6em'})}>
           <Navigation />
-          {children}
+            {children}
+          <Footer />
         </body>
       </html>
     )

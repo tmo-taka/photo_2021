@@ -10,7 +10,9 @@ export const fetchSingleWork = async(slug: ApiField.WorkType['slug']):Promise<Ap
             },
         },
     )
-    return works.contents;
+    if(!works.contents.length) {throw Error('みつかりませでした。')}
+    const workData: ApiField.WorksType = works.contents[0];
+    return workData;
 }
 
 export const fetchWorks = async(limit:number = 10):Promise<ApiField.WorkType[]> => {
