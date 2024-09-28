@@ -20,25 +20,8 @@ export default async function Home({ props }) {
                 w:'100%', h:'100vh', p: '6vw', bg: 'main',
                 md: {minW: '1280px', minH: 'calc(100vh - 173px)', p: '88px 64px 12px', bg: '#FFF' }
             })}>
-                <h1 className={css({
-                    pos: 'relative',
-                    md: {pos: 'relative', m: '0 auto', w: '600px', fontSize: '2.4rem', textAlign: 'center',
-                        _before: {content: '', pos: 'absolute', bg: 'main', w: '0', h: '2px', transition: 'all', transitionDuration: '0.2', transitionTimingFunction: 'linear', right: '0', bottom: '0'},
-                        _after: {content: '', pos: 'absolute', bg: 'main', w: '0', h: '2px', transition: 'all', transitionDuration: '0.2', transitionTimingFunction: 'linear', left: '0', top: '0'}
-                    }
-                })}>
-                    <div className={css({
-                        m: {base: '0 auto', md: undefined},
-                        pos: {base: 'absolute', md: undefined},
-                        top: {base: '50%', md: undefined},
-                        left: {base: '0', md: undefined},
-                        right: {base: '0', md: undefined},
-                        y: {base: '50%', md: undefined},
-                        md: {
-                            _before: {content: '', bg: 'main', w: '2px', h: '0', transition: 'all', transitionDuration: '0.1', transitionTimingFunction: 'linear', left: '0', bottom: '0'},
-                            _after: {content: '', pos: 'absolute', bg: 'main', w: '2px', h: '0', transition: 'all', transitionDuration: '0.1', transitionTimingFunction: 'linear', right: '0', bottom: '0'}
-                        }
-                    })}>
+                <h1 className={logoWrap}>
+                    <div className={logoWrapIn}>
                         <Logo />
                     </div>
                 </h1>
@@ -84,6 +67,24 @@ export default async function Home({ props }) {
         </div>
     )
 }
+
+const logoWrap = css({
+    pos: 'relative',
+    md: {
+        pos: 'relative', m: '0 auto', w: '600px', height: '400px', fontSize: '2.4rem', textAlign: 'center',
+        _before: {content: '""', pos: 'absolute', display: 'block', bg: 'main', w: '100%', h: '2px', transition: 'all', transitionDuration: '0.2s', transitionTimingFunction: 'linear', right: '0', bottom: '0'},
+        _after: {content: '""', pos: 'absolute', display: 'block', bg: 'main', w: '100%', h: '2px', transition: 'all', transitionDuration: '0.2s', transitionTimingFunction: 'linear', left: '0', top: '0'}
+    }
+})
+
+const logoWrapIn = css({
+    m: '0 auto', pos: 'absolute', top: '50%', left: '0', right: '0', translateY: '50%',
+    md: {
+        m: undefined, pos: 'static', top: 0, left: undefined, right: undefined, translateY: '0',
+        _before: {content: '""', pos: 'absolute', display: 'block', bg: 'main', w: '2px', h: '100%', transition: 'all', transitionDuration: '0.1s', transitionTimingFunction: 'linear', left: '0', bottom: '0'},
+        _after: {content: '""', pos: 'absolute', display: 'block', bg: 'main', w: '2px', h: '100%', transition: 'all', transitionDuration: '0.1s', transitionTimingFunction: 'linear', right: '0', bottom: '0'}
+    }
+})
 
 const skillBlock = {
     md:{ m: '0 auto', p: '64px 0', w: 'minPC'}

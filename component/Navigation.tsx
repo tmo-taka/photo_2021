@@ -91,7 +91,7 @@ export const Navigation = ({menuFlag=false, children}:NavigationProps):JSX.Eleme
     return (
         <div className={navigationWrap}>
             <h1 className={title}>
-                takahara
+                tmo-taka
             </h1>
             <ul className={cx(css(navigation), flex({justify: 'space-around'}))}>
                 {
