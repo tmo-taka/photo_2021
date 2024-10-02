@@ -32,24 +32,30 @@ export default async function Work({ params }: {params: {slug: ApiField.WorkType
 }
 
 const body = css({
+    m: '0 auto',
+    p: '2em 0 6em',
+    w: '90vw',
     md: {
-        m: '0 auto',
         p: '60px 0',
         w: 'contPC'
     }
 })
 
 const siteName = css({
+    mb: '1em',
+    p: '.1em 0',
+    w: '100%',
+    fontSize: '1.8rem',
+    borderBottom: '1px solid token(colors.main)',
     md: {
         mb: '48px',
         p: '8px 0',
         fontSize: '2.4rem',
-        w: '100%',
-        borderBottom: '1px solid token(colors.main)'
     }
 })
 
 const image = css({
+    m: '0 auto 1.2em', w: '100%', h: '12em', pos: 'relative',
     md: {
         m: '0 auto 48px',
         p: '48px 0',
@@ -60,6 +66,8 @@ const image = css({
 })
 
 const text = css({
+    lineHeight: '1.8em',
+    fontSize: '1.8rem',
     md: {
         lineHeight: '1.8em',
         fontSize: '2.0rem'
@@ -67,6 +75,7 @@ const text = css({
 })
 
 const list = css({
+    p: '2.4em 0',
     md: {
         p: '48px 0 64px',
         m: '0 auto',
@@ -75,23 +84,26 @@ const list = css({
 })
 
 const term = css({
+    mb: '.4em',
+    borderLeft: '2px solid token(colors.main)',
+    pl: '2',
     md: {
         mb: '8px',
-        pl: '2',
         display: 'block',
         w: '100%',
         fontSize: '1.6rem',
-        borderLeft: '2px solid token(colors.main)'
     }
 })
 
 const description = css({
+    mb: '1em',
+    fontSize: '1.8rem',
     md: {
         mb: '24px',
         pl: '2',
         fontSize: '2rem',
-        _lastOfType: {
-            mb: '0'
-        }
+    },
+    _lastOfType: {
+        mb: '0'
     }
 })
