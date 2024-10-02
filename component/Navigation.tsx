@@ -61,13 +61,14 @@ export const Navigation = ({menuFlag=false, children}:NavigationProps):JSX.Eleme
     // NOTE: TOP階層かの判別
     const topFlag:boolean = true
 
-    const navigation = {
-        w: '18vw',
-        md: {w: '648px'}
-    }
+    const navigation = css({
+        display: 'none',
+        md: {w: '648px', display: 'flex'}
+    })
 
     const navigationWrap = cx(
         css({
+            p: '2em 0',
             md: {
                 m: '0 auto',
                 w: 'minPC',
@@ -81,10 +82,11 @@ export const Navigation = ({menuFlag=false, children}:NavigationProps):JSX.Eleme
     )
 
     const title = css({
+        fontSize: '3.2rem',
+        fontWeight: 'bold',
+        letterSpacing: '.1em',
         md: {
             fontSize: '2.8rem',
-            fontWeight: 'bold',
-            letterSpacing: '.1em'
         }
     })
 
@@ -93,7 +95,7 @@ export const Navigation = ({menuFlag=false, children}:NavigationProps):JSX.Eleme
             <h1 className={title}>
                 tmo-taka
             </h1>
-            <ul className={cx(css(navigation), flex({justify: 'space-around'}))}>
+            <ul className={cx(navigation, flex({justify: 'space-around'}))}>
                 {
                     menu.lists.map((list) => {
                         return (<List key={list.name} topFlag={topFlag} menuFlag={menuFlag} name={list.name} />)
