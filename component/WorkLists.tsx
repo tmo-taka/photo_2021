@@ -57,28 +57,30 @@ const workWrapper = {
 const workList = cx(
     css(
         {
-            m: '0 auto 6em', w: '84vw',
+            m: '0 auto 6em', w: '84vw', display: 'block',
             _last: { mb: 0 },
-            md: {w: 'contPC'}
+            md: {w: 'contPC', display: 'flex'}
         }
     ),
     flex(
         {
-            justifyContent: 'space-between',
-            _odd: {
-                flexDirection: 'row-reverse',
+            md: {
+                justifyContent: 'space-between',
+                _odd: {
+                    flexDirection: 'row-reverse',
+                }
             }
         }
     )
 )
 
 const workImage = {
-    w: '18em', h: '10em', pos: 'relative',
+    w: '100%', h: '12em', pos: 'relative',
     md: {w: '400px', h: '200px'}
 }
 
 const workTitle = {
-    fontSize: '2.0rem', pos: 'relative',
+    mb: '2', fontSize: '1.8rem', pos: 'relative',
     md: {fontSize: '2.4rem'}
 }
 

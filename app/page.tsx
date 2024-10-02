@@ -9,7 +9,7 @@ import { fetchProgrammings , fetchTools, fetchWorks } from '@utils/getDatasFromC
 import { Suspense } from 'react'
 import Link from 'next/link'
 
-export default async function Home({ props }) {
+export default async function Home() {
     const programmingData = await fetchProgrammings()
     const toolData = await fetchTools();
     const workData = await fetchWorks(3);
@@ -113,7 +113,7 @@ const moreBlock= {
 }
 
 const moreLink = {
-    fontSize: '1.8rem',
+    fontSize: '2.8rem',
     md: {fontSize: '2.4rem'}
 }
 
