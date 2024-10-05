@@ -1,4 +1,4 @@
-import { ReactNode} from 'react'
+import { ReactNode, useState } from 'react'
 import { useRouter } from 'next/router';
 import { menu, type ListsPropUnion } from '@libs/menu';
 import { cx, css } from '@styled-system/css'
@@ -60,15 +60,15 @@ type NavigationProps = {
 export const Navigation = ({menuFlag=false, children}:NavigationProps):JSX.Element | null => {
     // NOTE: TOP階層かの判別
     const topFlag:boolean = true
+    const [openFlag, setOpenFlag] = useState(false);
 
     const navigation = css({
-        display: 'none',
+        // display: 'none',
         md: {w: '648px', display: 'flex'}
     })
 
     const navigationWrap = cx(
         css({
-            p: '2em 0',
             md: {
                 m: '0 auto',
                 w: 'minPC',
@@ -82,12 +82,66 @@ export const Navigation = ({menuFlag=false, children}:NavigationProps):JSX.Eleme
     )
 
     const title = css({
-        fontSize: '3.2rem',
-        fontWeight: 'bold',
-        letterSpacing: '.1em',
+        display: 'none',
         md: {
+            display: 'block',
             fontSize: '2.8rem',
+            fontWeight: 'bold',
+            letterSpacing: '.1em',
         }
+    })
+
+    const spIcon = css({
+        pos: 'fixed',
+        bottom: '1em',
+        right: '1em',
+        bg: 'main',
+        w: '100%',
+        h: '100%',
+        borderRadius: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignContent: 'center',
+        zIndex: '3',
+        transitionTimingFunction: 'linear',
+        transitionDuration: '.4s',
+        transformOrigin: 'right bottom',
+        md: {
+            display: 'none'
+        }
+    })
+
+    const spIconIn = css({
+        w: '3.2em',
+        h: '3.2em',
+        scale: '1',
+        display: 'flex',
+        justifyContent: 'center',
+        alignContent: 'center',
+        flexWrap: 'wrap',
+        pos: 'absolute',
+        bottom: '0',
+        right: '0'
+    })
+
+    const icoBorder = css({
+        w: '60%',
+        h: '0.2em',
+        bg: 'white',
+        mb: '3',
+        transitionTimingFunction: 'linear',
+        transitionDuration: '.4s',
+        _lastOfType: {
+            mb: '0'
+        }
+    })
+
+    const topBorder = css({
+        transformOrigin: 'left top',
+    })
+
+    const bottomBorder = css({
+        transformOrigin: 'left bottom',
     })
 
     return (
@@ -95,6 +149,13 @@ export const Navigation = ({menuFlag=false, children}:NavigationProps):JSX.Eleme
             <h1 className={title}>
                 tmo-taka
             </h1>
+            <div className={cx(spIcon, css({scale: openFlag ? '1' : '0.1 0.05', borderRadius: openFlag ? '0' : '100%'}))} onClick={() => setOpenFlag(!openFlag)}>
+                <div className={cx(spIconIn, css({scale: openFlag ? '1' : '10 20'}))}>
+                    <div className={cx(icoBorder, topBorder, css({rotate: openFlag ? '45deg' : '0'}))}></div>
+                    <div className={cx(icoBorder, css({opacity: openFlag ? '0' : '1'}))}></div>
+                    <div className={cx(icoBorder, bottomBorder, css({rotate: openFlag ? '-45deg' : '0'}))}></div>
+                </div>
+            </div>
             <ul className={cx(navigation, flex({justify: 'space-around'}))}>
                 {
                     menu.lists.map((list) => {
